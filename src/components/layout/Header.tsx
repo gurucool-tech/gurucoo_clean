@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X, MessageCircle, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/gurucool-logo.png";
+import logo from "@/assets/gurucool-logo-with-background.png";
 
 const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20book%20a%20demo%20and%20understand%20plans%20for%20our%20school.";
 
