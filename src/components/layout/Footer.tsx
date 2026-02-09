@@ -48,7 +48,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="bg-white/10 rounded-xl p-2">
+              <div className="bg-white rounded-full p-2">
                 <img src={logo} alt="GuruCool logo" className="h-8 w-auto" />
               </div>
               <span className="text-xl font-bold">GuruCool</span>
