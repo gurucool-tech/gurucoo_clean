@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, ArrowRight, Calendar, Clock, ArrowLeft } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { SEO, structuredData } from "@/components/SEO";
+import { SEO } from "@/components/SEO";
 import {
   Table,
   TableBody,
@@ -22,13 +22,14 @@ export default function StagedDigitizationPost() {
         description="Most implementations fail when schools try to do everything at once. A staged rollout wins because it respects human adoption limits."
         canonical="/blog/staged-approach-school-digitization"
         type="article"
-        publishedTime="2025-01-05"
-        structuredData={structuredData.blogPosting({
-          title: "Starting Simple: The Staged Approach to School Digitization",
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: "Starting Simple: The Staged Approach to School Digitization",
           description: "Most implementations fail when schools try to do everything at once. A staged rollout wins.",
           datePublished: "2025-01-05",
-          slug: "staged-approach-school-digitization",
-        })}
+          url: "https://gurucool.com/blog/staged-approach-school-digitization"
+        }}
       />
       <PageHeader
         title="Starting Simple: The Staged Approach to School Digitization"

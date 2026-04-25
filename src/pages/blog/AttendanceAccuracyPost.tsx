@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, ArrowRight, Calendar, Clock, ArrowLeft } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { SEO, structuredData } from "@/components/SEO";
+import { SEO } from "@/components/SEO";
 
 const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20learn%20more.";
 
@@ -14,13 +14,14 @@ export default function AttendanceAccuracyPost() {
         description="Most schools track attendance—but few truly understand its impact on safety, compliance, and parent trust. Here's what accurate attendance really means."
         canonical="/blog/attendance-accuracy-matters"
         type="article"
-        publishedTime="2025-01-15"
-        structuredData={structuredData.blogPosting({
-          title: "Why Attendance Accuracy Matters More Than You Think",
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: "Why Attendance Accuracy Matters More Than You Think",
           description: "Most schools track attendance—but few truly understand its impact on safety, compliance, and parent trust.",
           datePublished: "2025-01-15",
-          slug: "attendance-accuracy-matters",
-        })}
+          url: "https://gurucool.com/blog/attendance-accuracy-matters"
+        }}
       />
       <PageHeader
         title="Why Attendance Accuracy Matters More Than You Think"

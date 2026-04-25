@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X, MessageCircle, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/gurucool-logo-with-background.png";
+import logo from "@/assets/logo-new-blue.png";
 
 const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20book%20a%20demo%20and%20understand%20plans%20for%20our%20school.";
 
@@ -15,48 +15,40 @@ interface NavItem {
 const navigation: NavItem[] = [
   {
     label: "Product",
+    href: "/product",
+  },
+  {
+    label: "Solutions",
     children: [
-      { label: "Product Overview", href: "/product", description: "Complete system overview" },
-      { label: "Feature Tour", href: "/features", description: "Explore all modules" },
-      { label: "Mobile Access", href: "/mobile-access", description: "Access on any device" },
-      { label: "Multi-School", href: "/multi-school", description: "Manage multiple campuses" },
-      { label: "Student Information System", href: "/sis", description: "Student data management" },
-      { label: "Custom ERP", href: "/custom-erp", description: "Tailored solutions" },
-      { label: "Integrations", href: "/integrations", description: "Connect your tools" },
-      { label: "Why GuruCool", href: "/why-gurucool", description: "Reasons to choose us" },
-      { label: "The GuruCool Difference", href: "/gurucool-difference", description: "What sets us apart" },
-      { label: "FAQ", href: "/faq", description: "Common questions" },
+      { label: "Educational Institutions", href: "/solutions/educational-institutions", description: "Operating layer for all" },
+      { label: "Schools", href: "/solutions/schools", description: "K-12 connected operations" },
+      { label: "Colleges", href: "/solutions/colleges", description: "Higher education scale" },
+      { label: "Tuition & Coaching", href: "/solutions/tuition-coaching", description: "Branch and student tracking" },
+      { label: "Multi-Campus Groups", href: "/solutions/multi-campus", description: "Centralized visibility" },
     ],
   },
   {
-    label: "Partner",
-    href: "/partner-program",
-  },
-  {
-    label: "Plans",
+    label: "Pricing",
     href: "/plans",
   },
   {
     label: "Resources",
     children: [
       { label: "Blog", href: "/blog", description: "Insights and updates" },
-      { label: "Case Studies", href: "/case-studies", description: "Success stories" },
-      { label: "Guides & Ebooks", href: "/guides", description: "Free resources" },
+      { label: "Guides", href: "/guides", description: "Free resources" },
+      { label: "FAQ", href: "/faq", description: "Common questions" },
     ],
   },
   {
-    label: "About",
+    label: "Company",
     children: [
-      { label: "Our Story", href: "/about", description: "How we started" },
+      { label: "Our Story", href: "/about", description: "Why we exist" },
       { label: "Vision & Mission", href: "/vision-mission", description: "What drives us" },
       { label: "Leadership", href: "/team", description: "Meet our team" },
-      { label: "Customers", href: "/customers", description: "Schools we serve" },
+      { label: "Customers", href: "/customers", description: "Institutions we serve" },
       { label: "Careers", href: "/careers", description: "Join us" },
+      { label: "Contact", href: "/contact", description: "Get in touch" },
     ],
-  },
-  {
-    label: "Contact",
-    href: "/contact",
   },
 ];
 
@@ -68,12 +60,12 @@ export function Header() {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border/50 shadow-nav">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-[72px]">
+    <header className="fixed top-0 left-0 right-0 z-50 lg:top-4 lg:left-1/2 lg:-translate-x-1/2 lg:w-max lg:rounded-full bg-card/70 backdrop-blur-xl border-b lg:border-b-0 border-border/50 lg:border shadow-[var(--shadow-nav)] transition-all duration-300">
+      <div className="px-4 lg:px-6 w-full">
+        <div className="flex items-center justify-between h-[64px] lg:h-[72px] lg:gap-8">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="GuruCool" className="h-10 w-auto" />
+          <Link to="/" className="flex items-center gap-2 group">
+            <img src={logo} alt="GuruCool" className="h-12 w-auto object-contain transition-transform group-hover:scale-105" />
             <span className="text-xl font-bold text-foreground">GuruCool</span>
           </Link>
 
@@ -140,13 +132,13 @@ export function Header() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button asChild variant="outline" size="sm" className="gap-2">
+            <Button asChild variant="outline" size="sm" className="gap-2 rounded-full border-border hover:bg-accent transition-all">
               <Link to="/book-demo">
                 <Calendar className="w-4 h-4" />
                 Book a Demo
               </Link>
             </Button>
-            <Button asChild size="sm" className="gap-2 bg-whatsapp hover:bg-whatsapp-hover">
+            <Button asChild size="sm" className="gap-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[var(--shadow-glow)] transition-all duration-300">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-4 h-4" />
                 Contact on WhatsApp
@@ -208,14 +200,14 @@ export function Header() {
             </nav>
 
             {/* Mobile CTA */}
-            <div className="mt-4 pt-4 border-t border-border/50 space-y-3 px-4">
-              <Button asChild variant="outline" className="w-full gap-2">
+            <div className="mt-4 pt-4 border-t border-border/50 space-y-3 px-4 pb-4">
+              <Button asChild variant="outline" className="w-full gap-2 rounded-full border-border">
                 <Link to="/book-demo" onClick={() => setMobileOpen(false)}>
                   <Calendar className="w-4 h-4" />
                   Book a Demo
                 </Link>
               </Button>
-              <Button asChild className="w-full gap-2 bg-whatsapp hover:bg-whatsapp-hover">
+              <Button asChild className="w-full gap-2 rounded-full bg-primary text-primary-foreground">
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4" />
                   Contact on WhatsApp

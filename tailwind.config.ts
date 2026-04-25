@@ -127,9 +127,6 @@ export default {
       boxShadow: {
         "card": "var(--shadow-card)",
         "nav": "var(--shadow-nav)",
-        "premium": "0 4px 20px -2px rgb(0 0 0 / 0.08)",
-        "premium-lg": "0 8px 30px -4px rgb(0 0 0 / 0.12)",
-        "glow": "0 0 40px -10px hsl(var(--guru-blue) / 0.3)",
       },
       keyframes: {
         "accordion-down": {
@@ -171,9 +168,6 @@ export default {
         "pulse-soft": "pulse-soft 3s ease-in-out infinite",
       },
       backgroundImage: {
-        "gradient-hero": "linear-gradient(135deg, hsl(var(--guru-navy)) 0%, hsl(var(--guru-blue)) 100%)",
-        "gradient-subtle": "linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%)",
-        "gradient-radial": "radial-gradient(ellipse at center, var(--tw-gradient-stops))",
       },
     },
   },

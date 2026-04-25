@@ -28,41 +28,41 @@ const dashboardTabs: { id: DashboardType; label: string }[] = [
 // Admin Dashboard Content
 function AdminDashboard() {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between mb-4">
+    <div className="flex flex-col h-full gap-3">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
             <BarChart3 className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <p className="text-body-sm font-semibold text-foreground">Admin Dashboard</p>
-            <p className="text-caption text-muted-foreground">Real-time overview</p>
+            <p className="text-sm font-bold text-foreground leading-tight">Admin Dashboard</p>
+            <p className="text-xs text-muted-foreground">Real-time overview</p>
           </div>
         </div>
-        <div className="w-2 h-2 rounded-full bg-guru-green animate-pulse" />
+        <div className="w-2 h-2 rounded-full bg-guru-green animate-pulse shrink-0" />
       </div>
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-muted/50 rounded-lg p-3 text-center">
-          <p className="text-heading-md font-bold text-foreground">847</p>
-          <p className="text-caption text-muted-foreground">Present</p>
+      <div className="grid grid-cols-3 gap-2">
+        <div className="bg-muted/30 border border-border/40 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-foreground leading-none mb-1">847</p>
+          <p className="text-[10px] font-semibold text-muted-foreground uppercase">Present</p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-3 text-center">
-          <p className="text-heading-md font-bold text-foreground">23</p>
-          <p className="text-caption text-muted-foreground">Absent</p>
+        <div className="bg-muted/30 border border-border/40 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-foreground leading-none mb-1">23</p>
+          <p className="text-[10px] font-semibold text-muted-foreground uppercase">Absent</p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-3 text-center">
-          <p className="text-heading-md font-bold text-guru-green">97%</p>
-          <p className="text-caption text-muted-foreground">Rate</p>
+        <div className="bg-guru-green/10 border border-guru-green/20 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-guru-green leading-none mb-1">97%</p>
+          <p className="text-[10px] font-semibold text-guru-green uppercase">Rate</p>
         </div>
       </div>
-      <div className="flex gap-3 pt-2">
-        <div className="flex-1 flex items-center gap-2 bg-guru-green/5 border border-guru-green/20 rounded-lg px-3 py-2">
-          <CheckCircle2 className="w-4 h-4 text-guru-green flex-shrink-0" />
-          <span className="text-caption font-medium text-foreground">Attendance captured</span>
+      <div className="flex gap-2 mt-auto">
+        <div className="flex-1 flex items-center gap-2 bg-guru-green/10 border border-guru-green/20 rounded-lg px-2.5 py-1.5 overflow-hidden">
+          <CheckCircle2 className="w-3.5 h-3.5 text-guru-green shrink-0" />
+          <span className="text-xs font-semibold text-guru-green truncate">Attendance captured</span>
         </div>
-        <div className="flex-1 flex items-center gap-2 bg-whatsapp/5 border border-whatsapp/20 rounded-lg px-3 py-2">
-          <MessageCircle className="w-4 h-4 text-whatsapp flex-shrink-0" />
-          <span className="text-caption font-medium text-foreground">WhatsApp sent</span>
+        <div className="flex-1 flex items-center gap-2 bg-whatsapp/10 border border-whatsapp/20 rounded-lg px-2.5 py-1.5 overflow-hidden">
+          <MessageCircle className="w-3.5 h-3.5 text-whatsapp shrink-0" />
+          <span className="text-xs font-semibold text-whatsapp truncate">WhatsApp sent</span>
         </div>
       </div>
     </div>
@@ -72,41 +72,41 @@ function AdminDashboard() {
 // Teacher Dashboard Content
 function TeacherDashboard() {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between mb-4">
+    <div className="flex flex-col h-full gap-3">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-guru-blue/10 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-guru-blue/10 flex items-center justify-center shrink-0">
             <GraduationCap className="w-5 h-5 text-guru-blue" />
           </div>
           <div>
-            <p className="text-body-sm font-semibold text-foreground">Teacher Dashboard</p>
-            <p className="text-caption text-muted-foreground">Today's overview</p>
+            <p className="text-sm font-bold text-foreground leading-tight">Teacher Dashboard</p>
+            <p className="text-xs text-muted-foreground">Today's overview</p>
           </div>
         </div>
-        <div className="w-2 h-2 rounded-full bg-guru-blue animate-pulse" />
+        <div className="w-2 h-2 rounded-full bg-guru-blue animate-pulse shrink-0" />
       </div>
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-muted/50 rounded-lg p-3 text-center">
-          <p className="text-heading-md font-bold text-foreground">4</p>
-          <p className="text-caption text-muted-foreground">Classes</p>
+      <div className="grid grid-cols-3 gap-2">
+        <div className="bg-muted/30 border border-border/40 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-foreground leading-none mb-1">4</p>
+          <p className="text-[10px] font-semibold text-muted-foreground uppercase">Classes</p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-3 text-center">
-          <p className="text-heading-md font-bold text-guru-orange">1</p>
-          <p className="text-caption text-muted-foreground">Pending</p>
+        <div className="bg-guru-orange/10 border border-guru-orange/20 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-guru-orange leading-none mb-1">1</p>
+          <p className="text-[10px] font-semibold text-guru-orange uppercase">Pending</p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-3 text-center">
-          <p className="text-heading-md font-bold text-foreground">12</p>
-          <p className="text-caption text-muted-foreground">To Review</p>
+        <div className="bg-muted/30 border border-border/40 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-foreground leading-none mb-1">12</p>
+          <p className="text-[10px] font-semibold text-muted-foreground uppercase">To Review</p>
         </div>
       </div>
-      <div className="flex gap-3 pt-2">
-        <div className="flex-1 flex items-center gap-2 bg-guru-green/5 border border-guru-green/20 rounded-lg px-3 py-2">
-          <CheckCircle2 className="w-4 h-4 text-guru-green flex-shrink-0" />
-          <span className="text-caption font-medium text-foreground">Class 8A ready</span>
+      <div className="flex gap-2 mt-auto">
+        <div className="flex-1 flex items-center gap-2 bg-guru-green/10 border border-guru-green/20 rounded-lg px-2.5 py-1.5 overflow-hidden">
+          <CheckCircle2 className="w-3.5 h-3.5 text-guru-green shrink-0" />
+          <span className="text-xs font-semibold text-guru-green truncate">Class 8A ready</span>
         </div>
-        <div className="flex-1 flex items-center gap-2 bg-guru-blue/5 border border-guru-blue/20 rounded-lg px-3 py-2">
-          <Calendar className="w-4 h-4 text-guru-blue flex-shrink-0" />
-          <span className="text-caption font-medium text-foreground">Timetable updated</span>
+        <div className="flex-1 flex items-center gap-2 bg-guru-blue/10 border border-guru-blue/20 rounded-lg px-2.5 py-1.5 overflow-hidden">
+          <Calendar className="w-3.5 h-3.5 text-guru-blue shrink-0" />
+          <span className="text-xs font-semibold text-guru-blue truncate">Timetable updated</span>
         </div>
       </div>
     </div>
@@ -116,41 +116,41 @@ function TeacherDashboard() {
 // Student Dashboard Content
 function StudentDashboard() {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between mb-4">
+    <div className="flex flex-col h-full gap-3">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-guru-orange/10 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-guru-orange/10 flex items-center justify-center shrink-0">
             <BookOpen className="w-5 h-5 text-guru-orange" />
           </div>
           <div>
-            <p className="text-body-sm font-semibold text-foreground">Student Dashboard</p>
-            <p className="text-caption text-muted-foreground">Class 10-B</p>
+            <p className="text-sm font-bold text-foreground leading-tight">Student Dashboard</p>
+            <p className="text-xs text-muted-foreground">Class 10-B</p>
           </div>
         </div>
-        <div className="w-2 h-2 rounded-full bg-guru-orange animate-pulse" />
+        <div className="w-2 h-2 rounded-full bg-guru-orange animate-pulse shrink-0" />
       </div>
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-muted/50 rounded-lg p-3 text-center">
-          <p className="text-heading-md font-bold text-foreground">5</p>
-          <p className="text-caption text-muted-foreground">Periods</p>
+      <div className="grid grid-cols-3 gap-2">
+        <div className="bg-muted/30 border border-border/40 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-foreground leading-none mb-1">5</p>
+          <p className="text-[10px] font-semibold text-muted-foreground uppercase">Periods</p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-3 text-center">
-          <p className="text-heading-md font-bold text-guru-orange">2</p>
-          <p className="text-caption text-muted-foreground">HW Due</p>
+        <div className="bg-guru-orange/10 border border-guru-orange/20 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-guru-orange leading-none mb-1">2</p>
+          <p className="text-[10px] font-semibold text-guru-orange uppercase">HW Due</p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-3 text-center">
-          <p className="text-heading-md font-bold text-guru-green">96%</p>
-          <p className="text-caption text-muted-foreground">Attendance</p>
+        <div className="bg-guru-green/10 border border-guru-green/20 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-guru-green leading-none mb-1">96%</p>
+          <p className="text-[10px] font-semibold text-guru-green uppercase">Attendance</p>
         </div>
       </div>
-      <div className="flex gap-3 pt-2">
-        <div className="flex-1 flex items-center gap-2 bg-guru-blue/5 border border-guru-blue/20 rounded-lg px-3 py-2">
-          <Bell className="w-4 h-4 text-guru-blue flex-shrink-0" />
-          <span className="text-caption font-medium text-foreground">New remark</span>
+      <div className="flex gap-2 mt-auto">
+        <div className="flex-1 flex items-center gap-2 bg-guru-blue/10 border border-guru-blue/20 rounded-lg px-2.5 py-1.5 overflow-hidden">
+          <Bell className="w-3.5 h-3.5 text-guru-blue shrink-0" />
+          <span className="text-xs font-semibold text-guru-blue truncate">New remark</span>
         </div>
-        <div className="flex-1 flex items-center gap-2 bg-primary/5 border border-primary/20 rounded-lg px-3 py-2">
-          <FileText className="w-4 h-4 text-primary flex-shrink-0" />
-          <span className="text-caption font-medium text-foreground">Exam schedule</span>
+        <div className="flex-1 flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-lg px-2.5 py-1.5 overflow-hidden">
+          <FileText className="w-3.5 h-3.5 text-primary shrink-0" />
+          <span className="text-xs font-semibold text-primary truncate">Exam schedule</span>
         </div>
       </div>
     </div>
@@ -160,41 +160,41 @@ function StudentDashboard() {
 // Parent Dashboard Content
 function ParentDashboard() {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between mb-4">
+    <div className="flex flex-col h-full gap-3">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-whatsapp/10 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-whatsapp/10 flex items-center justify-center shrink-0">
             <Users className="w-5 h-5 text-whatsapp" />
           </div>
           <div>
-            <p className="text-body-sm font-semibold text-foreground">Parent Dashboard</p>
-            <p className="text-caption text-muted-foreground">Child status</p>
+            <p className="text-sm font-bold text-foreground leading-tight">Parent Dashboard</p>
+            <p className="text-xs text-muted-foreground">Child status</p>
           </div>
         </div>
-        <div className="w-2 h-2 rounded-full bg-guru-green animate-pulse" />
+        <div className="w-2 h-2 rounded-full bg-guru-green animate-pulse shrink-0" />
       </div>
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-guru-green/5 border border-guru-green/20 rounded-lg p-3 text-center">
-          <p className="text-body-sm font-bold text-guru-green">In School</p>
-          <p className="text-caption text-muted-foreground">8:12 AM</p>
+      <div className="grid grid-cols-3 gap-2">
+        <div className="bg-guru-green/10 border border-guru-green/20 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-guru-green leading-none mb-1">In</p>
+          <p className="text-[10px] font-semibold text-guru-green uppercase">School</p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-3 text-center">
-          <p className="text-body-sm font-bold text-foreground">Present</p>
-          <p className="text-caption text-muted-foreground">Today</p>
+        <div className="bg-muted/30 border border-border/40 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-foreground leading-none mb-1">96%</p>
+          <p className="text-[10px] font-semibold text-muted-foreground uppercase">Rate</p>
         </div>
-        <div className="bg-whatsapp/5 border border-whatsapp/20 rounded-lg p-3 text-center">
-          <p className="text-body-sm font-bold text-whatsapp">Sent</p>
-          <p className="text-caption text-muted-foreground">Alert</p>
+        <div className="bg-whatsapp/10 border border-whatsapp/20 rounded-lg p-2.5 text-center flex flex-col justify-center">
+          <p className="text-lg font-black text-whatsapp leading-none mb-1">Sent</p>
+          <p className="text-[10px] font-semibold text-whatsapp uppercase">Alert</p>
         </div>
       </div>
-      <div className="flex gap-3 pt-2">
-        <div className="flex-1 flex items-center gap-2 bg-guru-orange/5 border border-guru-orange/20 rounded-lg px-3 py-2">
-          <Clock className="w-4 h-4 text-guru-orange flex-shrink-0" />
-          <span className="text-caption font-medium text-foreground">Fee reminder</span>
+      <div className="flex gap-2 mt-auto">
+        <div className="flex-1 flex items-center gap-2 bg-guru-orange/10 border border-guru-orange/20 rounded-lg px-2.5 py-1.5 overflow-hidden">
+          <Clock className="w-3.5 h-3.5 text-guru-orange shrink-0" />
+          <span className="text-xs font-semibold text-guru-orange truncate">Fee reminder</span>
         </div>
-        <div className="flex-1 flex items-center gap-2 bg-primary/5 border border-primary/20 rounded-lg px-3 py-2">
-          <Bell className="w-4 h-4 text-primary flex-shrink-0" />
-          <span className="text-caption font-medium text-foreground">PTM notice</span>
+        <div className="flex-1 flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-lg px-2.5 py-1.5 overflow-hidden">
+          <Bell className="w-3.5 h-3.5 text-primary shrink-0" />
+          <span className="text-xs font-semibold text-primary truncate">PTM notice</span>
         </div>
       </div>
     </div>
@@ -253,7 +253,7 @@ export function HeroDashboardPreview() {
   return (
     <div className="relative">
       {/* Main Dashboard Card */}
-      <div className="bg-card rounded-2xl border border-border/60 shadow-premium-lg p-6 backdrop-blur-sm">
+      <div className="bg-card rounded-2xl border border-border/60 shadow-premium-lg p-6 backdrop-blur-sm overflow-hidden">
         {/* Tab Navigation */}
         <div className="flex gap-1 p-1 bg-muted/50 rounded-lg mb-5">
           {dashboardTabs.map((tab) => (
@@ -273,7 +273,7 @@ export function HeroDashboardPreview() {
         </div>
 
         {/* Dashboard Content with Animation */}
-        <div className="relative min-h-[180px]">
+        <div className="relative h-[220px] overflow-hidden">
           {dashboardTabs.map((tab) => {
             const DashboardComponent = dashboardComponents[tab.id];
             const isActive = activeTab === tab.id;
@@ -282,7 +282,7 @@ export function HeroDashboardPreview() {
               <div
                 key={tab.id}
                 className={cn(
-                  "absolute inset-0 transition-all",
+                  "absolute inset-0 transition-all w-full h-full overflow-hidden",
                   prefersReducedMotion ? "duration-0" : "duration-300 ease-out",
                   isActive
                     ? "opacity-100 translate-x-0 pointer-events-auto"

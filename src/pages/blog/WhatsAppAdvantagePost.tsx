@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, ArrowRight, Calendar, Clock, ArrowLeft } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { SEO, structuredData } from "@/components/SEO";
+import { SEO } from "@/components/SEO";
 import {
   Table,
   TableBody,
@@ -22,13 +22,14 @@ export default function WhatsAppAdvantagePost() {
         description="Parent apps promised better communication, but adoption drops fast. Here's why WhatsApp wins for Indian schools—and how to use it correctly."
         canonical="/blog/whatsapp-advantage-parent-apps"
         type="article"
-        publishedTime="2025-01-10"
-        structuredData={structuredData.blogPosting({
-          title: "The WhatsApp Advantage: Why Apps Fail in Indian Schools",
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: "The WhatsApp Advantage: Why Apps Fail in Indian Schools",
           description: "Parent apps promised better communication, but adoption drops fast. Here's why WhatsApp wins for Indian schools.",
           datePublished: "2025-01-10",
-          slug: "whatsapp-advantage-parent-apps",
-        })}
+          url: "https://gurucool.com/blog/whatsapp-advantage-parent-apps"
+        }}
       />
       <PageHeader
         title="The WhatsApp Advantage: Why Apps Fail in Indian Schools"

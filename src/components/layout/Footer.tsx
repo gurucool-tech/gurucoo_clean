@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram, ArrowUpRight } from "lucide-react";
 import logo from "@/assets/gurucool-logo.png";
 
 const LINKEDIN_URL = "https://www.linkedin.com/company/gurucool-technologies/about/?viewAsMember=true";
@@ -10,28 +10,26 @@ const footerLinks = {
   product: [
     { label: "Product Overview", href: "/product" },
     { label: "Feature Tour", href: "/features" },
-    { label: "Mobile Access", href: "/mobile-access" },
-    { label: "Multi-School", href: "/multi-school" },
-    { label: "Integrations", href: "/integrations" },
-    { label: "Why GuruCool", href: "/why-gurucool" },
-    { label: "FAQ", href: "/faq" },
+    { label: "Pricing", href: "/plans" },
+    { label: "Book a Demo", href: "/book-demo" },
+  ],
+  solutions: [
+    { label: "Educational Institutions", href: "/solutions/educational-institutions" },
+    { label: "Schools", href: "/solutions/schools" },
+    { label: "Colleges", href: "/solutions/colleges" },
+    { label: "Tuition & Coaching", href: "/solutions/tuition-coaching" },
+    { label: "Multi-Campus", href: "/solutions/multi-campus" },
   ],
   company: [
     { label: "Our Story", href: "/about" },
-    { label: "Vision & Mission", href: "/vision-mission" },
     { label: "Leadership", href: "/team" },
-    { label: "Customers", href: "/customers" },
     { label: "Careers", href: "/careers" },
+    { label: "Contact", href: "/contact" },
   ],
   resources: [
     { label: "Blog", href: "/blog" },
     { label: "Case Studies", href: "/case-studies" },
-    { label: "Guides & Ebooks", href: "/guides" },
-  ],
-  services: [
-    { label: "Partner Program", href: "/partner-program" },
-    { label: "Custom ERP", href: "/custom-erp" },
-    { label: "Contact", href: "/contact" },
+    { label: "FAQ", href: "/faq" },
   ],
   legal: [
     { label: "Terms of Service", href: "/terms" },
@@ -41,93 +39,45 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-primary-foreground">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-10">
-          {/* Brand Column */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="bg-white rounded-full p-2">
-                <img src={logo} alt="GuruCool logo" className="h-8 w-auto" />
+    <footer className="bg-slate-50/50 border-t border-border/40 text-foreground relative overflow-hidden">
+      {/* Subtle structural grid in footer background */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none" />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 relative z-10">
+        
+        {/* Upper Footer - Brand & Positioning */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 pb-16 border-b border-border/40 gap-10">
+          <div className="max-w-xl">
+            <Link to="/" className="flex items-center gap-2 mb-8 inline-flex">
+              <div className="bg-white rounded-xl shadow-sm p-2 border border-border/40">
+                <img src={logo} alt="GuruCool logo" className="h-7 w-auto" />
               </div>
-              <span className="text-xl font-bold">GuruCool</span>
+              <span className="text-2xl font-bold tracking-tight">GuruCool</span>
             </Link>
-            <p className="text-primary-foreground/60 text-body-sm mb-5 max-w-xs">
-              Smart School Management System built for Indian schools. Run your school properly from Day 1.
-            </p>
-
-            {/* Contact Info */}
-            <div className="space-y-2 mb-5">
-              <a
-                href="tel:+917058905200"
-                className="flex items-center gap-2 text-body-sm text-primary-foreground/60 hover:text-primary-foreground/95 hover:underline decoration-primary-foreground/30 underline-offset-2 transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                +91 70589 05200
-              </a>
-              <a
-                href="mailto:edu.gurucool@gmail.com"
-                className="flex items-center gap-2 text-body-sm text-primary-foreground/60 hover:text-primary-foreground/95 hover:underline decoration-primary-foreground/30 underline-offset-2 transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-                edu.gurucool@gmail.com
-              </a>
-              <div className="flex items-start gap-2 text-body-sm text-primary-foreground/60">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Thane, Maharashtra, India</span>
-              </div>
-            </div>
-
-            {/* Social Icons */}
-            <div className="mb-5">
-              <p className="text-caption text-primary-foreground/40 mb-2">Follow us</p>
-              <div className="flex items-center gap-4">
-                <a
-                  href={LINKEDIN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary-foreground/50 hover:text-guru-blue transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary-foreground/50 hover:text-guru-blue transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-
-            {/* Quick Actions */}
-            <div>
-              <p className="text-caption text-primary-foreground/40 mb-1">Quick actions</p>
-              <a
-                href={FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-body-sm text-primary-foreground/60 hover:text-primary-foreground/95 hover:underline decoration-primary-foreground/30 underline-offset-2 transition-colors"
-              >
-                Partner / Careers Form
-              </a>
-            </div>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-tight max-w-lg">
+              The operating layer for modern educational institutions.
+            </h2>
           </div>
+          
+          <div className="flex flex-wrap gap-4">
+            <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-white border border-border/60 text-sm font-semibold hover:bg-muted/30 transition-all shadow-sm">
+              Partner with us
+            </a>
+            <Link to="/book-demo" className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-foreground text-background text-sm font-semibold hover:bg-foreground/90 transition-all shadow-[var(--shadow-glow)]">
+              Book a Demo
+            </Link>
+          </div>
+        </div>
 
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-y-12 gap-x-8 mb-20">
           {/* Product Links */}
           <div>
-            <h4 className="font-semibold mb-3 text-body-sm text-primary-foreground/90">Product</h4>
-            <ul className="space-y-1.5">
+            <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-muted-foreground">Product</h4>
+            <ul className="space-y-4">
               {footerLinks.product.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-body-sm text-primary-foreground/60 hover:text-primary-foreground/95 hover:underline decoration-primary-foreground/30 underline-offset-2 transition-colors"
-                  >
+                  <Link to={link.href} className="text-sm text-foreground/70 hover:text-primary transition-colors font-semibold">
                     {link.label}
                   </Link>
                 </li>
@@ -135,16 +85,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company Links */}
+          {/* Solutions Links */}
           <div>
-            <h4 className="font-semibold mb-3 text-body-sm text-primary-foreground/90">Company</h4>
-            <ul className="space-y-1.5">
-              {footerLinks.company.map((link) => (
+            <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-muted-foreground">Solutions</h4>
+            <ul className="space-y-4">
+              {footerLinks.solutions.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-body-sm text-primary-foreground/60 hover:text-primary-foreground/95 hover:underline decoration-primary-foreground/30 underline-offset-2 transition-colors"
-                  >
+                  <Link to={link.href} className="text-sm text-foreground/70 hover:text-primary transition-colors font-semibold">
                     {link.label}
                   </Link>
                 </li>
@@ -154,14 +101,11 @@ export function Footer() {
 
           {/* Resources Links */}
           <div>
-            <h4 className="font-semibold mb-3 text-body-sm text-primary-foreground/90">Resources</h4>
-            <ul className="space-y-1.5">
+            <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-muted-foreground">Resources</h4>
+            <ul className="space-y-4">
               {footerLinks.resources.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-body-sm text-primary-foreground/60 hover:text-primary-foreground/95 hover:underline decoration-primary-foreground/30 underline-offset-2 transition-colors"
-                  >
+                  <Link to={link.href} className="text-sm text-foreground/70 hover:text-primary transition-colors font-semibold">
                     {link.label}
                   </Link>
                 </li>
@@ -169,39 +113,68 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Services Links */}
+          {/* Company Links */}
           <div>
-            <h4 className="font-semibold mb-3 text-body-sm text-primary-foreground/90">Services</h4>
-            <ul className="space-y-1.5">
-              {footerLinks.services.map((link, index) => (
-                <li key={`${link.href}-${index}`}>
-                  <Link
-                    to={link.href}
-                    className="text-body-sm text-primary-foreground/60 hover:text-primary-foreground/95 hover:underline decoration-primary-foreground/30 underline-offset-2 transition-colors"
-                  >
+            <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-muted-foreground">Company</h4>
+            <ul className="space-y-4">
+              {footerLinks.company.map((link) => (
+                <li key={link.href}>
+                  <Link to={link.href} className="text-sm text-foreground/70 hover:text-primary transition-colors font-semibold">
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-1">
+            <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-muted-foreground">Connect</h4>
+            <div className="space-y-6">
+              <a href="mailto:edu.gurucool@gmail.com" className="flex items-center gap-4 text-sm text-foreground/70 hover:text-primary transition-colors font-semibold group">
+                <div className="w-10 h-10 rounded-full bg-white border border-border/40 flex items-center justify-center group-hover:border-primary/30 shadow-sm transition-all">
+                  <Mail className="w-4 h-4" />
+                </div>
+                edu.gurucool@gmail.com
+              </a>
+              <a href="tel:+917058905200" className="flex items-center gap-4 text-sm text-foreground/70 hover:text-primary transition-colors font-semibold group">
+                <div className="w-10 h-10 rounded-full bg-white border border-border/40 flex items-center justify-center group-hover:border-primary/30 shadow-sm transition-all">
+                  <Phone className="w-4 h-4" />
+                </div>
+                +91 70589 05200
+              </a>
+              <div className="flex items-center gap-4 text-sm text-foreground/70 font-semibold">
+                <div className="w-10 h-10 rounded-full bg-white border border-border/40 flex items-center justify-center shadow-sm">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                Thane, MH, India
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-6 border-t border-primary-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-body-sm text-primary-foreground/40">
-            © {new Date().getFullYear()} GuruCool. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            {footerLinks.legal.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className="text-body-sm text-primary-foreground/40 hover:text-primary-foreground/95 hover:underline decoration-primary-foreground/30 underline-offset-2 transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+        {/* Lower Footer */}
+        <div className="pt-10 border-t border-border/40 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10">
+            <p className="text-sm text-muted-foreground font-semibold">
+              © {new Date().getFullYear()} GuruCool Technologies.
+            </p>
+            <div className="flex items-center gap-8">
+              {footerLinks.legal.map((link) => (
+                <Link key={link.href} to={link.href} className="text-xs text-muted-foreground hover:text-foreground transition-colors font-bold uppercase tracking-wider">
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white border border-border/60 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all shadow-sm">
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white border border-border/60 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all shadow-sm">
+              <Instagram className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </div>

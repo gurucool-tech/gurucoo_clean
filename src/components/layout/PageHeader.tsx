@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 interface BreadcrumbItem {
   label: string;
@@ -8,54 +9,99 @@ interface BreadcrumbItem {
 
 interface PageHeaderProps {
   title: string;
-  subtitle?: string;
+  subtitle?: string; // Legacy support
+  description?: string; // New proper naming
+  eyebrow?: string;
   breadcrumbs?: BreadcrumbItem[];
   badge?: ReactNode;
+  alignment?: "center" | "left";
+  className?: string;
 }
 
-export function PageHeader({ title, subtitle, breadcrumbs, badge }: PageHeaderProps) {
+export function PageHeader({ 
+  title, 
+  subtitle, 
+  description,
+  eyebrow,
+  breadcrumbs, 
+  badge,
+  alignment = "center",
+  className
+}: PageHeaderProps) {
+  const alignClass = alignment === "center" ? "mx-auto text-center" : "text-left";
+  const displayDesc = description || subtitle;
+
   return (
-    <section className="page-header-hero py-20 relative overflow-hidden">
-      {/* Subtle dark overlay for text contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
+    <section className={cn(
+      "pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden bg-ice-panel border-b border-border/40",
+      className
+    )}>
+      {/* Very faint, controlled layer of color for premium section identity */}
+      <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
       
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className={cn("max-w-4xl", alignClass)}>
           {/* Breadcrumbs */}
           {breadcrumbs && breadcrumbs.length > 0 && (
-            <nav className="text-sm font-medium mb-6">
+            <nav className={cn(
+              "text-sm font-medium mb-8 flex flex-wrap gap-2",
+              alignment === "center" ? "items-center justify-center" : "items-center justify-start"
+            )}>
               {breadcrumbs.map((crumb, index) => (
-                <span key={index}>
+                <span key={index} className="flex items-center">
                   {crumb.href ? (
                     <Link 
                       to={crumb.href} 
-                      className="text-white/75 hover:text-white/95 hover:underline transition-colors"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {crumb.label}
                     </Link>
                   ) : (
-                    <span className="text-white">{crumb.label}</span>
+                    <span className="text-foreground font-semibold">{crumb.label}</span>
                   )}
                   {index < breadcrumbs.length - 1 && (
-                    <span className="mx-2 text-white/60">/</span>
+                    <span className="mx-2 text-border">/</span>
                   )}
                 </span>
               ))}
             </nav>
           )}
 
-          {/* Optional Badge */}
-          {badge && <div className="mb-6">{badge}</div>}
+          {/* Optional Badge / Icon block */}
+          {badge && (
+            <div className={cn(
+              "mb-6 flex",
+              alignment === "center" ? "justify-center" : "justify-start"
+            )}>
+              {badge}
+            </div>
+          )}
+
+          {/* Eyebrow / Chip */}
+          {eyebrow && (
+            <div className={cn(
+              "inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 mb-6 text-xs font-semibold text-primary uppercase tracking-widest",
+              alignment === "center" && "mx-auto"
+            )}>
+              {eyebrow}
+            </div>
+          )}
 
           {/* Title */}
-          <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-white tracking-tight mb-4 leading-tight">
+          <h1 className={cn(
+            "text-display-sm sm:text-display-md lg:text-display-lg font-bold text-foreground tracking-tight mb-6 leading-[1.1]",
+            alignment === "center" ? "mx-auto" : ""
+          )}>
             {title}
           </h1>
 
-          {/* Subtitle */}
-          {subtitle && (
-            <p className="text-lg sm:text-xl text-white/85 font-medium max-w-[60ch] mx-auto leading-relaxed">
-              {subtitle}
+          {/* Subtitle / Description */}
+          {displayDesc && (
+            <p className={cn(
+              "text-body-lg sm:text-heading-sm text-muted-foreground leading-relaxed",
+              alignment === "center" ? "max-w-[60ch] mx-auto" : "max-w-[65ch]"
+            )}>
+              {displayDesc}
             </p>
           )}
         </div>

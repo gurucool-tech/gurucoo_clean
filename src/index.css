@@ -4,117 +4,81 @@
 
 /* GuruCool Design System - Premium Education SaaS */
 
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
 @layer base {
   :root {
-    /* Core brand colors - Deep indigo/navy inspired by logo */
-    --background: 210 33% 98%;
-    --foreground: 222 47% 11%;
+    /* Premium Light Theme defaults - Strict Contrast System */
+    --background: 0 0% 100%; /* Pure Base white */
+    --foreground: 230 60% 10%; /* Very dark navy / near-black blue */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card: 0 0% 100%; /* Elevated white card */
+    --card-foreground: 230 60% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 230 60% 10%;
 
-    /* Primary - Deep indigo/navy from logo */
-    --primary: 230 56% 24%;
+    /* Primary - Vibrant GuruCool Blue */
+    --primary: 221 83% 53%;
     --primary-foreground: 210 40% 98%;
 
-    /* Secondary - Lighter blue */
-    --secondary: 214 32% 91%;
-    --secondary-foreground: 222 47% 11%;
+    /* Secondary - Soft off-white / pale cool grey */
+    --secondary: 214 20% 95%;
+    --secondary-foreground: 215 25% 27%; /* Deep slate / dark steel */
 
-    /* Muted - Subtle grays */
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    /* Muted - Soft background, but with clearly readable text */
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 20% 35%; /* Mid-dark neutral, clearly readable */
 
-    /* Accent - Warm indigo for highlights */
-    --accent: 230 45% 35%;
-    --accent-foreground: 210 40% 98%;
+    /* Accent - Structured pale steel / pale blue accent surface (used for hovers) */
+    --accent: 214 32% 93%; 
+    --accent-foreground: 230 60% 10%; /* Text must remain readable on hover */
 
-    /* Destructive */
-    --destructive: 0 84% 60%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    /* Borders and inputs */
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 230 56% 24%;
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 221 83% 53%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     /* Custom GuruCool tokens */
     --guru-navy: 230 56% 24%;
     --guru-navy-light: 230 45% 35%;
-    --guru-navy-dark: 230 60% 18%;
-    --guru-blue: 217 91% 60%;
-    --guru-blue-light: 217 91% 70%;
+    --guru-navy-dark: 230 60% 10%;
+    --guru-blue: 221 83% 53%;
+    --guru-blue-light: 221 83% 65%;
     --guru-sky: 199 89% 48%;
     --guru-green: 142 71% 45%;
     --guru-orange: 25 95% 53%;
     --guru-warm: 37 90% 51%;
     
-    /* Gradient definitions */
-    --gradient-hero: linear-gradient(135deg, hsl(230 56% 24%), hsl(217 91% 50%));
-    --gradient-subtle: linear-gradient(180deg, hsl(210 33% 98%), hsl(210 40% 96%));
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 98%));
-    --gradient-cta: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 40%));
-    
-    /* Shadows */
+    /* Ice Panel - 2-5% cool blue-grey tint */
+    --ice-panel: 210 30% 98.5%; 
+    --ice-panel-border: 214 20% 92%;
+
+    /* Premium Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --shadow-card: 0 4px 20px -2px rgb(0 0 0 / 0.08);
-    --shadow-nav: 0 2px 10px -2px rgb(0 0 0 / 0.08);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05);
+    --shadow-card: 0 8px 30px -4px rgb(0 0 0 / 0.06);
+    --shadow-nav: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    --shadow-glow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+    --shadow-glow-accent: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
 
     /* Sidebar colors */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5% 26%;
-    --sidebar-primary: 230 56% 24%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 230 56% 24%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 230 56% 24%;
-  }
-
-  .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
-
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 217 91% 60%;
-
-    --sidebar-background: 222 47% 8%;
+    --sidebar-background: 230 60% 10%;
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-primary-foreground: 230 60% 10%;
     --sidebar-accent: 217 33% 17%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 17%;
+    --sidebar-border: 217 33% 15%;
     --sidebar-ring: 217 91% 60%;
   }
 }
@@ -136,44 +100,40 @@
 }
 
 @layer components {
-  /* Hero section styles */
-  .hero-gradient {
-    background: linear-gradient(135deg, hsl(var(--guru-navy)) 0%, hsl(var(--guru-navy-light)) 50%, hsl(var(--guru-blue)) 100%);
-  }
-
-  .hero-text-gradient {
-    background: linear-gradient(135deg, hsl(var(--guru-navy)) 0%, hsl(var(--guru-blue)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  /* Hero section styles removed for flat UI */
 
   /* Card styles */
   .card-premium {
-    @apply bg-card rounded-xl border border-border/50 shadow-[var(--shadow-card)] transition-all duration-200 ease-out;
+    @apply bg-card/80 backdrop-blur-md rounded-2xl border border-border/80 shadow-[var(--shadow-card)] transition-all duration-300 relative overflow-hidden;
+  }
+
+  .card-premium::before {
+    content: '';
+    @apply absolute inset-0 bg-primary/5 opacity-0 transition-opacity duration-300 pointer-events-none;
   }
 
   .card-premium:hover {
-    @apply shadow-[var(--shadow-xl)] -translate-y-2 border-primary/20;
+    @apply border-border/80 shadow-[var(--shadow-glow)] -translate-y-1;
   }
 
   /* Glass effect */
   .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
+    @apply bg-white/90 backdrop-blur-xl border border-white shadow-[var(--shadow-card)];
   }
 
-  /* Gradient backgrounds */
-  .bg-gradient-hero {
-    background: linear-gradient(135deg, hsl(var(--guru-navy) / 0.03) 0%, hsl(var(--guru-blue) / 0.05) 100%);
+  /* Grid Backgrounds */
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
   }
 
-  /* Premium page header with bold white text on deep gradient */
-  .page-header-hero {
-    background: linear-gradient(135deg, hsl(230 56% 20%) 0%, hsl(217 80% 40%) 50%, hsl(199 70% 45%) 100%);
-  }
-
-  .bg-gradient-subtle {
-    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+  .bg-grid-hero {
+    background-image: linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
   }
 
   /* WhatsApp button */
@@ -243,33 +203,31 @@
     @apply bg-green-100 text-green-700;
   }
 
-  /* Feature card animation */
+  /* Feature card */
   .feature-card {
-    @apply relative overflow-hidden rounded-xl p-6 bg-card border border-border/50 transition-all duration-200 ease-out;
-  }
-
-  .feature-card::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-200;
-  }
-
-  .feature-card:hover::before {
-    @apply opacity-100;
+    @apply relative overflow-hidden rounded-2xl p-6 bg-card/80 backdrop-blur-sm border border-border/80 shadow-[var(--shadow-card)] transition-all duration-300;
   }
 
   .feature-card:hover {
-    @apply border-primary/20 shadow-[var(--shadow-lg)] -translate-y-2;
+    @apply border-primary/30 bg-card shadow-[var(--shadow-glow)] -translate-y-1;
   }
 
-  /* Plan card - equal height flex layout */
+  /* Plan card */
   .plan-card {
-    @apply relative rounded-2xl p-7 bg-card border border-border/60 shadow-card transition-all duration-200 ease-out flex flex-col h-full;
-    -webkit-font-smoothing: antialiased;
-    backface-visibility: hidden;
+    @apply relative rounded-2xl p-8 bg-card border border-border shadow-[var(--shadow-card)] transition-all duration-300 flex flex-col h-full overflow-hidden;
+  }
+
+  .plan-card::after {
+    content: '';
+    @apply absolute inset-0 border-2 border-primary/0 rounded-2xl transition-colors duration-300 pointer-events-none;
   }
 
   .plan-card:hover {
-    @apply -translate-y-1.5 shadow-premium-lg border-primary/40 ring-1 ring-primary/20;
+    @apply bg-card shadow-[var(--shadow-glow)] -translate-y-1;
+  }
+  
+  .plan-card:hover::after {
+    @apply border-primary/30;
   }
 
   /* Button inside plan card - neutral by default, filled on card/button hover */
@@ -384,6 +342,12 @@
   }
 }
 
+@layer utilities {
+  .bg-ice-panel {
+    background-color: hsl(var(--ice-panel));
+    border-color: hsl(var(--ice-panel-border));
+  }
+}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {

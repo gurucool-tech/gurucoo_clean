@@ -1,367 +1,121 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, CheckCircle2, Users, ArrowRight, Shield, Clock, BookOpen, FileText, Bell, BarChart3, CreditCard, Fingerprint, Settings, Calendar, MessageCircle, GraduationCap, Smartphone, Globe, Zap } from "lucide-react";
-import { PageHeader } from "@/components/layout/PageHeader";
 import { SEO } from "@/components/SEO";
+import { PageHeader } from "@/components/layout/PageHeader";
+import { SectionContainer } from "@/components/layout/SectionContainer";
+import { Shield, BookOpen, MessageCircle, PenTool, CreditCard, BarChart } from "lucide-react";
+import { motion } from "framer-motion";
 
-const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20features.";
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
 
-interface Module {
-  name: string;
-  description: string;
-  forWhom: string;
-  capabilities: string[];
-  icon: React.ElementType;
-}
-
-const coreModules: Module[] = [
-  {
-    name: "QR ID Cards",
-    description: "Generate and manage unique QR-coded ID cards for every student and staff member.",
-    forWhom: "Administration",
-    capabilities: ["Unique QR code per student", "Photo ID integration", "Batch printing support", "Lost card replacement", "Staff ID cards"],
-    icon: Shield,
-  },
-  {
-    name: "QR Attendance (Gate/Class)",
-    description: "Secure attendance tracking at school gates and classrooms with complete audit trails.",
-    forWhom: "Administration, Teachers",
-    capabilities: ["Gate entry/exit tracking", "Classroom attendance", "Real-time sync", "Audit logs", "Late arrival tracking"],
-    icon: Clock,
-  },
-  {
-    name: "WhatsApp Attendance Alerts",
-    description: "Instant notifications to parents when their child arrives or leaves school.",
-    forWhom: "Parents",
-    capabilities: ["Instant arrival alerts", "Departure notifications", "Photo with timestamp", "Customizable messages", "No app required"],
-    icon: Bell,
-  },
-  {
-    name: "Dashboards",
-    description: "Role-based dashboards for admins, teachers, and students with relevant insights.",
-    forWhom: "All Users",
-    capabilities: ["Admin overview", "Teacher dashboard", "Student portal", "Real-time data", "Custom widgets"],
-    icon: BarChart3,
-  },
-  {
-    name: "Timetable Generator",
-    description: "Automated timetable creation with conflict detection and optimization.",
-    forWhom: "Administration",
-    capabilities: ["Auto-generation", "Conflict detection", "Teacher allocation", "Room management", "Export options"],
-    icon: Calendar,
-  },
-  {
-    name: "Basic Exams & Results",
-    description: "Manage examinations and publish results with basic analytics.",
-    forWhom: "Teachers, Students",
-    capabilities: ["Exam scheduling", "Mark entry", "Result publishing", "Basic reports", "Grade calculation"],
-    icon: BookOpen,
-  },
-  {
-    name: "Basic Report Cards",
-    description: "Generate and distribute standardized report cards for all students.",
-    forWhom: "Teachers, Parents",
-    capabilities: ["Template-based cards", "Auto-calculation", "Print-ready format", "Parent distribution", "Archive access"],
-    icon: FileText,
-  },
-  {
-    name: "Homework/Classwork",
-    description: "Assign and track homework and classwork with basic submission tracking.",
-    forWhom: "Teachers, Students",
-    capabilities: ["Assignment creation", "Due date tracking", "Basic submissions", "Class-wise view", "Notification support"],
-    icon: GraduationCap,
-  },
-  {
-    name: "Calendar",
-    description: "School-wide calendar for holidays, exams, and events.",
-    forWhom: "All Users",
-    capabilities: ["Holiday management", "Exam schedules", "Event planning", "Academic calendar", "Sync support"],
-    icon: Calendar,
-  },
-  {
-    name: "User Roles & Permissions",
-    description: "Granular access control based on user roles and responsibilities.",
-    forWhom: "Administration",
-    capabilities: ["Role definition", "Permission sets", "Access control", "Audit trails", "Multi-level hierarchy"],
-    icon: Settings,
-  },
-  {
-    name: "Basic Fee Status",
-    description: "View paid/unpaid fee status for students with basic reporting.",
-    forWhom: "Administration, Parents",
-    capabilities: ["Fee status view", "Pending alerts", "Basic reports", "Student-wise tracking", "Class summaries"],
-    icon: CreditCard,
-  },
-];
-
-const professionalModules: Module[] = [
-  {
-    name: "Full Examination Management",
-    description: "Comprehensive exam management with schedules, hall tickets, and attendance sheets.",
-    forWhom: "Administration, Teachers",
-    capabilities: ["Exam scheduling", "Hall ticket generation", "Seating arrangements", "Attendance sheets", "Result analysis"],
-    icon: BookOpen,
-  },
-  {
-    name: "Feedback & Analytics",
-    description: "Detailed feedback system with graphs, remarks, and performance evaluation.",
-    forWhom: "Teachers, Students",
-    capabilities: ["Remarks evaluation", "Performance graphs", "Trend analysis", "Comparative reports", "Parent feedback"],
-    icon: BarChart3,
-  },
-  {
-    name: "Advanced Reports",
-    description: "Detailed reports for students and teachers with multiple formats.",
-    forWhom: "Administration, Teachers",
-    capabilities: ["Custom report builder", "Multiple formats", "Scheduled reports", "Email delivery", "Data export"],
-    icon: FileText,
-  },
-  {
-    name: "Document Submission Portal",
-    description: "Streamlined document collection and verification for admissions and records.",
-    forWhom: "Administration, Parents",
-    capabilities: ["Online submission", "Document verification", "Status tracking", "Reminder system", "Archive management"],
-    icon: FileText,
-  },
-  {
-    name: "Leave Management",
-    description: "Staff and student leave tracking with proxy and substitute adjustments.",
-    forWhom: "Administration, Teachers",
-    capabilities: ["Leave applications", "Approval workflow", "Proxy assignment", "Balance tracking", "Calendar integration"],
-    icon: Calendar,
-  },
-  {
-    name: "Teacher Allotment",
-    description: "Manage teacher allocation across classes and subjects efficiently.",
-    forWhom: "Administration",
-    capabilities: ["Subject allocation", "Workload balancing", "Conflict resolution", "History tracking", "Reallocation support"],
-    icon: Users,
-  },
-  {
-    name: "Gamified Portals",
-    description: "Engage students with points, stars, and ratings for achievements.",
-    forWhom: "Students, Teachers",
-    capabilities: ["Points system", "Star ratings", "Leaderboards", "Achievement badges", "Reward tracking"],
-    icon: Zap,
-  },
-  {
-    name: "Advanced WhatsApp Templates",
-    description: "Customizable message templates for various school communications.",
-    forWhom: "Administration",
-    capabilities: ["Template library", "Variable support", "Bulk messaging", "Schedule delivery", "Delivery tracking"],
-    icon: MessageCircle,
-  },
-];
-
-const premiumModules: Module[] = [
-  {
-    name: "Face Recognition Attendance",
-    description: "Optional biometric attendance using facial recognition technology.",
-    forWhom: "Administration",
-    capabilities: ["Contactless attendance", "Anti-spoofing", "Multi-face detection", "Offline support", "Integration with QR"],
-    icon: Fingerprint,
-  },
-  {
-    name: "Fees Payment Portal",
-    description: "Complete fee management with online payments, receipts, and reminders.",
-    forWhom: "Administration, Parents",
-    capabilities: ["Online payments", "Receipt generation", "Payment reminders", "Installment plans", "Fee concessions"],
-    icon: CreditCard,
-  },
-  {
-    name: "Advanced Analytics",
-    description: "Deep insights into attendance patterns, usage, and performance trends.",
-    forWhom: "Administration",
-    capabilities: ["Attendance analytics", "Usage patterns", "Performance trends", "Predictive insights", "Custom dashboards"],
-    icon: BarChart3,
-  },
-  {
-    name: "Multi-language Support",
-    description: "Full system translation in regional languages for broader accessibility.",
-    forWhom: "All Users",
-    capabilities: ["Regional languages", "Dynamic switching", "Custom translations", "RTL support", "Parent portal localization"],
-    icon: Globe,
-  },
-  {
-    name: "ReadCycle (Book Exchange)",
-    description: "Facilitate book sharing and exchange among students.",
-    forWhom: "Students, Administration",
-    capabilities: ["Book listings", "Exchange requests", "Tracking system", "Condition ratings", "Library integration"],
-    icon: BookOpen,
-  },
-  {
-    name: "Question Paper Generator",
-    description: "AI-assisted question paper creation from question banks.",
-    forWhom: "Teachers",
-    capabilities: ["Question bank", "Pattern-based generation", "Difficulty levels", "Subject mapping", "Previous paper access"],
-    icon: FileText,
-  },
-  {
-    name: "Custom Development",
-    description: "Tailored features and workflows for enterprise requirements.",
-    forWhom: "Enterprise Schools",
-    capabilities: ["Custom modules", "API integrations", "Workflow automation", "Dedicated support", "Priority updates"],
-    icon: Settings,
-  },
-];
-
-const addOnModules: Module[] = [
-  {
-    name: "Multi-School Dashboard",
-    description: "Unified management console for school groups and trusts.",
-    forWhom: "School Groups",
-    capabilities: ["Consolidated view", "Cross-campus analytics", "Centralized settings", "Role-based access", "Comparative reports"],
-    icon: BarChart3,
-  },
-  {
-    name: "Integrations Hub",
-    description: "Connect with third-party tools and services.",
-    forWhom: "Administration",
-    capabilities: ["Payment gateways", "Video conferencing", "GPS tracking", "Biometric devices", "SMS services"],
-    icon: Zap,
-  },
-  {
-    name: "API Access",
-    description: "Developer access for custom integrations and data sync.",
-    forWhom: "Developers",
-    capabilities: ["RESTful API", "Webhook support", "OAuth authentication", "Rate limiting", "Documentation"],
-    icon: Settings,
-  },
-];
-
-function ModuleCard({ module }: { module: Module }) {
-  return (
-    <div className="bg-card rounded-xl border border-border/50 p-6 hover:border-primary/20 hover:shadow-premium transition-all duration-300">
-      <div className="flex items-start gap-4">
-        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-          <module.icon className="w-6 h-6 text-primary" />
-        </div>
-        <div className="flex-1">
-          <h3 className="font-semibold text-foreground mb-1">{module.name}</h3>
-          <p className="text-body-sm text-muted-foreground mb-3">{module.description}</p>
-          <p className="text-caption text-primary font-medium mb-3">For: {module.forWhom}</p>
-          <ul className="space-y-1">
-            {module.capabilities.map((cap) => (
-              <li key={cap} className="flex items-center gap-2 text-body-sm text-muted-foreground">
-                <CheckCircle2 className="w-4 h-4 text-guru-green flex-shrink-0" />
-                {cap}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
 
 export default function FeaturesPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const filterModules = (modules: Module[]) => {
-    if (!searchQuery) return modules;
-    const query = searchQuery.toLowerCase();
-    return modules.filter(
-      (m) =>
-        m.name.toLowerCase().includes(query) ||
-        m.description.toLowerCase().includes(query) ||
-        m.capabilities.some((c) => c.toLowerCase().includes(query))
-    );
-  };
-
   return (
-    <div className="flex-1 flex flex-col bg-background">
-      <SEO
-        title="Feature Tour | Modules in GuruCool School ERP"
-        description="Explore GuruCool modules for attendance, exams, timetables, fees, leaves, communication, analytics, and more—built for Indian schools."
-        canonical="/features"
+    <>
+      <SEO 
+        title="Features & Workflows | GuruCool" 
+        description="Explore the comprehensive workflows of GuruCool: Attendance, Academics, Communication, Assessments, and Fees."
+        canonicalPath="/features"
       />
-      <PageHeader
-        title="Feature Tour"
-        subtitle="Explore the complete set of modules that make GuruCool the most comprehensive school management system for Indian schools."
-      />
+      <div className="relative overflow-hidden bg-background">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
+        
+        <PageHeader 
+          title="Features Organized by Workflow" 
+          description="Our platform is built around the actual workflows of educational institutions, not disconnected toolkits."
+        />
+      
+      <SectionContainer>
+        <div className="max-w-6xl mx-auto py-12">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          >
+            
+            {/* Workflow 1 */}
+            <motion.div variants={fadeInUp} className="feature-card group">
+              <Shield className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
+              <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">Attendance & Identity</h3>
+              <ul className="space-y-3 text-muted-foreground text-sm">
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> QR Code ID Cards for students & staff</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Facial recognition gate entry</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Real-time absentee tracking</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Staff proxy and leave management</li>
+              </ul>
+            </motion.div>
 
-      {/* Search */}
-      <section className="pt-10 pb-10 sm:pt-12 sm:pb-12">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
-              <Input
-                type="search"
-                placeholder="Search features..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 h-14 text-base bg-card rounded-xl border-border/60 shadow-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-              />
-            </div>
-          </div>
+            {/* Workflow 2 */}
+            <motion.div variants={fadeInUp} className="feature-card group">
+              <BookOpen className="w-10 h-10 text-guru-sky mb-6 group-hover:scale-110 transition-transform duration-300" />
+              <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-guru-sky transition-colors">Academic Operations</h3>
+              <ul className="space-y-3 text-muted-foreground text-sm">
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Automated timetable generation</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Teacher workload balancing</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Syllabus tracking and completion</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Homework and assignment distribution</li>
+              </ul>
+            </motion.div>
+
+            {/* Workflow 3 */}
+            <motion.div variants={fadeInUp} className="feature-card group">
+              <MessageCircle className="w-10 h-10 text-[#25D366] mb-6 group-hover:scale-110 transition-transform duration-300" />
+              <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-[#25D366] transition-colors">Parent Communication</h3>
+              <ul className="space-y-3 text-muted-foreground text-sm">
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#25D366]/50 mt-1.5 shrink-0" /> Automated WhatsApp attendance alerts</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#25D366]/50 mt-1.5 shrink-0" /> Fee reminder broadcasts</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#25D366]/50 mt-1.5 shrink-0" /> Event and holiday notifications</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#25D366]/50 mt-1.5 shrink-0" /> No parent app installation required</li>
+              </ul>
+            </motion.div>
+
+            {/* Workflow 4 */}
+            <motion.div variants={fadeInUp} className="feature-card group">
+              <PenTool className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
+              <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">Exams & Assessments</h3>
+              <ul className="space-y-3 text-muted-foreground text-sm">
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Exam seating arrangement generator</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Invigilator duty allotment</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Bulk marks entry interface</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Automated report card generation</li>
+              </ul>
+            </motion.div>
+
+            {/* Workflow 5 */}
+            <motion.div variants={fadeInUp} className="feature-card group">
+              <CreditCard className="w-10 h-10 text-foreground mb-6 group-hover:scale-110 transition-transform duration-300" />
+              <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">Fees & Records</h3>
+              <ul className="space-y-3 text-muted-foreground text-sm">
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-foreground/50 mt-1.5 shrink-0" /> Custom fee structure creation</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-foreground/50 mt-1.5 shrink-0" /> Automated digital receipts</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-foreground/50 mt-1.5 shrink-0" /> Defaulter list tracking</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-foreground/50 mt-1.5 shrink-0" /> Secure document portal (KYC)</li>
+              </ul>
+            </motion.div>
+
+            {/* Workflow 6 */}
+            <motion.div variants={fadeInUp} className="feature-card group">
+              <BarChart className="w-10 h-10 text-guru-sky mb-6 group-hover:scale-110 transition-transform duration-300" />
+              <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-guru-sky transition-colors">Reporting & Visibility</h3>
+              <ul className="space-y-3 text-muted-foreground text-sm">
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Executive dashboard for leadership</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Teacher performance analytics</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Financial health summaries</li>
+                <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Multi-campus consolidated views</li>
+              </ul>
+            </motion.div>
+
+          </motion.div>
         </div>
-      </section>
-
-      {/* Features Tabs */}
-      <section className="py-12 sm:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs defaultValue="core" className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-12 bg-muted">
-              <TabsTrigger value="core" className="text-body-sm">Safety Core</TabsTrigger>
-              <TabsTrigger value="professional" className="text-body-sm">Academic Suite</TabsTrigger>
-              <TabsTrigger value="premium" className="text-body-sm">Flagship</TabsTrigger>
-              <TabsTrigger value="addons" className="text-body-sm">Add-ons</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="core">
-              <div className="mb-8">
-                <h2 className="text-heading-xl font-bold text-foreground mb-2">Safety Core Modules</h2>
-                <p className="text-body-md text-muted-foreground">Essential features to run your school properly from Day 1.</p>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                {filterModules(coreModules).map((module) => (
-                  <ModuleCard key={module.name} module={module} />
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="professional">
-              <div className="mb-8">
-                <h2 className="text-heading-xl font-bold text-foreground mb-2">Academic Suite Modules</h2>
-                <p className="text-body-md text-muted-foreground">Advanced features to run your school smoothly with reduced admin effort.</p>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                {filterModules(professionalModules).map((module) => (
-                  <ModuleCard key={module.name} module={module} />
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="premium">
-              <div className="mb-8">
-                <h2 className="text-heading-xl font-bold text-foreground mb-2">Flagship Plan Modules</h2>
-                <p className="text-body-md text-muted-foreground">Intelligent features for schools ready to scale with full automation.</p>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                {filterModules(premiumModules).map((module) => (
-                  <ModuleCard key={module.name} module={module} />
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="addons">
-              <div className="mb-8">
-                <h2 className="text-heading-xl font-bold text-foreground mb-2">Add-on Modules</h2>
-                <p className="text-body-md text-muted-foreground">Additional capabilities for specific needs and integrations.</p>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                {filterModules(addOnModules).map((module) => (
-                  <ModuleCard key={module.name} module={module} />
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
-    </div>
+      </SectionContainer>
+      </div>
+    </>
   );
 }
