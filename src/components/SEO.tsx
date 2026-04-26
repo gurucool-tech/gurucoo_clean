@@ -6,22 +6,39 @@ interface SEOProps {
   canonicalPath?: string;
   type?: "website" | "article" | "profile";
   jsonLd?: Record<string, any>;
+  image?: string;
+  keywords?: string;
 }
 
-export function SEO({ title, description, canonicalPath, type = "website", jsonLd }: SEOProps) {
-  const siteUrl = "https://gurucool.com"; // Change to actual production URL
+export function SEO({ 
+  title, 
+  description, 
+  canonicalPath, 
+  type = "website", 
+  jsonLd,
+  image = "/og-image.png",
+  keywords
+}: SEOProps) {
+  const siteUrl = "https://edugurucool.in";
   const canonicalUrl = canonicalPath ? `${siteUrl}${canonicalPath}` : siteUrl;
+  const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
   const defaultJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "GuruCool",
-    url: siteUrl,
-    logo: `${siteUrl}/assets/gurucool-logo.png`,
-    sameAs: [
+    "@type": "EducationalOrganization",
+    "name": "GuruCool",
+    "url": siteUrl,
+    "logo": `${siteUrl}/assets/logo-new.png`,
+    "description": description,
+    "sameAs": [
       "https://www.linkedin.com/company/gurucool-technologies",
-      "https://www.instagram.com/edugurucool"
-    ]
+      "https://www.instagram.com/edugurucool",
+      "https://twitter.com/edugurucool"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN"
+    }
   };
 
   return (
@@ -29,6 +46,7 @@ export function SEO({ title, description, canonicalPath, type = "website", jsonL
       {/* Basic Metadata */}
       <title>{`${title} | GuruCool`}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph */}
@@ -37,11 +55,13 @@ export function SEO({ title, description, canonicalPath, type = "website", jsonL
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="GuruCool" />
+      <meta property="og:image" content={fullImageUrl} />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={`${title} | GuruCool`} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={fullImageUrl} />
 
       {/* JSON-LD Schema */}
       <script type="application/ld+json">

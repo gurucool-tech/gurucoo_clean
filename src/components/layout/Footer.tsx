@@ -48,9 +48,9 @@ export function Footer() {
         {/* Upper Footer - Brand & Positioning */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 pb-16 border-b border-border/40 gap-10">
           <div className="max-w-xl">
-            <Link to="/" className="flex items-center gap-2 mb-8 inline-flex">
+            <Link to="/" className="flex items-center gap-2 mb-8 inline-flex" title="GuruCool - Back to Top">
               <div className="bg-white rounded-xl shadow-sm p-2 border border-border/40">
-                <img src={logo} alt="GuruCool logo" className="h-7 w-auto" />
+                <img src={logo} alt="GuruCool - Connected School Operating System" className="h-7 w-auto" loading="lazy" />
               </div>
               <span className="text-2xl font-bold tracking-tight">GuruCool</span>
             </Link>
@@ -60,10 +60,10 @@ export function Footer() {
           </div>
           
           <div className="flex flex-wrap gap-4">
-            <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-white border border-border/60 text-sm font-semibold hover:bg-muted/30 transition-all shadow-sm">
+            <a href={FORM_URL} target="_blank" rel="noopener noreferrer" title="Join the GuruCool Partner Network" className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-white border border-border/60 text-sm font-semibold hover:bg-muted/30 transition-all shadow-sm">
               Partner with us
             </a>
-            <Link to="/book-demo" className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-foreground text-background text-sm font-semibold hover:bg-foreground/90 transition-all shadow-[var(--shadow-glow)]">
+            <Link to="/book-demo" title="Request a structural walkthrough of the platform" className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-foreground text-background text-sm font-semibold hover:bg-foreground/90 transition-all shadow-[var(--shadow-glow)]">
               Book a Demo
             </Link>
           </div>

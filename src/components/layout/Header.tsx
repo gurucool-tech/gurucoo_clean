@@ -64,8 +64,14 @@ export function Header() {
       <div className="px-4 lg:px-6 w-full">
         <div className="flex items-center justify-between h-[64px] lg:h-[72px] lg:gap-8">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <img src={logo} alt="GuruCool" className="h-12 w-auto object-contain transition-transform group-hover:scale-105" />
+          <Link to="/" className="flex items-center gap-2 group" title="GuruCool Home">
+            <img 
+              src={logo} 
+              alt="GuruCool - Smart School Management System" 
+              className="h-12 w-auto object-contain transition-transform group-hover:scale-105" 
+              loading="eager"
+              fetchpriority="high"
+            />
             <span className="text-xl font-bold text-foreground">GuruCool</span>
           </Link>
 
@@ -81,6 +87,7 @@ export function Header() {
                 {item.href ? (
                   <Link
                     to={item.href}
+                    title={`Go to ${item.label}`}
                     className={`flex items-center gap-1 px-4 py-2 text-body-sm font-medium rounded-lg transition-colors ${
                       isActive(item.href)
                         ? "text-primary bg-primary/5"
@@ -114,6 +121,7 @@ export function Header() {
                         <Link
                           key={child.href}
                           to={child.href}
+                          title={child.description || child.label}
                           className="flex flex-col px-4 py-3 hover:bg-muted/50 transition-colors"
                           onClick={() => setOpenDropdown(null)}
                         >
@@ -133,13 +141,13 @@ export function Header() {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <Button asChild variant="outline" size="sm" className="gap-2 rounded-full border-border hover:bg-accent transition-all">
-              <Link to="/book-demo">
+              <Link to="/book-demo" title="Schedule a live platform walkthrough">
                 <Calendar className="w-4 h-4" />
                 Book a Demo
               </Link>
             </Button>
             <Button asChild size="sm" className="gap-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[var(--shadow-glow)] transition-all duration-300">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" title="Chat with GuruCool on WhatsApp">
                 <MessageCircle className="w-4 h-4" />
                 Contact on WhatsApp
               </a>
