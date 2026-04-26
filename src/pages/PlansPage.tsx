@@ -4,14 +4,14 @@ import { SectionContainer } from "@/components/layout/SectionContainer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { m, Variants } from "framer-motion";
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -37,7 +37,7 @@ export default function PlansPage() {
       <SectionContainer>
         <div className="max-w-6xl mx-auto py-12">
           {/* Main Tier Cards */}
-          <motion.div 
+          <m.div 
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -45,7 +45,7 @@ export default function PlansPage() {
             className="grid lg:grid-cols-3 gap-8 mb-24"
           >
             {/* Tier 1 */}
-            <motion.div variants={fadeInUp} className="plan-card">
+            <m.div variants={fadeInUp} className="plan-card">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-foreground mb-2">Foundation</h3>
                 <p className="text-muted-foreground">Establish identity and daily discipline.</p>
@@ -59,10 +59,10 @@ export default function PlansPage() {
               <Button asChild variant="outline" className="w-full h-12 text-base rounded-full">
                 <Link to="/book-demo">Book a Demo</Link>
               </Button>
-            </motion.div>
+            </m.div>
 
             {/* Tier 2 */}
-            <motion.div variants={fadeInUp} className="plan-card border-primary/50 shadow-xl relative overflow-visible transform lg:-translate-y-4 bg-white dark:bg-card">
+            <m.div variants={fadeInUp} className="plan-card border-primary/50 shadow-xl relative overflow-visible transform lg:-translate-y-4 bg-white dark:bg-card">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
                 Most Popular
               </div>
@@ -80,29 +80,29 @@ export default function PlansPage() {
               <Button asChild className="w-full h-12 text-base rounded-full shadow-[var(--shadow-glow)]">
                 <Link to="/book-demo">Talk to Sales</Link>
               </Button>
-            </motion.div>
+            </m.div>
 
             {/* Tier 3 */}
-            <motion.div variants={fadeInUp} className="plan-card">
+            <m.div variants={fadeInUp} className="plan-card">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-foreground mb-2">Enterprise</h3>
                 <p className="text-muted-foreground">Complete closed-loop operations.</p>
               </div>
               <ul className="space-y-4 mb-8 flex-1">
                 <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground font-medium">Everything in Growth</span></li>
-                <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">Assessment Workflows</span></li>
-                <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">Payroll & HR Management</span></li>
-                <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">Executive Analytics Dashboard</span></li>
-                <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">Multi-Campus Rollup</span></li>
+                <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground font-medium">Assessment Workflows</span></li>
+                <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground font-medium">Payroll & HR Management</span></li>
+                <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground font-medium">Executive Analytics Dashboard</span></li>
+                <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground font-medium">Multi-Campus Rollup</span></li>
               </ul>
               <Button asChild variant="outline" className="w-full h-12 text-base rounded-full">
                 <Link to="/contact">Contact Enterprise Sales</Link>
               </Button>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* Detailed Feature Matrix */}
-          <motion.div 
+          <m.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -176,7 +176,7 @@ export default function PlansPage() {
                 </tbody>
               </table>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </SectionContainer>
     </div>

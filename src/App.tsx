@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { LazyMotion, domAnimation } from "framer-motion";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -47,7 +48,8 @@ const App = () => (
       <HelmetProvider>
         <BrowserRouter>
           <ScrollToTop />
-          <Layout>
+          <LazyMotion features={domAnimation}>
+            <Layout>
             <Suspense fallback={
               <div className="flex items-center justify-center min-h-[60vh]">
                 <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
@@ -89,7 +91,8 @@ const App = () => (
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
-          </Layout>
+            </Layout>
+          </LazyMotion>
         </BrowserRouter>
       </HelmetProvider>
     </TooltipProvider>

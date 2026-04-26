@@ -3,10 +3,10 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { SectionContainer } from "@/components/layout/SectionContainer";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Fingerprint, Calendar, CreditCard, FileText, Smartphone, ScanFace, MessageCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, Fingerprint, Calendar, CreditCard, FileText, ScanFace, MessageCircle } from "lucide-react";
+import { m, Variants } from "framer-motion";
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
@@ -32,17 +32,17 @@ export default function ProductPage() {
         
         <SectionContainer>
           <div className="max-w-6xl mx-auto py-12">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-16">
+            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-16">
               <h2 className="text-display-sm font-bold mb-6 text-foreground">How the system flows</h2>
               <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
                 Data moves seamlessly through the system, eliminating double-entry and ensuring total visibility across your institution.
               </p>
-            </motion.div>
+            </m.div>
             
             <div className="space-y-24">
               
               {/* Flow 1: Identity */}
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid md:grid-cols-2 gap-12 items-center">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="card-premium aspect-video flex items-center justify-center p-6 md:p-8 bg-muted/20 border-border/80 relative">
                   {/* High Fidelity UI Representation: Attendance List */}
                   <div className="w-full max-w-sm bg-white rounded-xl shadow-xl border border-border/50 overflow-hidden flex flex-col">
@@ -76,7 +76,7 @@ export default function ProductPage() {
                   </div>
                   
                   {/* WhatsApp Popup Overlay */}
-                  <motion.div 
+                  <m.div 
                     className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 w-64 bg-white rounded-xl shadow-2xl border border-border/50 p-3 flex gap-3 z-20"
                     initial={{ x: 20, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
@@ -89,7 +89,7 @@ export default function ProductPage() {
                       <div className="text-xs font-bold text-foreground mb-0.5">GuruCool Alerts</div>
                       <div className="text-xs text-muted-foreground leading-snug">Rahul Sharma checked in at Campus A at 08:15 AM.</div>
                     </div>
-                  </motion.div>
+                  </m.div>
                 </div>
                 <div>
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-6 border border-primary/20">
@@ -98,10 +98,10 @@ export default function ProductPage() {
                   <h3 className="text-heading-xl font-bold mb-4 text-foreground">1. Identity & Attendance</h3>
                   <p className="text-body-lg text-muted-foreground">It starts at the gate. Hardware integration instantly records presence, triggering a WhatsApp notification to parents and updating the daily operations log.</p>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* Flow 2: Operations */}
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid md:grid-cols-2 gap-12 items-center">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="order-2 md:order-1">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-secondary text-secondary-foreground mb-6 border border-border">
                     <Calendar className="w-6 h-6" />
@@ -138,10 +138,10 @@ export default function ProductPage() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* Flow 3: Finance */}
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid md:grid-cols-2 gap-12 items-center">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="card-premium aspect-video p-6 bg-muted/20 flex items-center justify-center relative overflow-hidden border-border/80">
                   {/* High Fidelity Ledger UI */}
                   <div className="w-full max-w-md bg-white rounded-xl shadow-xl border border-border/50 overflow-hidden flex flex-col">
@@ -189,10 +189,10 @@ export default function ProductPage() {
                   <h3 className="text-heading-xl font-bold mb-4 text-foreground">3. Finance & Admin</h3>
                   <p className="text-body-lg text-muted-foreground">Dues are tracked accurately. Receipts are generated instantly. The finance team has a clear, actionable view of the institution's health.</p>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* Flow 4: Assessments */}
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid md:grid-cols-2 gap-12 items-center">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="order-2 md:order-1">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-6 border border-primary/20">
                     <FileText className="w-6 h-6" />
@@ -228,17 +228,17 @@ export default function ProductPage() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
 
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mt-24 text-center border-t border-border/50 pt-16">
+            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mt-24 text-center border-t border-border/50 pt-16">
               <h2 className="text-display-sm font-bold mb-8 text-foreground">Ready to see the flow in action?</h2>
               <Button asChild size="lg" className="rounded-full px-8 h-14 text-base shadow-[var(--shadow-glow)]">
                 <Link to="/book-demo">
                   Book a structural walkthrough <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
-            </motion.div>
+            </m.div>
           </div>
         </SectionContainer>
       </div>
