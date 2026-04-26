@@ -71,8 +71,11 @@ export function Header() {
               className="h-12 w-auto object-contain transition-transform group-hover:scale-105" 
               loading="eager"
               fetchpriority="high"
+<<<<<<< HEAD
               width={180}
               height={48}
+=======
+>>>>>>> 996b4a335f0adec5746d4d29696f17b9b817767c
             />
             <span className="text-xl font-bold text-foreground">GuruCool</span>
           </Link>
