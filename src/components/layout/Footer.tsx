@@ -50,7 +50,6 @@ export function Footer() {
           <div className="max-w-xl">
             <Link to="/" className="flex items-center gap-2 mb-8 inline-flex" title="GuruCool - Back to Top">
               <div className="bg-white rounded-xl shadow-sm p-2 border border-border/40">
-<<<<<<< HEAD
                 <img 
                   src={logo} 
                   alt="GuruCool - Connected School Operating System" 
@@ -59,9 +58,6 @@ export function Footer() {
                   width={105}
                   height={28}
                 />
-=======
-                <img src={logo} alt="GuruCool - Connected School Operating System" className="h-7 w-auto" loading="lazy" />
->>>>>>> 996b4a335f0adec5746d4d29696f17b9b817767c
               </div>
               <span className="text-2xl font-bold tracking-tight">GuruCool</span>
             </Link>

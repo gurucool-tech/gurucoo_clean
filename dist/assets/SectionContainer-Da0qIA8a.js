@@ -1,0 +1,1 @@
+import{j as a,i as s}from"./index-TaB-SaNL.js";function o({children:x,className:t,size:e="default",background:n}){const i={narrow:"max-w-5xl",default:"max-w-6xl",wide:"max-w-7xl"}[e];return a.jsx("section",{className:s(n),children:a.jsx("div",{className:"container mx-auto px-4 sm:px-6 lg:px-8",children:a.jsx("div",{className:s(i,"mx-auto",t),children:x})})})}export{o as S};

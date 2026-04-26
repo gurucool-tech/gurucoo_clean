@@ -5,7 +5,7 @@ interface SEOProps {
   description: string;
   canonicalPath?: string;
   type?: "website" | "article" | "profile";
-  jsonLd?: Record<string, any>;
+  jsonLd?: Record<string, unknown>;
   image?: string;
   keywords?: string;
 }
