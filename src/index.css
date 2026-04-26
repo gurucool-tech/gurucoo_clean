@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GuruCool Design System - Premium Education SaaS */
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer base {
+  :root {
+    /* Premium Light Theme defaults - Strict Contrast System */
+    --background: 0 0% 100%; /* Pure Base white */
+    --foreground: 230 60% 10%; /* Very dark navy / near-black blue */
+
+    --card: 0 0% 100%; /* Elevated white card */
+    --card-foreground: 230 60% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 60% 10%;
+
+    /* Primary - Vibrant GuruCool Blue */
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary - Soft off-white / pale cool grey */
+    --secondary: 214 20% 95%;
+    --secondary-foreground: 215 25% 27%; /* Deep slate / dark steel */
+
+    /* Muted - Soft background, but with clearly readable text */
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 20% 35%; /* Mid-dark neutral, clearly readable */
+
+    /* Accent - Structured pale steel / pale blue accent surface (used for hovers) */
+    --accent: 214 32% 93%; 
+    --accent-foreground: 230 60% 10%; /* Text must remain readable on hover */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 221 83% 53%;
+
+    --radius: 1rem;
+
+    /* Custom GuruCool tokens */
+    --guru-navy: 230 56% 24%;
+    --guru-navy-light: 230 45% 35%;
+    --guru-navy-dark: 230 60% 10%;
+    --guru-blue: 221 83% 53%;
+    --guru-blue-light: 221 83% 65%;
+    --guru-sky: 199 89% 48%;
+    --guru-green: 142 71% 45%;
+    --guru-orange: 25 95% 53%;
+    --guru-warm: 37 90% 51%;
+    
+    /* Ice Panel - 2-5% cool blue-grey tint */
+    --ice-panel: 210 30% 98.5%; 
+    --ice-panel-border: 214 20% 92%;
+
+    /* Premium Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05);
+    --shadow-card: 0 8px 30px -4px rgb(0 0 0 / 0.06);
+    --shadow-nav: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    --shadow-glow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+    --shadow-glow-accent: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+
+    /* Sidebar colors */
+    --sidebar-background: 230 60% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 230 60% 10%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 15%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01", "ss03";
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero section styles removed for flat UI */
+
+  /* Card styles */
+  .card-premium {
+    @apply bg-card/80 backdrop-blur-md rounded-2xl border border-border/80 shadow-[var(--shadow-card)] transition-all duration-300 relative overflow-hidden;
+  }
+
+  .card-premium::before {
+    content: '';
+    @apply absolute inset-0 bg-primary/5 opacity-0 transition-opacity duration-300 pointer-events-none;
+  }
+
+  .card-premium:hover {
+    @apply border-border/80 shadow-[var(--shadow-glow)] -translate-y-1;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/90 backdrop-blur-xl border border-white shadow-[var(--shadow-card)];
+  }
+
+  /* Grid Backgrounds */
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+  }
+
+  .bg-grid-hero {
+    background-image: linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+  }
+
+  /* WhatsApp button */
+  .whatsapp-btn {
+    @apply bg-[#25D366] hover:bg-[#20bd5a] text-white transition-all duration-200;
+  }
+
+  /* Navigation dropdown */
+  .nav-dropdown {
+    @apply absolute top-full left-0 bg-white rounded-xl shadow-[var(--shadow-xl)] border border-border/50 opacity-0 invisible translate-y-2 transition-all duration-200 z-50;
+  }
+
+  .nav-item:hover .nav-dropdown {
+    @apply opacity-100 visible translate-y-0;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  .section-padding-sm {
+    @apply py-10 md:py-14 lg:py-16;
+  }
+
+  .section-padding-lg {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  /* Container with max width */
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-default {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* CTA section that sits nicely below hero */
+  .cta-section {
+    @apply py-10 sm:py-12;
+  }
+
+  /* Padded CTA panel so buttons never feel flush to edges */
+  .cta-panel {
+    @apply rounded-2xl border border-border/60 bg-card/80 shadow-sm p-6 sm:p-8;
+  }
+
+  .cta-row {
+    @apply flex flex-col sm:flex-row items-center justify-center gap-4;
+  }
+
+  /* Pill badge */
+  .pill {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .pill-primary {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .pill-success {
+    @apply bg-green-100 text-green-700;
+  }
+
+  /* Feature card */
+  .feature-card {
+    @apply relative overflow-hidden rounded-2xl p-6 bg-card/80 backdrop-blur-sm border border-border/80 shadow-[var(--shadow-card)] transition-all duration-300;
+  }
+
+  .feature-card:hover {
+    @apply border-primary/30 bg-card shadow-[var(--shadow-glow)] -translate-y-1;
+  }
+
+  /* Plan card */
+  .plan-card {
+    @apply relative rounded-2xl p-8 bg-card border border-border shadow-[var(--shadow-card)] transition-all duration-300 flex flex-col h-full overflow-hidden;
+  }
+
+  .plan-card::after {
+    content: '';
+    @apply absolute inset-0 border-2 border-primary/0 rounded-2xl transition-colors duration-300 pointer-events-none;
+  }
+
+  .plan-card:hover {
+    @apply bg-card shadow-[var(--shadow-glow)] -translate-y-1;
+  }
+  
+  .plan-card:hover::after {
+    @apply border-primary/30;
+  }
+
+  /* Button inside plan card - neutral by default, filled on card/button hover */
+  .plan-card .plan-card-btn {
+    @apply mt-auto bg-background border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-150;
+  }
+
+  .plan-card:hover .plan-card-btn {
+    @apply bg-primary text-primary-foreground border-primary;
+  }
+
+  /* Featured badge positioning - doesn't affect layout */
+  .plan-card-badge {
+    @apply absolute -top-3.5 left-1/2 -translate-x-1/2 z-20;
+  }
+
+  /* Link hover effect */
+  .link-hover {
+    @apply relative inline-block;
+  }
+
+  .link-hover::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .link-hover:hover::after {
+    @apply w-full;
+  }
+
+  /* Mega menu */
+  .mega-menu {
+    @apply fixed left-0 right-0 top-[72px] bg-white border-t border-border shadow-[var(--shadow-xl)] opacity-0 invisible translate-y-2 transition-all duration-200 z-40;
+  }
+
+  .mega-menu-trigger:hover + .mega-menu,
+  .mega-menu:hover {
+    @apply opacity-100 visible translate-y-0;
+  }
+
+  /* Text styles */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animation keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+@layer utilities {
+  /* Many pages still have `container ... px-4` in markup.
+     This ensures gutters scale up on tablet/desktop (24px/32px) without editing every page. */
+  .container.px-4 {
+    @apply sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .bg-ice-panel {
+    background-color: hsl(var(--ice-panel));
+    border-color: hsl(var(--ice-panel-border));
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
