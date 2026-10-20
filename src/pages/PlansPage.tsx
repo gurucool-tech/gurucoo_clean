@@ -28,14 +28,15 @@ export default function PlansPage() {
         canonicalPath="/plans"
       />
       <PageHeader 
+        variant="warm"
         eyebrow="Implementation Tiers"
         title="Designed for Operational Maturity" 
         description="We don't sell disconnected features. We partner with you through staged rollout layers as your institution's operations mature."
-        alignment="center"
+        alignment="left"
       />
       
       <SectionContainer>
-        <div className="max-w-6xl mx-auto py-12">
+        <div className="max-w-[1240px] mx-auto py-12">
           {/* Main Tier Cards */}
           <m.div 
             variants={staggerContainer}
@@ -45,28 +46,25 @@ export default function PlansPage() {
             className="grid lg:grid-cols-3 gap-8 mb-24"
           >
             {/* Tier 1 */}
-            <m.div variants={fadeInUp} className="plan-card">
+            <m.div variants={fadeInUp} className="plan-card plan-card--foundation">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-foreground mb-2">Foundation</h3>
                 <p className="text-muted-foreground">Establish identity and daily discipline.</p>
               </div>
               <ul className="space-y-4 mb-8 flex-1">
                 <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">Facial Recognition Attendance</span></li>
-                <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">Instant WhatsApp Alerts</span></li>
+                <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">WhatsApp Alerts</span></li>
                 <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">Basic Student Directory</span></li>
                 <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">Staff Leaves & Proxy</span></li>
               </ul>
-              <Button asChild variant="outline" className="w-full h-12 text-base rounded-full">
-                <Link to="/book-demo">Book a Demo</Link>
+              <Button asChild variant="outline" className="plan-card-action h-12 w-full rounded-md text-base">
+                  <Link to="/book-demo">Book a walkthrough</Link>
               </Button>
             </m.div>
 
             {/* Tier 2 */}
-            <m.div variants={fadeInUp} className="plan-card border-primary/50 shadow-xl relative overflow-visible transform lg:-translate-y-4 bg-white dark:bg-card">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
-                Most Popular
-              </div>
-              <div className="mb-6 pt-2">
+            <m.div variants={fadeInUp} className="plan-card plan-card-featured plan-card--growth">
+              <div className="mb-6">
                 <h3 className="text-2xl font-bold text-foreground mb-2">Growth</h3>
                 <p className="text-muted-foreground">Connect the classroom to the back office.</p>
               </div>
@@ -77,13 +75,13 @@ export default function PlansPage() {
                 <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">Fee Tracking & Receipts</span></li>
                 <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">Syllabus Completion Tracker</span></li>
               </ul>
-              <Button asChild className="w-full h-12 text-base rounded-full shadow-[var(--shadow-glow)]">
-                <Link to="/book-demo">Talk to Sales</Link>
+              <Button asChild className="plan-card-action h-12 w-full rounded-md text-base">
+                <Link to="/book-demo">Book a walkthrough</Link>
               </Button>
             </m.div>
 
             {/* Tier 3 */}
-            <m.div variants={fadeInUp} className="plan-card">
+            <m.div variants={fadeInUp} className="plan-card plan-card--enterprise">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-foreground mb-2">Enterprise</h3>
                 <p className="text-muted-foreground">Complete closed-loop operations.</p>
@@ -95,7 +93,7 @@ export default function PlansPage() {
                 <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground font-medium">Executive Analytics Dashboard</span></li>
                 <li className="flex gap-3 items-start"><CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground font-medium">Multi-Campus Rollup</span></li>
               </ul>
-              <Button asChild variant="outline" className="w-full h-12 text-base rounded-full">
+              <Button asChild variant="outline" className="plan-card-action h-12 w-full rounded-md text-base">
                 <Link to="/contact">Contact Enterprise Sales</Link>
               </Button>
             </m.div>

@@ -10,6 +10,7 @@ export default function TermsPage() {
         canonical="/terms"
       />
       <PageHeader
+        variant="legal"
         title="Terms of Service"
         breadcrumbs={[
           { label: "Home", href: "/" },

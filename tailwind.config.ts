@@ -18,9 +18,9 @@ export default {
         sm: "640px",
         md: "768px",
         lg: "1024px",
-        // Align with the requested premium container width (1120px–1200px)
-        xl: "1200px",
-        "2xl": "1200px",
+        // Standard site canvas; reading widths remain constrained per component.
+        xl: "1400px",
+        "2xl": "1400px",
       },
     },
     extend: {

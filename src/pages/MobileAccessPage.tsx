@@ -9,12 +9,12 @@ const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2
 const accessMethods = [
   { icon: Building2, title: "Administrators", description: "Full dashboard access from any device.", features: ["Real-time attendance monitoring", "Fee status overview", "Staff management", "Reports and analytics"] },
   { icon: GraduationCap, title: "Teachers", description: "Mark attendance, manage classwork from any browser.", features: ["Quick attendance marking", "Homework assignment", "Exam management", "Leave applications"] },
-  { icon: Users, title: "Parents", description: "Receive all updates directly on WhatsApp.", features: ["Instant attendance alerts", "Fee reminders", "Exam notifications", "School announcements"] },
+  { icon: Users, title: "Parents", description: "Receive updates directly on WhatsApp.", features: ["Attendance alerts", "Fee reminders", "Exam notifications", "School announcements"] },
 ];
 
 const devices = [
   { icon: Monitor, label: "Desktop", description: "Full-featured dashboard experience" },
-  { icon: Tablet, label: "Tablet", description: "Perfect for classroom use" },
+  { icon: Tablet, label: "Tablet", description: "Designed for classroom use" },
   { icon: Smartphone, label: "Mobile", description: "Manage on the go" },
 ];
 
@@ -44,7 +44,7 @@ export default function MobileAccessPage() {
             </Button>
             <Button asChild size="lg" variant="outline" className="gap-2">
               <Link to="/book-demo">
-                Book a Demo <ArrowRight className="w-4 h-4" />
+                Book a walkthrough <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
           </div>

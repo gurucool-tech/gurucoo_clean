@@ -14,16 +14,17 @@ export default function BookDemoPage() {
     <>
       <SEO
         title="Book a Structural Walkthrough | GuruCool"
-        description="See how GuruCool fits your institution's workflow. Book a demo today."
+      description="See how GuruCool fits your institution's workflow. Book a walkthrough."
         canonicalPath="/book-demo"
       />
       <PageHeader
+        variant="conversion"
         title="Book a Structural Walkthrough"
         description="Let's map GuruCool to your institution's actual operations."
       />
 
       <SectionContainer>
-        <div className="max-w-6xl mx-auto py-12">
+        <div className="max-w-[1240px] mx-auto py-12">
           <div className="grid lg:grid-cols-2 gap-16">
 
             {/* Left Column: Trust and Details */}

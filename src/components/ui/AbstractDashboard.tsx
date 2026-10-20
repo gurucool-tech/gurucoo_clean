@@ -76,7 +76,7 @@ export function AbstractDashboard({ mode = "school-overview" }: AbstractDashboar
 
   // Helper for KPI Cards
   const KpiCard = ({ label, value, trend, alert = false }: { label: string, value: string, trend?: string, alert?: boolean }) => (
-    <div className={`bg-white rounded-xl p-5 shadow-sm border border-border/40 flex flex-col justify-center h-full relative overflow-hidden transition-all hover:shadow-md ${alert ? 'ring-1 ring-red-500/20' : ''}`}>
+    <div className={`bg-white rounded-xl p-5 shadow-sm border border-border/40 flex flex-col justify-center h-full relative overflow-hidden transition-[border-color,box-shadow,background-color] hover:shadow-md ${alert ? 'ring-1 ring-red-500/20' : ''}`}>
       <div className="flex items-center justify-between mb-2">
          <div className="text-xs font-semibold text-muted-foreground">{label}</div>
          {trend && <div className={`text-xs font-bold px-2 py-0.5 rounded-full ${trend.startsWith('+') ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700'}`}>{trend}</div>}
@@ -106,7 +106,7 @@ export function AbstractDashboard({ mode = "school-overview" }: AbstractDashboar
                <div className="flex flex-1 items-end gap-4 pt-2">
                  {[85, 92, 95, 90, 96].map((h, i) => (
                    <div key={i} className="flex-1 flex flex-col justify-end group cursor-pointer relative h-full">
-                     <div className="w-full bg-primary/10 rounded-t-md transition-all duration-300 group-hover:bg-primary" style={{height: `${h}%`}}></div>
+                    <div className="w-full bg-primary/10 rounded-t-md transition-colors duration-300 group-hover:bg-primary" style={{height: `${h}%`}}></div>
                      <span className="text-xs text-center mt-2 font-medium text-muted-foreground">{'MTWTF'[i]}</span>
                    </div>
                  ))}
@@ -415,8 +415,8 @@ export function AbstractDashboard({ mode = "school-overview" }: AbstractDashboar
   );
 
   return (
-    <div className={wrapperClasses}>
-      <div className="transform origin-top scale-[0.3] sm:scale-[0.45] md:scale-[0.7] lg:scale-100 transition-transform h-[220px] sm:h-[330px] md:h-[510px] lg:h-[720px] w-[340px] sm:w-[500px] md:w-[800px] lg:w-[1140px] flex justify-center">
+    <div className={`${wrapperClasses} abstract-dashboard`}>
+      <div className="abstract-dashboard__scale transform origin-top scale-[0.3] sm:scale-[0.45] md:scale-[0.7] lg:scale-100 transition-transform h-[220px] sm:h-[330px] md:h-[510px] lg:h-[720px] w-[340px] sm:w-[500px] md:w-[800px] lg:w-[1140px] flex justify-center">
         <div className={shellClasses}>
           {/* Subtle decorative background blur matching the faint blue panel treatment request */}
           <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-blue-50/50 to-transparent pointer-events-none rounded-t-xl" />

@@ -10,6 +10,7 @@ export default function PrivacyPage() {
         canonical="/privacy"
       />
       <PageHeader
+        variant="legal"
         title="Privacy Policy"
         breadcrumbs={[
           { label: "Home", href: "/" },

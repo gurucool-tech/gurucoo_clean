@@ -1,376 +1,172 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Calendar, Activity, Users, ShieldCheck, TrendingUp, Layers, CheckCircle, Fingerprint, CreditCard, Bell, FileText, Globe } from "lucide-react";
+import {
+  Activity, ArrowRight, Bell, Calendar, Check, CheckCircle, CreditCard,
+  FileText, Fingerprint, Layers, MessageCircle, TrendingUp, Users,
+} from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { m, Variants } from "framer-motion";
 
-const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20book%20a%20demo%20and%20understand%20the%20platform.";
+const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20book%20a%20walkthrough%20and%20understand%20the%20platform.";
 
 const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
 };
 
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
+
+const rolloutSteps = [
+  { title: "Foundation", detail: "Identity and attendance", state: "Ready" },
+  { title: "Daily workflows", detail: "Timetables and alerts", state: "Next" },
+  { title: "Finance", detail: "Fees, dues, and receipts", state: "Planned" },
+  { title: "Assessments", detail: "Exams, grading, and reports", state: "Planned" },
+];
 
 export default function HomePage() {
   return (
-    <div className="flex-1 flex flex-col overflow-hidden bg-background relative">
-      <SEO
-        title="The Operating Layer for Modern Educational Institutions"
-        description="Connected operations for attendance, academics, communication, exams, fees, and reporting."
-        canonicalPath="/"
-      />
+    <div className="flex flex-1 flex-col overflow-hidden bg-background">
+      <SEO title="The Operating Layer for Modern Educational Institutions" description="Connected operations for attendance, academics, communication, exams, fees, and reporting." canonicalPath="/" />
 
-      {/* Clean background without blur */}
       {/* Section 1: Hero */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-ice-panel">
-        {/* Fading structural grid */}
-        <div className="absolute inset-0 bg-grid-hero pointer-events-none" />
-        <div className="container mx-auto px-4 max-w-6xl relative z-10 text-center">
-          <m.div 
-            initial="hidden" 
-            animate="visible" 
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto flex flex-col items-center"
-          >
-            <m.div variants={fadeInUp} className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              The Next-Gen Education Platform
-            </m.div>
-            
-            <m.h1 variants={fadeInUp} className="text-display-sm sm:text-display-md lg:text-display-xl font-bold text-foreground mb-6 leading-tight tracking-tight">
-              The <span className="text-primary">Operating Layer</span> for<br/>Modern Institutions.
-            </m.h1>
-            
-            <m.p variants={fadeInUp} className="text-body-lg sm:text-heading-md text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Connected operations for attendance, academics, communication, exams, fees, and reporting. No silos, just flow.
-            </m.p>
-            
-            <m.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-              <Button asChild size="lg" className="gap-2 px-8 rounded-full shadow-[var(--shadow-glow)] w-full sm:w-auto h-14 text-base">
-                <Link to="/book-demo">
-                  <Calendar className="w-5 h-5" />
-                  Book a Demo
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="gap-2 px-8 rounded-full border-border/50 bg-card/50 backdrop-blur-sm hover:bg-card hover:border-primary/50 w-full sm:w-auto h-14 text-base transition-all">
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5 text-[#25D366]" />
-                  Contact on WhatsApp
-                </a>
-              </Button>
-            </m.div>
-          </m.div>
-        </div>
-
-
-      </section>
-
-      {/* Section 2: The Problem (Bento Grid) */}
-      <section className="section-padding bg-background relative overflow-hidden">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <m.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="text-center mb-16"
-          >
-            <h2 className="text-heading-xl md:text-display-sm font-bold text-foreground mb-4">
-              Fragmented systems slow you down.
-            </h2>
-            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-              Too much admin steals time from teaching. Records get scattered. Operations run in parallel instead of in one flow.
-            </p>
-          </m.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <m.div 
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-              className="card-premium p-8 md:col-span-2 group"
-            >
-              <Activity className="w-10 h-10 text-destructive mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-heading-lg font-bold text-foreground mb-3">Scattered Records</h3>
-              <p className="text-body-md text-muted-foreground max-w-md">Data trapped in silos makes reporting a nightmare. When academic, financial, and attendance data don't talk, your leadership flies blind.</p>
-            </m.div>
-            
-            <m.div 
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-              className="card-premium p-8 group"
-            >
-              <Users className="w-10 h-10 text-guru-sky mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-heading-lg font-bold text-foreground mb-3">Reactive Comms</h3>
-              <p className="text-body-md text-muted-foreground">Parents only find out about issues when it's too late. Apps get ignored.</p>
+      <section className="home-hero-composition relative overflow-hidden">
+        <div className="container-wide relative z-10">
+          <div className="hero-composition-grid grid items-center gap-12 min-[1120px]:grid-cols-[0.86fr_1.14fr] min-[1120px]:gap-14">
+            <m.div initial="hidden" animate="visible" variants={staggerContainer} className="hero-copy-column max-w-[590px]">
+              <m.h1 variants={fadeInUp} className="hero-title text-foreground">
+                The operating layer for <span className="text-primary">modern institutions.</span>
+              </m.h1>
+              <m.p variants={fadeInUp} className="mt-7 max-w-[590px] text-lg leading-8 text-muted-foreground sm:text-xl">
+                Connect attendance, academics, communication, exams, fees, and reporting through one institutional operating layer.
+              </m.p>
+              <m.div variants={fadeInUp} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Button asChild size="lg" className="h-14 rounded-lg px-7 text-base">
+                  <Link to="/book-demo"><Calendar className="h-5 w-5" />Book a walkthrough</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="h-14 rounded-lg border-primary/35 bg-white/80 px-7 text-base">
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer"><MessageCircle className="h-5 w-5 text-[#138a43]" />Contact on WhatsApp</a>
+                </Button>
+              </m.div>
+              <m.div variants={fadeInUp} className="hero-proof-line">
+                <span className="font-bold text-foreground">One record</span><span aria-hidden="true">·</span><span>Shared across every workflow</span>
+              </m.div>
             </m.div>
 
-            <m.div 
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-              className="card-premium p-8 md:col-span-3 group"
-            >
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="flex-1">
-                  <TrendingUp className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-heading-lg font-bold text-foreground mb-3">Manual Admin Drag</h3>
-                  <p className="text-body-md text-muted-foreground max-w-2xl">Staff waste hours on tasks software should do instantly. Generating report cards, collecting fees, and tracking leaves shouldn't require three different spreadsheets.</p>
+            <m.div initial="hidden" animate="visible" variants={fadeInUp} className="hero-visual-column structural-grid-light grid-tracer-light relative">
+              <div className="hero-product-shell" data-ui="dashboard-preview">
+                <div className="hero-product-topbar">
+                  <div><p className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/55">Institution overview</p><p className="mt-1 text-base font-semibold text-white">Monday operations</p></div>
+                  <div className="connected-state"><span />Systems connected</div>
                 </div>
-                {/* Elegant automation visual */}
-                <div className="w-full md:w-1/3 h-32 rounded-xl border border-border/50 bg-background flex flex-col justify-center gap-3 p-5 shadow-sm relative overflow-hidden">
-                  <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
-                  
-                  {[
-                    { width: "w-3/4", delay: 0 },
-                    { width: "w-1/2", delay: 1 },
-                    { width: "w-5/6", delay: 2 }
-                  ].map((line, i) => (
-                    <div key={i} className="flex items-center gap-3 z-10">
-                      <m.div 
-                        className="w-4 h-4 rounded-full border-2 border-border/50 flex items-center justify-center bg-card flex-shrink-0"
-                        initial={{ borderColor: "hsl(var(--border))", backgroundColor: "hsl(var(--card))" }}
-                        animate={{ borderColor: "hsl(var(--primary))", backgroundColor: "hsl(var(--primary))" }}
-                        transition={{ duration: 0.5, delay: line.delay, repeat: Infinity, repeatDelay: 5 }}
-                      >
-                        <CheckCircle className="w-2.5 h-2.5 text-white" />
-                      </m.div>
-                      <div className={`h-2 ${line.width} bg-border/40 rounded-full overflow-hidden relative`}>
-                        <m.div 
-                          className="absolute inset-0 bg-foreground/20"
-                          initial={{ x: "-100%" }}
-                          animate={{ x: "0%" }}
-                          transition={{ duration: 0.5, delay: line.delay, repeat: Infinity, repeatDelay: 5 }}
-                        />
-                      </div>
+                <div className="grid gap-3 p-4 sm:grid-cols-[1.45fr_0.8fr] sm:p-5">
+                  <div className="product-main-panel">
+                    <div className="flex items-start justify-between gap-4">
+                      <div><p className="ui-label">Attendance pulse</p><p className="mt-2 text-3xl font-bold tracking-[-0.04em] text-[hsl(var(--gc-midnight))]">91.8%</p><p className="mt-1 text-xs text-[hsl(var(--gc-slate))]">1,246 of 1,357 marked</p></div>
+                      <span className="ui-active-badge"><Check className="h-3.5 w-3.5" /> Live</span>
                     </div>
-                  ))}
+                    <div className="mt-7 flex h-28 items-end gap-2" aria-label="Attendance trend chart">
+                      {[46, 62, 55, 76, 68, 88, 81, 94].map((height, index) => (
+                        <div key={height + index} className="flex flex-1 items-end rounded-sm bg-[hsl(var(--gc-ice)/0.45)]" style={{ height: `${height}%` }}>
+                          <div className={`w-full rounded-sm ${index === 7 ? "bg-[hsl(var(--gc-lime))]" : "bg-[hsl(var(--gc-cobalt))]"}`} style={{ height: `${Math.max(42, height - 8)}%` }} />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-5 grid grid-cols-3 gap-2 bg-[hsl(var(--gc-eggshell))] p-2">
+                      {[["Present", "1,246"], ["Late", "38"], ["Pending", "73"]].map(([label, value], index) => (
+                        <div key={label} className={index === 2 ? "rounded-lg bg-[hsl(var(--gc-soft-yellow)/0.38)] px-3 py-2" : "px-3 py-2"}><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[hsl(var(--gc-slate))]">{label}</p><p className="mt-1 text-base font-bold text-[hsl(var(--gc-midnight))]">{value}</p></div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="grid gap-3">
+                    <div className="product-side-panel bg-[hsl(var(--gc-cobalt))] text-white"><Bell className="h-5 w-5 text-[hsl(var(--gc-lime))]" /><p className="mt-5 text-[11px] font-bold uppercase tracking-[0.14em] text-white/60">Communication</p><p className="mt-1 text-xl font-bold">24 alerts</p><p className="mt-2 text-xs leading-5 text-white/70">Ready for parent delivery</p></div>
+                    <div className="product-side-panel bg-[hsl(var(--gc-cream))]"><CreditCard className="h-5 w-5 text-[hsl(var(--gc-olive))]" /><p className="mt-5 text-[11px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--gc-olive))]">Fee desk</p><p className="mt-1 text-xl font-bold text-[hsl(var(--gc-midnight))]">₹84.5k</p><div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/80"><div className="h-full w-[72%] bg-[hsl(var(--gc-amber))]" /></div></div>
+                  </div>
                 </div>
               </div>
+              <div className="hero-annotation hidden sm:block"><span className="h-2 w-2 rounded-full bg-[hsl(var(--gc-lime))]" />Shared institutional record</div>
             </m.div>
           </div>
         </div>
       </section>
 
-      {/* Section 4: Product Architecture Bento Grid */}
-      <section className="section-padding relative overflow-hidden bg-ice-panel border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <m.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-            className="text-center mb-16"
-          >
-            <h2 className="text-heading-xl md:text-display-sm font-bold text-foreground mb-4">
-              One connected stack.
-            </h2>
-            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-              Six modular layers built to communicate perfectly with each other.
-            </p>
-          </m.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            
-            {/* Foundation */}
-            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="feature-card lg:col-span-2 flex flex-col justify-between min-h-[280px] group bg-white hover:bg-muted/10">
-              <div className="flex-1">
-                <h3 className="text-heading-md font-bold text-foreground mb-2 flex items-center gap-2"><Fingerprint className="w-5 h-5 text-primary" /> 1. Foundation</h3>
-                <p className="text-muted-foreground text-sm max-w-sm mb-6">Identity, profiles, roles, and structural setup for the institution. The secure base layer.</p>
-              </div>
-              <div className="mt-auto bg-muted/20 border border-border/50 rounded-xl p-3 flex items-center gap-3 w-max max-w-full overflow-hidden relative">
-                <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-muted/20 to-transparent pointer-events-none" />
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">JS</div>
-                <div className="flex-1">
-                   <div className="text-sm font-bold text-foreground leading-tight">J. Smith</div>
-                   <div className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider">Super Admin</div>
-                </div>
-
-              </div>
+      {/* Section 2: The Problem */}
+      <section className="home-section relative overflow-hidden bg-[hsl(var(--gc-porcelain))]">
+        <div className="container-wide relative z-10">
+          <div className="problem-composition grid gap-9 min-[1120px]:grid-cols-[0.68fr_1.32fr] min-[1120px]:gap-12">
+            <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeInUp} className="min-[1120px]:pt-5">
+              <h2 className="section-title max-w-[460px]">Fragmented systems slow the whole institution down.</h2>
+              <p className="mt-6 max-w-[460px] text-lg leading-8 text-muted-foreground">Too much admin steals time from teaching. Records get scattered, and daily work runs in parallel instead of in one flow.</p>
+              <p className="mt-10 hidden max-w-sm border-l-2 border-[hsl(var(--gc-olive)/0.5)] pl-4 text-sm leading-6 text-[hsl(var(--gc-olive))] min-[1120px]:block">The issue is not a lack of software. It is the lack of connection between the software already shaping the day.</p>
             </m.div>
-
-            {/* Operations */}
-            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="feature-card lg:col-span-2 flex flex-col justify-between min-h-[280px] group bg-white hover:bg-muted/10">
-              <div className="flex-1">
-                <h3 className="text-heading-md font-bold text-foreground mb-2 flex items-center gap-2"><Layers className="w-5 h-5 text-guru-sky" /> 2. Operations</h3>
-                <p className="text-muted-foreground text-sm max-w-sm mb-6">Timetable generation, attendance tracking, and daily logistics running on autopilot.</p>
-              </div>
-              <div className="mt-auto flex flex-col gap-1.5 w-full bg-card rounded-xl border border-border/50 p-2 shadow-sm">
-                <div className="flex gap-1.5">
-                   <div className="flex-1 bg-muted rounded p-1.5 text-[9px] font-semibold text-muted-foreground text-center">Mon</div>
-                   <div className="flex-[2] bg-blue-50 border border-blue-100 rounded p-1.5 text-[9px] font-bold text-blue-800">Physics (10A)</div>
-                   <div className="flex-[2] bg-card border border-border/50 rounded p-1.5 text-[9px] font-bold text-foreground">Math (10B)</div>
-                </div>
-                <div className="flex gap-1.5">
-                   <div className="flex-1 bg-muted rounded p-1.5 text-[9px] font-semibold text-muted-foreground text-center">Tue</div>
-                   <div className="flex-[2] bg-card border border-border/50 rounded p-1.5 text-[9px] font-bold text-foreground">Chemistry</div>
-                   <div className="flex-[2] bg-blue-50 border border-blue-100 rounded p-1.5 text-[9px] font-bold text-blue-800">Physics (11A)</div>
-                </div>
-              </div>
-            </m.div>
-
-            {/* Finance */}
-            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="feature-card flex flex-col justify-between min-h-[240px] group bg-white hover:bg-muted/10">
-              <div className="flex-1">
-                <h3 className="text-heading-md font-bold text-foreground mb-2 flex items-center gap-2"><CreditCard className="w-5 h-5 text-foreground" /> 3. Finance</h3>
-                <p className="text-muted-foreground text-sm mb-6">Fee structures, receipts, dues, and payroll.</p>
-              </div>
-              <div className="mt-auto bg-card rounded-xl border border-border/50 p-3 shadow-sm flex items-end justify-between">
-                 <div>
-                    <div className="text-[10px] text-muted-foreground font-bold uppercase">Collections</div>
-                    <div className="text-lg font-black text-foreground">₹84.5k</div>
-                 </div>
-                 <div className="text-[10px] font-bold bg-green-100 text-green-800 px-2 py-0.5 rounded-sm">+12%</div>
-              </div>
-            </m.div>
-
-            {/* Comms */}
-            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="feature-card flex flex-col justify-between min-h-[240px] group bg-white hover:bg-muted/10">
-              <div className="flex-1">
-                <h3 className="text-heading-md font-bold text-foreground mb-2 flex items-center gap-2"><Bell className="w-5 h-5 text-[#25D366]" /> 4. Comms</h3>
-                <p className="text-muted-foreground text-sm mb-6">WhatsApp integration and instant parent loop.</p>
-              </div>
-              <div className="mt-auto bg-card rounded-xl border border-border/50 p-3 shadow-sm flex items-start gap-2">
-                 <div className="w-6 h-6 rounded-full bg-[#25D366]/10 flex items-center justify-center shrink-0">
-                    <MessageCircle className="w-3 h-3 text-[#25D366]" />
-                 </div>
-                 <div className="bg-[#25D366]/10 p-2 rounded-md rounded-tl-none border border-[#25D366]/20">
-                    <div className="text-[10px] text-[#25D366] font-medium leading-tight">Student marked present at 08:15 AM.</div>
-                 </div>
-              </div>
-            </m.div>
-
-            {/* Assessments */}
-            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="feature-card lg:col-span-2 flex flex-col justify-between min-h-[240px] group bg-white hover:bg-muted/10">
-              <div className="flex-1">
-                <h3 className="text-heading-md font-bold text-foreground mb-2 flex items-center gap-2"><FileText className="w-5 h-5 text-primary" /> 5. Assessments</h3>
-                <p className="text-muted-foreground text-sm max-w-sm mb-6">Exam seating, invigilator allotment, marks entry, and automated report cards.</p>
-              </div>
-              <div className="mt-auto bg-card rounded-xl border border-border/50 p-3 shadow-sm w-full max-w-xs flex flex-col gap-2">
-                 <div className="flex justify-between items-center text-xs font-bold border-b border-border/50 pb-1.5">
-                    <span className="text-foreground">Unit Test 1</span>
-                    <span className="text-primary bg-primary/10 px-2 py-0.5 rounded">Grade A+</span>
-                 </div>
-                 <div className="flex justify-between items-center text-[10px] text-muted-foreground font-medium">
-                    <span>Physics (17/20)</span>
-                    <div className="w-1/2 h-1.5 bg-muted rounded-full overflow-hidden"><div className="h-full w-[85%] bg-primary" /></div>
-                 </div>
-              </div>
-            </m.div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Section 6: Rollout Model */}
-      <section className="section-padding bg-background relative border-y border-border/50">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <m.div 
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-              className="relative flex items-center justify-center h-[400px] perspective-1000"
-            >
-              {/* 3D Isometric Stack Base */}
-              <div className="relative w-64 h-64 [transform-style:preserve-3d] [transform:rotateX(60deg)_rotateZ(-45deg)]">
-                {[0, 1, 2].map((layer) => (
-                  <m.div
-                    key={layer}
-                    className="absolute inset-0 rounded-2xl border-2 border-primary/20 bg-white/80 backdrop-blur-md shadow-lg flex items-center justify-center"
-                    initial={{ translateZ: 0, opacity: 0 }}
-                    whileInView={{ translateZ: layer * 40, opacity: 1 }}
-                    transition={{ duration: 1, delay: layer * 0.2 }}
-                  />
-                ))}
-                
-                {/* The 3D Shield Popping Out */}
-                <m.div
-                  className="absolute inset-0 flex items-center justify-center [transform-style:preserve-3d]"
-                  initial={{ translateZ: 0, opacity: 0 }}
-                  whileInView={{ translateZ: 160, opacity: 1 }}
-                  transition={{ duration: 1.5, delay: 0.8, type: "spring", bounce: 0.4 }}
-                >
-                   {/* We counter the parent's rotation so the shield stands straight up, then we rotate it endlessly on Y */}
-                   <div className="relative w-24 h-24 [transform-style:preserve-3d] [transform:rotateZ(45deg)_rotateX(-60deg)]">
-                     <m.div 
-                       className="absolute inset-0 [transform-style:preserve-3d]"
-                       animate={{ rotateY: 360 }}
-                       transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                     >
-                       {/* 3D Thickness by stacking 10 icons closely */}
-                       {[...Array(10)].map((_, i) => (
-                         <ShieldCheck 
-                           key={i} 
-                           className={`absolute inset-0 w-24 h-24 ${i === 0 || i === 9 ? 'text-primary' : 'text-primary/80'}`}
-                           style={{ transform: `translateZ(${i * 2}px)` }}
-                         />
-                       ))}
-                     </m.div>
-                   </div>
-                </m.div>
-              </div>
-            </m.div>
-
-            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-              <h2 className="text-heading-xl font-bold text-foreground mb-6">Staged Rollout. <br/>Zero Fatigue.</h2>
-              <p className="text-body-lg text-muted-foreground mb-10">
-                Don't overwhelm your staff. GuruCool is engineered to be adopted in intelligent layers.
-              </p>
-              
-              <div className="space-y-6">
-                {[
-                  { title: "Start with foundations", desc: "Identity and basic attendance tracking." },
-                  { title: "Add daily workflows", desc: "Timetables and instant WhatsApp alerts." },
-                  { title: "Expand into finance", desc: "Fee tracking, dues, and digital receipts." },
-                  { title: "Launch assessments", desc: "Exams, grading, and automated reports." }
-                ].map((step, idx) => (
-                  <m.div key={idx} variants={fadeInUp} className="flex items-start gap-4 p-4 rounded-xl hover:bg-muted/30 transition-colors border border-transparent hover:border-border/50">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-bold mt-1 border border-primary/30">
-                      {idx + 1}
-                    </div>
-                    <div>
-                      <h4 className="text-foreground font-bold mb-1">{step.title}</h4>
-                      <p className="text-muted-foreground text-sm">{step.desc}</p>
-                    </div>
-                  </m.div>
-                ))}
-              </div>
-            </m.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 8: Final CTA */}
-      <section className="py-24 sm:py-32 relative overflow-hidden bg-ice-panel border-t border-border/40">
-        <div className="absolute inset-0 bg-primary/5" />
-        <div className="absolute inset-0 bg-grid-pattern opacity-30" />
-
-        
-        <div className="container mx-auto px-4 max-w-3xl relative z-10 text-center">
-          <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-            <h2 className="text-display-sm md:text-display-md font-bold mb-6 text-foreground">
-              Ready to upgrade your infrastructure?
-            </h2>
-            <p className="text-xl text-muted-foreground mb-10">
-              Book a structural walkthrough of the platform and see how GuruCool connects your institution.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="rounded-full px-8 h-14 text-base shadow-[var(--shadow-glow)]">
-                <Link to="/book-demo">Book a Demo</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 text-base glass hover:bg-white/10">
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">Contact on WhatsApp</a>
-              </Button>
+            <div className="problem-card-stack grid gap-4 md:grid-cols-2">
+              <m.article initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="problem-card problem-card-dark md:row-span-2">
+                <div className="flex items-center justify-between"><div className="icon-surface icon-surface-lime"><Activity className="h-5 w-5" /></div><span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[hsl(var(--gc-lime))]">Visibility gap</span></div>
+                <div className="mt-10"><h3 className="text-3xl font-bold tracking-[-0.035em] text-white">Scattered records</h3><p className="mt-4 max-w-md text-base leading-7 text-white/70">Academic, financial, and attendance information sits apart, slowing reporting and obscuring the full institutional picture.</p></div>
+                <div className="mt-8 grid gap-2" aria-label="Disconnected record paths">{["Attendance → separate register", "Finance → separate ledger", "Academics → separate sheet"].map((item, index) => <div key={item} className={`rounded-md border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-white/75 ${index === 1 ? "border-[hsl(var(--gc-amber)/0.55)] text-[hsl(var(--gc-amber))]" : ""}`}>{item}</div>)}</div>
+                <div className="mt-6 grid grid-cols-3 gap-2">{["Attendance", "Fees", "Academics"].map((item, index) => <div key={item} className={`problem-data-chip ${index === 1 ? "problem-data-chip-alert" : ""}`}>{item}</div>)}</div>
+              </m.article>
+              <m.article initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="problem-card bg-[hsl(var(--gc-ice)/0.42)]">
+                <div className="flex items-start gap-4"><div className="icon-surface bg-white text-[hsl(var(--gc-cerulean))]"><Users className="h-5 w-5" /></div><div><h3 className="text-xl font-bold text-foreground">Reactive communication</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">Parents learn about issues after the useful moment has passed.</p></div></div>
+                <div className="mt-7 border-l-2 border-[hsl(var(--gc-sky))] bg-white/75 px-4 py-3 text-xs font-semibold text-[hsl(var(--gc-institutional))]">Update delayed across disconnected channels</div>
+              </m.article>
+              <m.article initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="problem-card problem-card-admin bg-[hsl(var(--gc-cream))]">
+                <div className="flex items-start gap-4"><div className="icon-surface bg-white text-[hsl(var(--gc-olive))]"><TrendingUp className="h-5 w-5" /></div><div><h3 className="text-xl font-bold text-foreground">Manual admin drag</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">Reports, fees, and leave tracking repeat the same data entry across separate files.</p></div></div>
+                <div className="mt-7 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-[0.1em] text-[hsl(var(--gc-olive))]"><span className="rounded bg-white/70 px-2 py-1">Report</span><span>→</span><span className="rounded bg-white/70 px-2 py-1">Re-entry</span><span>→</span><span className="rounded bg-[hsl(var(--gc-soft-yellow)/0.62)] px-2 py-1">Reconciliation</span></div>
+              </m.article>
             </div>
-            
-            <div className="mt-16 pt-10 border-t border-border/40 flex flex-wrap items-center justify-center gap-12 text-muted-foreground text-sm font-bold uppercase tracking-widest">
-               <span className="flex items-center gap-2 transition-colors hover:text-foreground"><ShieldCheck className="w-4 h-4 text-primary" /> Bank-grade Security</span>
-               <span className="flex items-center gap-2 transition-colors hover:text-foreground"><Layers className="w-4 h-4 text-primary" /> Modular Architecture</span>
-               <span className="flex items-center gap-2 transition-colors hover:text-foreground"><Globe className="w-4 h-4 text-primary" /> Cloud Native</span>
-            </div>
-          </m.div>
+          </div>
         </div>
       </section>
 
+      {/* Section 3: Product Architecture */}
+      <section className="home-section relative overflow-hidden bg-[hsl(var(--gc-eggshell))]">
+        <div className="container-wide relative z-10">
+          <div className="architecture-layout grid gap-4 xl:grid-cols-[420px_minmax(0,1fr)] xl:gap-0">
+            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="architecture-intro structural-grid-dark grid-tracer-dark">
+              <h2 className="section-title text-white">Everything connected. One institution.</h2>
+              <p className="mt-6 max-w-[36ch] text-base leading-7 text-[hsl(var(--gc-ice))]">Six modular layers share connected institutional records, so each workflow strengthens the next.</p>
+              <div className="architecture-intro-action"><span className="architecture-intro-rule" aria-hidden="true" /><Link to="/product" className="text-link-light group">Explore the product<ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" /></Link></div>
+            </m.div>
+            <div className="architecture-grid">
+              <m.article initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="architecture-card architecture-card-foundation">
+                <div className="flex items-center justify-between gap-4"><div className="flex items-center gap-3"><Fingerprint className="h-5 w-5 text-primary" /><span className="ui-label">01 Foundation</span></div><span className="ui-active-badge"><span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--gc-lime))]" /> Connected</span></div>
+                <h3 className="mt-9 text-2xl font-bold text-foreground">One identity layer for every role.</h3><p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">Role-based access, profiles, classes, and institutional structure establish the shared base.</p>
+                <div className="mt-8 grid grid-cols-[auto_1fr] items-center gap-4 rounded-lg bg-[hsl(var(--gc-eggshell))] p-4"><div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">JS</div><div><p className="text-sm font-bold text-foreground">J. Smith</p><p className="text-xs text-muted-foreground">Super Admin · Main Campus</p></div></div>
+              </m.article>
+              <m.article initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="architecture-card architecture-card-operations">
+                <div className="flex items-center gap-3"><Layers className="h-5 w-5 text-[hsl(var(--gc-cerulean))]" /><span className="ui-label">02 Operations</span></div><h3 className="mt-6 text-xl font-bold text-foreground">Configurable workflows for the day.</h3>
+                <div className="mt-6 space-y-2">{[["08:15", "Attendance locked", "Live"], ["09:00", "Physics · 10A", "Room 204"], ["10:40", "Math · 10B", "Room 112"]].map(([time, item, state], index) => <div key={time} className={`operation-row ${index === 0 ? "operation-row-active" : ""}`}><span>{time}</span><strong>{item}</strong><small>{state}</small></div>)}</div>
+              </m.article>
+              <m.article initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="architecture-card architecture-card-finance"><div className="flex items-center justify-between"><CreditCard className="h-5 w-5 text-[hsl(var(--gc-olive))]" /><span className="attention-tag">Review</span></div><p className="mt-8 ui-label">03 Finance</p><p className="mt-2 text-2xl font-bold text-foreground">₹84.5k</p><p className="mt-1 text-xs text-muted-foreground">Collections today</p><div className="mt-6 h-2 overflow-hidden rounded-full bg-white"><div className="h-full w-[72%] bg-[hsl(var(--gc-amber))]" /></div></m.article>
+              <m.article initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="architecture-card architecture-card-comms"><div className="flex items-center gap-3"><Bell className="h-5 w-5 text-[hsl(var(--gc-lime))]" /><span className="ui-label text-white/60">04 Communication</span></div><div className="mt-8 rounded-lg bg-white/10 p-4 text-sm leading-6 text-white">Student marked present at 08:15 AM.</div><p className="mt-3 text-xs text-white/55">Parent update prepared</p></m.article>
+              <m.article initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="architecture-card architecture-card-assessment"><div className="flex items-center gap-3"><FileText className="h-5 w-5 text-primary" /><span className="ui-label">05 Assessments</span></div><div className="mt-6 flex items-end justify-between gap-5"><div><p className="text-lg font-bold text-foreground">Unit Test 1</p><p className="mt-1 text-xs text-muted-foreground">Physics · 17/20</p></div><span className="rounded-md bg-[hsl(var(--gc-lime)/0.55)] px-3 py-1 text-xs font-bold text-[hsl(var(--gc-midnight))]">Grade A+</span></div><div className="mt-5 h-2 overflow-hidden rounded-full bg-[hsl(var(--gc-ice)/0.45)]"><div className="h-full w-[85%] bg-primary" /></div></m.article>
+              <m.article initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="architecture-card architecture-card-reporting"><div className="flex items-center gap-3"><TrendingUp className="h-5 w-5 text-[hsl(var(--gc-cerulean))]" /><span className="ui-label">06 Reporting</span></div><div className="mt-7 flex h-16 items-end gap-2">{[35, 50, 43, 68, 82].map((height, index) => <div key={height} className={`flex-1 ${index === 4 ? "bg-[hsl(var(--gc-lime))]" : "bg-[hsl(var(--gc-sky))]"}`} style={{ height: `${height}%` }} />)}</div></m.article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Rollout Model */}
+      <section className="home-section relative overflow-hidden bg-[hsl(var(--gc-porcelain))]">
+        <div className="container-wide relative z-10">
+          <div className="grid items-center gap-12 min-[1120px]:grid-cols-[1.15fr_0.85fr] min-[1120px]:gap-16">
+            <div className="rollout-visual-column">
+            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="rollout-board" data-ui="rollout-dashboard">
+              <div className="flex flex-col gap-4 rounded-lg bg-[hsl(var(--gc-eggshell))] p-4 sm:flex-row sm:items-center sm:justify-between"><div><p className="ui-label">Rollout plan</p><h3 className="mt-2 text-xl font-bold text-foreground">Build adoption in layers</h3></div><span className="connected-state connected-state-light"><span />Foundation active</span></div>
+              <div className="mt-5 space-y-2">{rolloutSteps.map((step, index) => <div key={step.title} className={`rollout-row ${index === 0 ? "rollout-row-active" : ""}`}><div className="rollout-index">0{index + 1}</div><div className="min-w-0 flex-1"><p className="font-bold text-foreground">{step.title}</p><p className="mt-1 text-sm text-muted-foreground">{step.detail}</p></div><span className={`rollout-state rollout-state-${index}`}>{step.state}</span></div>)}</div>
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">{[["People", "Aligned"], ["Data", "Shared"], ["Training", "Phased"], ["Scale", "Ready"]].map(([label, value], index) => <div key={label} className={index === 2 ? "rollout-metric rollout-metric-warm" : "rollout-metric"}><p>{label}</p><strong>{value}</strong></div>)}</div>
+            </m.div>
+            </div>
+            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-[500px] min-[1120px]:justify-self-end">
+              <m.h2 variants={fadeInUp} className="section-title">Start where it matters. Expand when you are ready.</m.h2><m.p variants={fadeInUp} className="mt-6 text-lg leading-8 text-muted-foreground">Introduce the workflows your team needs first, then add connected layers without forcing the institution to change everything at once.</m.p>
+              <m.div variants={fadeInUp} className="mt-9 space-y-4">{["Begin with the operational foundation", "Train around real daily workflows", "Expand after the first layer is working"].map((item, index) => <div key={item} className="flex items-start gap-3 text-sm font-semibold text-[hsl(var(--gc-institutional))]"><CheckCircle className={`mt-0.5 h-5 w-5 shrink-0 ${index === 1 ? "text-[hsl(var(--gc-amber))]" : "text-primary"}`} />{item}</div>)}</m.div>
+            </m.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -20,10 +20,12 @@ export default function AttendanceAccuracyPost() {
           headline: "Why Attendance Accuracy Matters More Than You Think",
           description: "Most schools track attendance—but few truly understand its impact on safety, compliance, and parent trust.",
           datePublished: "2025-01-15",
-          url: "https://gurucool.com/blog/attendance-accuracy-matters"
+    url: "https://edugurucool.in/blog/attendance-accuracy-matters"
         }}
       />
       <PageHeader
+        variant="editorial"
+        eyebrow="Field note · Operations"
         title="Why Attendance Accuracy Matters More Than You Think"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -97,7 +99,7 @@ export default function AttendanceAccuracyPost() {
                 <li className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
                   <span className="text-body-md text-muted-foreground">
-                    <strong className="text-foreground">Operational efficiency:</strong> teachers focus on teaching, staff generate reports instantly.
+                    <strong className="text-foreground">Operational efficiency:</strong> teachers focus on teaching while staff generate reports from connected records.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -112,7 +114,7 @@ export default function AttendanceAccuracyPost() {
                 The Technology That Changes Everything
               </h2>
               <p className="text-body-md text-muted-foreground leading-relaxed mb-6">
-                Modern attendance tools like QR-based scanning and face recognition transform attendance from a time-consuming task into an instant, accurate, automated process.
+                Modern attendance tools such as QR-based scanning and face recognition can turn attendance into a faster, traceable workflow.
               </p>
               <p className="text-body-md text-muted-foreground leading-relaxed mb-6">
                 Imagine this: a student scans their smart ID card at the gate. Within seconds, the parent receives a WhatsApp message with a photo, timestamp, and confirmation that their child has safely entered the campus.
@@ -164,7 +166,7 @@ export default function AttendanceAccuracyPost() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
-                  <span className="text-body-md text-muted-foreground">Instant reporting</span>
+                  <span className="text-body-md text-muted-foreground">Connected reporting</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
@@ -179,7 +181,7 @@ export default function AttendanceAccuracyPost() {
                 Attendance accuracy isn't a luxury—it's a necessity. Safety, trust, and operational efficiency depend on it.
               </p>
               <p className="text-body-md text-muted-foreground leading-relaxed mb-8">
-                Ready to transform your school's attendance management? Book a demo with GuruCool and see how real-time, automated attendance improves safety and frees up staff time.
+          See how GuruCool could support your institution's attendance workflows in a guided platform walkthrough.
               </p>
             </div>
 
@@ -200,7 +202,7 @@ export default function AttendanceAccuracyPost() {
                 </Button>
                 <Button asChild variant="outline" className="gap-2">
                   <Link to="/book-demo">
-                    Book a Demo <ArrowRight className="w-4 h-4" />
+                Book a walkthrough <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
               </div>

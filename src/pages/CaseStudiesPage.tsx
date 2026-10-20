@@ -15,7 +15,7 @@ const caseStudies = [
     students: "1,200+",
     challenge: "Low parent app adoption (under 30%) meant most parents missed important updates.",
     solution: "Switched to WhatsApp-based communication for all parent notifications.",
-    outcome: "Near-100% message delivery. Parents now receive attendance alerts, fee reminders, and announcements reliably.",
+    outcome: "Parents can receive attendance alerts, fee reminders, and announcements through a consistent workflow.",
     slug: "cbse-school-communication",
   },
   {
@@ -37,7 +37,7 @@ const caseStudies = [
     students: "800+",
     challenge: "Manual attendance in registers was time-consuming and prone to errors.",
     solution: "Deployed QR-coded ID cards for gate and classroom attendance.",
-    outcome: "Attendance marking time reduced significantly. Parents receive instant arrival alerts. Complete audit trail maintained.",
+    outcome: "Attendance records, parent arrival alerts, and the related audit trail stay connected.",
     slug: "state-board-qr-attendance",
   },
 ];

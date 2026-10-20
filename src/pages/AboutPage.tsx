@@ -11,34 +11,26 @@ export default function AboutPage() {
         canonicalPath="/about"
       />
       <PageHeader 
+        variant="editorial"
+        eyebrow="About GuruCool"
         title="Why We Exist" 
         description="Educational institutions deserve better than fragmented software and manual administrative drag."
       />
       
       <SectionContainer>
-        <div className="max-w-3xl mx-auto py-12 prose prose-lg prose-slate">
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">The problem with education software today</h2>
-          <p className="text-muted-foreground mb-6">
-            For years, educational institutions have been sold "solutions" that only solve one piece of the puzzle. An app for attendance. A different portal for fees. Another tool for exams. The result is a fragmented operational nightmare where data is siloed, records are duplicated, and administrative staff waste hours on manual entry. 
-          </p>
-          <p className="text-muted-foreground mb-10">
-            This fragmentation steals time from teaching and weakens leadership visibility. When systems don't talk to each other, the institution slows down.
-          </p>
-
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Why connected systems matter</h2>
-          <p className="text-muted-foreground mb-6">
-            We believe that modern institutions require an operating layer—a single, connected system where workflows feed into each other naturally. When attendance automatically updates the daily ops log and triggers a WhatsApp message to parents, trust is built instantly. When exam marks automatically generate report cards without manual spreadsheet wrestling, teachers get their time back.
-          </p>
-
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">The importance of modular rollout</h2>
-          <p className="text-muted-foreground mb-6">
-            We also understand that software fatigue is real. That's why GuruCool is designed for staged implementation. We don't believe in overwhelming your staff with a massive "go-live" day. We start with the foundation, get the daily workflows right, and expand at your pace.
-          </p>
-
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Who we help</h2>
-          <p className="text-muted-foreground mb-6">
-            GuruCool serves serious operators in the education space. Whether you run a single K-12 school, a growing college, a network of tuition centers, or a multi-campus group, we provide the infrastructure you need to scale your operations securely and efficiently.
-          </p>
+        <div className="about-story py-16 lg:py-28">
+          <article className="about-story__lead">
+            <span>Why the system matters</span>
+            <h2>The problem with education software today</h2>
+            <p>For years, educational institutions have been sold "solutions" that only solve one piece of the puzzle. An app for attendance. A different portal for fees. Another tool for exams.</p>
+            <p>This fragmentation steals time from teaching and weakens leadership visibility. When systems don't talk to each other, the institution slows down.</p>
+            <div><i />Fragmented records become institutional drag.</div>
+          </article>
+          <div className="about-story__chapters">
+            <article><span>Connected structure</span><h2>Why connected systems matter</h2><p>We believe modern institutions require an operating layer: a single, connected system where workflows feed into each other naturally. Attendance can update daily operations and prepare parent communication. Exam marks can move into report cards without duplicate spreadsheet work.</p></article>
+            <article><span>Practical adoption</span><h2>The importance of modular rollout</h2><p>Software fatigue is real. GuruCool is designed for staged implementation. Start with the foundation, get daily workflows right, and expand at your institution's pace.</p></article>
+            <article><span>Institution fit</span><h2>Who we help</h2><p>GuruCool supports K-12 schools, colleges, tuition centres, and multi-campus groups that need clearer operations and connected institutional records.</p></article>
+          </div>
         </div>
       </SectionContainer>
     </>

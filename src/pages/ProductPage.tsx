@@ -1,9 +1,8 @@
 import { SEO } from "@/components/SEO";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { SectionContainer } from "@/components/layout/SectionContainer";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Fingerprint, Calendar, CreditCard, FileText, ScanFace, MessageCircle } from "lucide-react";
+import { Fingerprint, Calendar, CreditCard, FileText, ScanFace, MessageCircle } from "lucide-react";
 import { m, Variants } from "framer-motion";
 
 const fadeInUp: Variants = {
@@ -24,25 +23,26 @@ export default function ProductPage() {
         {/* Removed blurry backgrounds for clean crisp product framing */}
         
         <PageHeader 
+          variant="product"
           eyebrow="Platform Architecture"
           title="One Operational Structure" 
           description="GuruCool is not just a collection of features. It is a connected operating layer designed to handle the complexity of your entire institution."
-          alignment="center"
+          alignment="left"
         />
         
-        <SectionContainer>
-          <div className="max-w-6xl mx-auto py-12">
+        <SectionContainer size="wide">
+          <div className="mx-auto max-w-[1320px] py-14">
             <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-16">
               <h2 className="text-display-sm font-bold mb-6 text-foreground">How the system flows</h2>
-              <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto">
                 Data moves seamlessly through the system, eliminating double-entry and ensuring total visibility across your institution.
               </p>
             </m.div>
             
-            <div className="space-y-24">
+            <div className="space-y-16 lg:space-y-24">
               
               {/* Flow 1: Identity */}
-              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid md:grid-cols-2 gap-12 items-center">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
                 <div className="card-premium aspect-video flex items-center justify-center p-6 md:p-8 bg-muted/20 border-border/80 relative">
                   {/* High Fidelity UI Representation: Attendance List */}
                   <div className="w-full max-w-sm bg-white rounded-xl shadow-xl border border-border/50 overflow-hidden flex flex-col">
@@ -96,7 +96,7 @@ export default function ProductPage() {
                     <ScanFace className="w-6 h-6" />
                   </div>
                   <h3 className="text-heading-xl font-bold mb-4 text-foreground">1. Identity & Attendance</h3>
-                  <p className="text-body-lg text-muted-foreground">It starts at the gate. Hardware integration instantly records presence, triggering a WhatsApp notification to parents and updating the daily operations log.</p>
+                  <p className="text-body-lg text-muted-foreground">It starts at the gate. Hardware integration records presence, triggers a WhatsApp notification to parents, and updates the daily operations log.</p>
                 </div>
               </m.div>
 
@@ -187,7 +187,7 @@ export default function ProductPage() {
                     <CreditCard className="w-6 h-6" />
                   </div>
                   <h3 className="text-heading-xl font-bold mb-4 text-foreground">3. Finance & Admin</h3>
-                  <p className="text-body-lg text-muted-foreground">Dues are tracked accurately. Receipts are generated instantly. The finance team has a clear, actionable view of the institution's health.</p>
+                  <p className="text-body-lg text-muted-foreground">Dues are tracked accurately and receipts are generated within the same workflow. The finance team has a clear, actionable view of the institution's records.</p>
                 </div>
               </m.div>
 
@@ -231,14 +231,6 @@ export default function ProductPage() {
               </m.div>
             </div>
 
-            <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mt-24 text-center border-t border-border/50 pt-16">
-              <h2 className="text-display-sm font-bold mb-8 text-foreground">Ready to see the flow in action?</h2>
-              <Button asChild size="lg" className="rounded-full px-8 h-14 text-base shadow-[var(--shadow-glow)]">
-                <Link to="/book-demo">
-                  Book a structural walkthrough <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
-            </m.div>
           </div>
         </SectionContainer>
       </div>

@@ -40,7 +40,7 @@ export default function IntegrationsPage() {
             </Button>
             <Button asChild size="lg" variant="outline" className="gap-2">
               <Link to="/book-demo">
-                Book a Demo <ArrowRight className="w-4 h-4" />
+                Book a walkthrough <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
           </div>

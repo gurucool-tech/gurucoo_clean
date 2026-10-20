@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     question: "How does WhatsApp communication work? Do parents need an app?",
-    answer: "No parent app is required. GuruCool sends automated alerts (attendance, fees, notices) directly to parents' WhatsApp numbers via our official API integration. This guarantees near-100% visibility, as parents check WhatsApp naturally multiple times a day."
+    answer: "No parent app is required. GuruCool can send attendance, fee, and notice updates directly to parents through WhatsApp, using the institution's configured communication workflow."
   },
   {
     question: "Can modules be added later?",
@@ -52,17 +52,23 @@ export default function FAQPage() {
         canonicalPath="/faq"
       />
       <PageHeader 
+        variant="editorial"
         title="Questions about Implementation" 
         description="Real answers about how GuruCool rolls out in your institution."
       />
       
       <SectionContainer>
-        <div className="max-w-3xl mx-auto py-12">
-          <Accordion type="single" collapsible className="w-full space-y-4">
+        <div className="mx-auto grid max-w-[1240px] gap-10 py-16 lg:grid-cols-[0.42fr_1fr] lg:gap-20 lg:py-24">
+          <aside className="lg:sticky lg:top-28 lg:self-start">
+            <span className="section-label section-label-olive">Implementation desk</span>
+            <h2 className="mt-5 text-3xl font-bold tracking-[-0.04em] text-foreground">Practical answers, grouped in one place.</h2>
+            <p className="mt-4 max-w-sm leading-7 text-muted-foreground">Start with rollout, expand into workflows, and keep institutional ownership clear at every stage.</p>
+          </aside>
+          <Accordion type="single" collapsible className="w-full space-y-3">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="bg-card border border-border px-6">
+              <AccordionItem key={index} value={`item-${index}`} className="border border-[hsl(var(--gc-cobalt)/0.16)] bg-card px-6 sm:px-8">
                 <AccordionTrigger className="text-left font-bold text-lg hover:no-underline py-6">
-                  {faq.question}
+                  <span>{faq.question}</span>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
                   {faq.answer}

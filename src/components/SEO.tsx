@@ -4,6 +4,7 @@ interface SEOProps {
   title: string;
   description: string;
   canonicalPath?: string;
+  canonical?: string;
   type?: "website" | "article" | "profile";
   jsonLd?: Record<string, unknown>;
   image?: string;
@@ -14,13 +15,14 @@ export function SEO({
   title, 
   description, 
   canonicalPath, 
+  canonical,
   type = "website", 
   jsonLd,
   image = "/og-image.png",
   keywords
 }: SEOProps) {
   const siteUrl = "https://edugurucool.in";
-  const canonicalUrl = canonicalPath ? `${siteUrl}${canonicalPath}` : siteUrl;
+  const canonicalUrl = canonical || (canonicalPath ? `${siteUrl}${canonicalPath}` : siteUrl);
   const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
   const defaultJsonLd = {

@@ -1,7 +1,6 @@
 import { SEO } from "@/components/SEO";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { SectionContainer } from "@/components/layout/SectionContainer";
-import { AbstractDashboard } from "@/components/ui/AbstractDashboard";
+import { SolutionOperationsStage } from "@/components/solutions/SolutionOperationsStage";
 
 export default function SolutionsTuitionPage() {
   return (
@@ -12,23 +11,13 @@ export default function SolutionsTuitionPage() {
         canonicalPath="/solutions/tuition-coaching"
       />
       <PageHeader 
+        variant="warm"
         eyebrow="Solutions: Coaching Centers"
         title="Growth Infrastructure for Coaching Institutions" 
-        description="Keep parents in the loop, track attendance flawlessly, and never miss a fee collection across all your branches."
+        description="Keep parents in the loop, track attendance clearly, and coordinate fee collection across your branches."
         alignment="left"
       />
-      <SectionContainer>
-        <div className="max-w-6xl mx-auto py-12">
-          <h2 className="text-3xl font-bold mb-6 text-foreground">The ultimate parent loop</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            WhatsApp integration ensures parents receive immediate updates on attendance and performance, building unshakeable trust in your coaching brand.
-          </p>
-          {/* Abstract UI Representation */}
-          <div className="mb-12">
-            <AbstractDashboard colorScheme="primary" title="Tuition Branch Dashboard" mode="attendance" />
-          </div>
-        </div>
-      </SectionContainer>
+      <SolutionOperationsStage kind="tuition" eyebrow="Branch coordination" title="A clearer parent communication loop" description="WhatsApp integration prepares timely attendance and performance updates while branch records remain connected." points={["Batch-level attendance", "Prepared parent updates", "Connected fees and branch records"]} />
     </>
   );
 }

@@ -52,11 +52,12 @@ Message: ${formData.notes || "None"}`;
   return (
     <div className="flex-1 flex flex-col bg-background">
       <SEO
-        title="Contact GuruCool | Book a Demo for Your School"
-        description="Book a demo or contact GuruCool for plan details. WhatsApp-first communication, quick onboarding, and reliable implementation."
+      title="Contact GuruCool | Book a walkthrough"
+      description="Book a walkthrough or contact GuruCool to discuss your institution's workflows and plans."
         canonical="/contact"
       />
       <PageHeader
+        variant="conversion"
         title="Contact Us"
         subtitle="Ready to transform your school's operations? We'd love to hear from you."
       />
@@ -64,7 +65,7 @@ Message: ${formData.notes || "None"}`;
       {/* Contact Content */}
       <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-[1240px] mx-auto">
             <div className="grid lg:grid-cols-3 gap-12">
               {/* Contact Info */}
               <div className="lg:col-span-1">
@@ -157,7 +158,7 @@ Message: ${formData.notes || "None"}`;
               {/* Contact Form */}
               <div className="lg:col-span-2">
                 <div className="bg-card rounded-2xl border border-border/50 p-8 shadow-premium">
-                  <h2 className="text-heading-xl font-bold text-foreground mb-2">Book a Demo or Ask a Question</h2>
+              <h2 className="text-heading-xl font-bold text-foreground mb-2">Book a walkthrough or ask a question</h2>
                   <p className="text-body-md text-muted-foreground mb-8">
                     Fill out the form below and we'll reach out via WhatsApp
                   </p>

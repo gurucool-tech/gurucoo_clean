@@ -14,59 +14,61 @@ export default function SolutionsEducationalInstitutionsPage() {
         canonicalPath="/solutions/educational-institutions"
       />
       <PageHeader 
+        variant="dark"
         eyebrow="Solutions"
-        title="The Operating Layer for Educational Institutions" 
-        description="One connected system for attendance, academics, communication, exams, fees, and reporting."
-        align="center"
+        title="One Connected Operating Layer." 
+        description="For educational institutions that need attendance, academics, communication, exams, fees, and reporting to work as one coordinated system."
+        align="left"
       />
       
       {/* Main Umbrella System Logic Section */}
       <section className="py-20 relative overflow-hidden bg-ice-panel border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-5xl relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Connecting Fragmented Operations</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <div className="institution-principles__intro mb-14">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground">Connecting Fragmented Operations</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
               Whether you manage a single campus or a nationwide network, disconnected software creates operational drag. GuruCool replaces fragmented tools with a single, highly engineered operational layer that binds your institution together.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-             <div className="p-6 bg-white rounded-2xl border border-border/60 shadow-sm flex flex-col items-center">
-               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+          <div className="institution-principles">
+             <article className="institution-principle institution-principle--lead">
+               <div className="institution-principle__icon">
                  <Building2 className="w-6 h-6 text-primary" />
                </div>
-               <h3 className="font-bold text-lg mb-2 text-foreground">Unified Identity</h3>
-               <p className="text-sm text-muted-foreground">One profile per student, parent, and staff member across all operations.</p>
-             </div>
-             <div className="p-6 bg-white rounded-2xl border border-border/60 shadow-sm flex flex-col items-center">
-               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+               <h3>Unified Identity</h3>
+               <p>One profile per student, parent, and staff member across all operations.</p>
+             </article>
+             <article className="institution-principle">
+               <div className="institution-principle__icon">
                  <ArrowRight className="w-6 h-6 text-primary" />
                </div>
-               <h3 className="font-bold text-lg mb-2 text-foreground">Automated Workflows</h3>
-               <p className="text-sm text-muted-foreground">Attendance triggers comms, comms trigger reports. No manual syncing.</p>
-             </div>
-             <div className="p-6 bg-white rounded-2xl border border-border/60 shadow-sm flex flex-col items-center">
-               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+               <h3>Automated Workflows</h3>
+               <p>Attendance triggers communications and connected records. No manual syncing.</p>
+             </article>
+             <article className="institution-principle institution-principle--warm">
+               <div className="institution-principle__icon">
                  <Users className="w-6 h-6 text-primary" />
                </div>
-               <h3 className="font-bold text-lg mb-2 text-foreground">Role-Based Views</h3>
-               <p className="text-sm text-muted-foreground">Principals see health, teachers see classes, parents see updates.</p>
-             </div>
+               <h3>Role-Based Views</h3>
+               <p>Principals see institutional health, teachers see classes, and parents receive relevant updates.</p>
+             </article>
           </div>
         </div>
       </section>
 
       {/* Sub-types Support Strip */}
-      <section className="py-24 bg-slate-50 border-t border-border/40">
+      <section className="institution-models py-20 sm:py-28">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Engineered for your exact model.</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="institution-models__intro">
+            <span>One architecture, different operating realities</span>
+            <h2>Engineered for your exact model.</h2>
+            <p>
               While the core engine remains the same, GuruCool adapts its interface and logic to match the specific operational reality of your institution.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="institution-models__grid">
             {[
               {
                 title: "Schools",
@@ -100,17 +102,18 @@ export default function SolutionsEducationalInstitutionsPage() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 key={i}
               >
-                <Link to={sol.link} className="block group">
-                  <div className="p-8 rounded-2xl bg-white border border-border/60 shadow-sm hover:shadow-[var(--shadow-glow)] hover:border-primary/30 transition-all duration-300 h-full flex flex-col">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+                <Link to={sol.link} className={`institution-model institution-model--${i + 1} group`}>
+                    <div className="institution-model__icon">
                       <sol.icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-2 flex items-center justify-between">
+                    <div className="institution-model__copy">
+                    <span>Institution model</span>
+                    <h3>
                       {sol.title}
-                      <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="institution-model__arrow" />
                     </h3>
-                    <p className="text-muted-foreground">{sol.desc}</p>
-                  </div>
+                    <p>{sol.desc}</p>
+                    </div>
                 </Link>
               </motion.div>
             ))}

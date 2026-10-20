@@ -1,110 +1,119 @@
 import { Link } from "react-router-dom";
 import { ReactNode } from "react";
+import { ArrowDownRight, Check, Network, CalendarDays } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface BreadcrumbItem {
-  label: string;
-  href?: string;
-}
+interface BreadcrumbItem { label: string; href?: string; }
+
+export type PageHeaderVariant = "editorial" | "product" | "dark" | "warm" | "conversion" | "legal";
 
 interface PageHeaderProps {
   title: string;
-  subtitle?: string; // Legacy support
-  description?: string; // New proper naming
+  subtitle?: string;
+  description?: string;
   eyebrow?: string;
   breadcrumbs?: BreadcrumbItem[];
   badge?: ReactNode;
   alignment?: "center" | "left";
+  align?: "center" | "left";
+  variant?: PageHeaderVariant;
   className?: string;
 }
 
-export function PageHeader({ 
-  title, 
-  subtitle, 
-  description,
-  eyebrow,
-  breadcrumbs, 
-  badge,
-  alignment = "center",
-  className
-}: PageHeaderProps) {
-  const alignClass = alignment === "center" ? "mx-auto text-center" : "text-left";
+const variantDetail: Record<PageHeaderVariant, { label: string; notes: string[] }> = {
+  editorial: { label: "Institutional context", notes: ["Clear ownership", "Connected records"] },
+  product: { label: "Operating architecture", notes: ["One record", "Shared workflows"] },
+  dark: { label: "System perspective", notes: ["Role-based access", "Coordinated operations"] },
+  warm: { label: "Staged progress", notes: ["Start with priority", "Expand deliberately"] },
+  conversion: { label: "Working session", notes: ["Your current process", "A practical next step"] },
+  legal: { label: "Policy record", notes: ["Plain language", "Current terms"] },
+};
+
+function HeaderVisual({ variant }: { variant: PageHeaderVariant }) {
+  const detail = variantDetail[variant];
+
+  if (variant === "legal") return null;
+
+  if (variant === "product") {
+    return (
+      <div className="hero-motif hero-motif--system" aria-label="Connected operating architecture">
+        <div className="hero-motif__top"><Network aria-hidden="true" /><span>{detail.label}</span></div>
+        <div className="system-map" aria-hidden="true">
+          <span className="system-map__rail" />
+          <span className="system-map__node system-map__node--a">Identity</span>
+          <span className="system-map__node system-map__node--b">Operations</span>
+          <span className="system-map__node system-map__node--c">Records</span>
+        </div>
+        <p><i />Connected institutional operating system</p>
+      </div>
+    );
+  }
+
+  if (variant === "conversion") {
+    return (
+      <div className="hero-motif hero-motif--session" aria-label="Walkthrough structure">
+        <div className="session-card__head"><CalendarDays aria-hidden="true" /><span>{detail.label}</span></div>
+        {detail.notes.map((note) => <div className="session-row" key={note}><Check aria-hidden="true" /><span>{note}</span></div>)}
+        <div className="session-line"><span /><span /><span /></div>
+      </div>
+    );
+  }
+
+  if (variant === "warm") {
+    return (
+      <div className="hero-motif hero-motif--stages" aria-label="Staged rollout model">
+        <p>{detail.label}</p>
+        {detail.notes.map((note, index) => <div className="stage-row" key={note}><span>{index + 1}</span><strong>{note}</strong><ArrowDownRight aria-hidden="true" /></div>)}
+        <div className="stage-accent">Ready when your institution is.</div>
+      </div>
+    );
+  }
+
+  if (variant === "dark") {
+    return (
+      <div className="hero-motif hero-motif--planes" aria-label="Coordinated institutional layers">
+        <div className="plane plane--back"><span><small>Shared structure</small>Institution</span></div>
+        <div className="plane plane--middle"><span><small>Daily continuity</small>{detail.notes[1]}</span></div>
+        <div className="plane plane--front"><i /><strong><small>Controlled visibility</small>{detail.notes[0]}</strong></div>
+      </div>
+    );
+  }
+
+  return (
+    <aside className="hero-motif hero-motif--editorial" aria-label={`${detail.label} overview`}>
+      <div className="editorial-mark"><span>GuruCool</span><ArrowDownRight aria-hidden="true" /></div>
+      <p>{detail.label}</p>
+      {detail.notes.map((note) => <div className="editorial-note" key={note}><span aria-hidden="true" /><strong>{note}</strong></div>)}
+    </aside>
+  );
+}
+
+export function PageHeader({ title, subtitle, description, eyebrow, breadcrumbs, badge, alignment, align, variant = "editorial", className }: PageHeaderProps) {
+  const resolvedAlignment = alignment || align || "left";
   const displayDesc = description || subtitle;
 
   return (
-    <section className={cn(
-      "pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden bg-ice-panel border-b border-border/40",
-      className
-    )}>
-      {/* Very faint, controlled layer of color for premium section identity */}
-      <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className={cn("max-w-4xl", alignClass)}>
-          {/* Breadcrumbs */}
+    <section className={cn("inner-page-hero", `inner-page-hero--${variant}`, className)}>
+      <div className="inner-page-hero__grid" aria-hidden="true" />
+      <div className="inner-page-hero__field" aria-hidden="true" />
+      <div className="site-canvas inner-page-hero__canvas">
+        <div className={cn("inner-page-hero__copy", resolvedAlignment === "center" && "inner-page-hero__copy--center")}>
           {breadcrumbs && breadcrumbs.length > 0 && (
-            <nav className={cn(
-              "text-sm font-medium mb-8 flex flex-wrap gap-2",
-              alignment === "center" ? "items-center justify-center" : "items-center justify-start"
-            )}>
+            <nav aria-label="Breadcrumb" className="inner-page-hero__breadcrumbs">
               {breadcrumbs.map((crumb, index) => (
-                <span key={index} className="flex items-center">
-                  {crumb.href ? (
-                    <Link 
-                      to={crumb.href} 
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {crumb.label}
-                    </Link>
-                  ) : (
-                    <span className="text-foreground font-semibold">{crumb.label}</span>
-                  )}
-                  {index < breadcrumbs.length - 1 && (
-                    <span className="mx-2 text-border">/</span>
-                  )}
+                <span key={`${crumb.label}-${index}`}>
+                  {crumb.href ? <Link to={crumb.href}>{crumb.label}</Link> : <span aria-current="page">{crumb.label}</span>}
+                  {index < breadcrumbs.length - 1 && <span aria-hidden="true">/</span>}
                 </span>
               ))}
             </nav>
           )}
-
-          {/* Optional Badge / Icon block */}
-          {badge && (
-            <div className={cn(
-              "mb-6 flex",
-              alignment === "center" ? "justify-center" : "justify-start"
-            )}>
-              {badge}
-            </div>
-          )}
-
-          {/* Eyebrow / Chip */}
-          {eyebrow && (
-            <div className={cn(
-              "inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 mb-6 text-xs font-semibold text-primary uppercase tracking-widest",
-              alignment === "center" && "mx-auto"
-            )}>
-              {eyebrow}
-            </div>
-          )}
-
-          {/* Title */}
-          <h1 className={cn(
-            "text-display-sm sm:text-display-md lg:text-display-lg font-bold text-foreground tracking-tight mb-6 leading-[1.1]",
-            alignment === "center" ? "mx-auto" : ""
-          )}>
-            {title}
-          </h1>
-
-          {/* Subtitle / Description */}
-          {displayDesc && (
-            <p className={cn(
-              "text-body-lg sm:text-heading-sm text-muted-foreground leading-relaxed",
-              alignment === "center" ? "max-w-[60ch] mx-auto" : "max-w-[65ch]"
-            )}>
-              {displayDesc}
-            </p>
-          )}
+          {badge && <div className="inner-page-hero__badge">{badge}</div>}
+          {eyebrow && <p className="inner-page-hero__eyebrow"><span aria-hidden="true" />{eyebrow}</p>}
+          <h1>{title}</h1>
+          {displayDesc && <p className="inner-page-hero__description">{displayDesc}</p>}
         </div>
+        <HeaderVisual variant={variant} />
       </div>
     </section>
   );

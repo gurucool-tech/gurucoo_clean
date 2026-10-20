@@ -1,10 +1,6 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { MessageCircle, ArrowRight, Eye, Target, Heart } from "lucide-react";
+import { Eye, Target, Heart } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { SEO } from "@/components/SEO";
-
-const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20company.";
 
 const values = [
   {
@@ -33,6 +29,7 @@ export default function VisionMissionPage() {
         canonical="/vision-mission"
       />
       <PageHeader
+        variant="dark"
         title="Vision & Mission"
         subtitle="What drives us every day"
         breadcrumbs={[
@@ -43,25 +40,31 @@ export default function VisionMissionPage() {
       />
 
       {/* Vision & Mission */}
-      <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-card rounded-xl border border-border/50 p-8">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                  <Eye className="w-7 h-7 text-primary" />
+      <section className="vision-stage">
+        <div className="site-canvas">
+          <div className="vision-stage__inner">
+            <div className="vision-stage__intro">
+              <span>Our direction</span>
+              <p>Two commitments shape how GuruCool is designed, built, and introduced inside institutions.</p>
+            </div>
+            <div className="vision-stage__grid">
+              <div className="vision-stage__vision">
+                <div className="vision-stage__card-head">
+                  <span>01</span>
+                  <Eye aria-hidden="true" />
                 </div>
-                <h2 className="text-heading-xl font-bold text-foreground mb-4">Vision</h2>
-                <p className="text-body-lg text-muted-foreground">
+                <h2>Vision</h2>
+                <p>
                   Every school in India runs safely and smoothly with simple, practical systems.
                 </p>
               </div>
-              <div className="bg-card rounded-xl border border-border/50 p-8">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                  <Target className="w-7 h-7 text-primary" />
+              <div className="vision-stage__mission">
+                <div className="vision-stage__card-head">
+                  <span>02</span>
+                  <Target aria-hidden="true" />
                 </div>
-                <h2 className="text-heading-xl font-bold text-foreground mb-4">Mission</h2>
-                <p className="text-body-lg text-muted-foreground">
+                <h2>Mission</h2>
+                <p>
                   Reduce manual administrative work and improve attendance accuracy and parent communication for schools of all sizes.
                 </p>
               </div>
@@ -71,24 +74,25 @@ export default function VisionMissionPage() {
       </section>
 
       {/* Values */}
-      <section className="section-padding bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-display-sm font-bold text-foreground mb-4">
-                Our Values
-              </h2>
+      <section className="values-stage">
+        <div className="site-canvas">
+          <div className="values-stage__layout">
+            <div className="values-stage__heading">
+              <span>How we work</span>
+              <h2>Our Values</h2>
+              <p>Practical principles for building systems institutions can understand, trust, and use.</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {values.map((value) => (
-                <div key={value.title} className="text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                    <value.icon className="w-8 h-8 text-primary" />
+            <div className="values-stage__grid">
+              {values.map((value, index) => (
+                <article key={value.title} className="value-card">
+                  <div className="value-card__head">
+                    <value.icon aria-hidden="true" />
+                    <span>0{index + 1}</span>
                   </div>
-                  <h3 className="text-heading-lg font-bold text-foreground mb-3">{value.title}</h3>
-                  <p className="text-body-md text-muted-foreground">{value.description}</p>
-                </div>
+                  <h3>{value.title}</h3>
+                  <p>{value.description}</p>
+                </article>
               ))}
             </div>
           </div>
@@ -96,23 +100,24 @@ export default function VisionMissionPage() {
       </section>
 
       {/* Beliefs */}
-      <section className="section-padding bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-display-sm font-bold text-foreground mb-8 text-center">
-              What We Believe
-            </h2>
-            <div className="space-y-6 text-body-lg text-muted-foreground">
-              <p>
+      <section className="beliefs-stage">
+        <div className="site-canvas">
+          <div className="beliefs-stage__layout">
+            <div className="beliefs-stage__heading">
+              <span>What stays constant</span>
+              <h2>What We Believe</h2>
+            </div>
+            <div className="beliefs-stage__list">
+              <p data-index="01">
                 We believe that school software should solve real problems, not create new ones. Most schools struggle with basic operations — accurate attendance, effective parent communication, and simple administration. These aren't glamorous problems, but they matter every single day.
               </p>
-              <p>
+              <p data-index="02">
                 We believe that parents shouldn't need to download another app. WhatsApp works. Let's use it.
               </p>
-              <p>
+              <p data-index="03">
                 We believe that schools should start simple and add complexity only when they're ready. A staged approach leads to better adoption and outcomes.
               </p>
-              <p>
+              <p data-index="04">
                 We believe in being honest about what we can and cannot do. We're not trying to be everything for everyone. We're trying to be really good at the things that matter most.
               </p>
             </div>

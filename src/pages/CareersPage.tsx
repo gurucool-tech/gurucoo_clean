@@ -53,7 +53,7 @@ const culture = [
   {
     icon: Zap,
     title: "Move Fast, Learn Faster",
-    description: "We ship quickly, learn from feedback, and iterate. Perfect is the enemy of good.",
+    description: "We ship thoughtfully, learn from feedback, and improve through iteration.",
   },
 ];
 
@@ -66,23 +66,24 @@ export default function CareersPage() {
         canonical="/careers"
       />
       <PageHeader
+        variant="warm"
         title="Join Our Team"
         subtitle="Help us make schools across India run better. We're looking for passionate people who care about education."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About", href: "/about" }, { label: "Careers" }]}
       />
 
       {/* Culture */}
-      <section className="section-padding bg-background">
+      <section className="careers-stage section-padding bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
+          <div className="max-w-6xl mx-auto">
+            <div className="careers-stage__intro">
               <h2 className="text-display-sm font-bold text-foreground mb-4">Our Culture</h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {culture.map((item) => (
-                <div key={item.title} className="text-center">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+            <div className="careers-stage__grid">
+              {culture.map((item, index) => (
+                <div key={item.title} className={`culture-panel ${index === 0 ? "culture-panel--lead" : ""}`}>
+                  <div className="culture-panel__icon">
                     <item.icon className="w-7 h-7 text-primary" />
                   </div>
                   <h3 className="text-heading-md font-bold text-foreground mb-2">{item.title}</h3>

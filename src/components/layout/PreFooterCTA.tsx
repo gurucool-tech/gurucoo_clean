@@ -1,32 +1,35 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, ArrowRight } from "lucide-react";
-
-const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20book%20a%20demo%20and%20understand%20plans%20for%20our%20school.";
+import { ArrowRight } from "lucide-react";
 
 export function PreFooterCTA() {
   return (
-    <section className="py-14 sm:py-16 bg-background border-t border-border/40">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-heading-xl font-bold text-foreground mb-4">
-            Ready to see GuruCool in action?
+    <section className="bg-[hsl(var(--gc-porcelain))] py-8 sm:py-10 lg:py-12">
+      <div className="container-wide">
+        <div className="prefooter-panel">
+          <div className="relative z-10 grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+            <div className="max-w-2xl">
+              <div className="mb-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.15em] text-[hsl(var(--gc-lime))]">
+                <span className="h-2 w-2 rounded-full bg-[hsl(var(--gc-lime))]" />
+                See the connected system
+              </div>
+              <h2 className="text-3xl font-bold tracking-[-0.035em] text-white sm:text-4xl lg:text-5xl lg:leading-[1.02]">
+            See how GuruCool could work for your institution.
           </h2>
-          <p className="text-body-md text-muted-foreground mb-8">
-            Book a personalized demo and discover how GuruCool can simplify your school's operations.
+              <p className="mt-5 max-w-xl text-base leading-7 text-white/70">
+            Walk through the platform and the workflows that matter to your institution.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button asChild size="lg" className="gap-2 bg-whatsapp hover:bg-whatsapp-hover">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5" />
-                Contact on WhatsApp
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="gap-2">
+            </div>
+            <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-stretch">
+              <Button asChild size="lg" className="h-13 gap-2 rounded-lg bg-[hsl(var(--gc-electric-blue))] px-6">
               <Link to="/book-demo">
-                Book a Demo <ArrowRight className="w-4 h-4" />
+                Book a walkthrough <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
+              <Link to="/contact" className="text-link-light justify-center px-3 py-2">
+              Talk to us
+            </Link>
+            </div>
           </div>
         </div>
       </div>

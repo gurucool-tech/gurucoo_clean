@@ -70,6 +70,7 @@ Email: ${formData.email}`;
         canonical="/guides"
       />
       <PageHeader
+        variant="warm"
         title="Free Guides & Resources"
         subtitle="Practical resources to help schools improve their operations. Fill the form below to get access."
         breadcrumbs={[

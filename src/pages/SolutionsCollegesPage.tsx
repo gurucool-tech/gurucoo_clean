@@ -1,7 +1,6 @@
 import { SEO } from "@/components/SEO";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { SectionContainer } from "@/components/layout/SectionContainer";
-import { AbstractDashboard } from "@/components/ui/AbstractDashboard";
+import { SolutionOperationsStage } from "@/components/solutions/SolutionOperationsStage";
 
 export default function SolutionsCollegesPage() {
   return (
@@ -12,23 +11,13 @@ export default function SolutionsCollegesPage() {
         canonicalPath="/solutions/colleges"
       />
       <PageHeader 
+        variant="dark"
         eyebrow="Solutions: Higher Education"
         title="Operating at Scale for Colleges" 
         description="Handle complex academic structures, massive student records, and intricate exam seating with one unified system."
-        alignment="center"
+        alignment="left"
       />
-      <SectionContainer>
-        <div className="max-w-6xl mx-auto py-12">
-          <h2 className="text-3xl font-bold mb-6 text-foreground">Built for higher education complexity</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            From timetable generation to advanced assessment workflows and invigilator allotment, GuruCool scales with your college.
-          </p>
-          {/* Abstract UI Representation */}
-          <div className="mb-12">
-            <AbstractDashboard colorScheme="accent" title="College Timetable & Operations" mode="finance" />
-          </div>
-        </div>
-      </SectionContainer>
+      <SolutionOperationsStage kind="college" reverse eyebrow="Higher education" title="Built for higher education complexity" description="From timetable generation to advanced assessment workflows and invigilator allotment, GuruCool scales with your college." points={["Faculty and timetable coordination", "Assessment workflow visibility", "Connected academic records"]} />
     </>
   );
 }

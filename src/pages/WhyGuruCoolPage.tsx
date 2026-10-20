@@ -7,9 +7,9 @@ import { SEO } from "@/components/SEO";
 const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20learn%20why%20schools%20choose%20you.";
 
 const reasonCategories = [
-  { icon: Shield, title: "Attendance & Safety", reasons: ["QR-based ID cards eliminate proxy attendance", "Gate entry/exit tracking with timestamps", "Instant WhatsApp alerts when child arrives", "Photo verification with attendance", "Optional face recognition for higher security", "Complete audit trail of all attendance records", "Late arrival tracking and reporting"] },
+  { icon: Shield, title: "Attendance & Safety", reasons: ["QR-based ID cards reduce proxy attendance", "Gate entry/exit tracking with timestamps", "WhatsApp alerts when a child arrives", "Photo verification with attendance", "Optional face recognition for additional verification", "Audit trail of attendance records", "Late arrival tracking and reporting"] },
   { icon: Clock, title: "Admin Efficiency", reasons: ["Automated timetable generation", "Digital fee status tracking", "Streamlined admission process", "Leave management with approvals", "Document submission portal", "Role-based access control", "Centralized data management"] },
-  { icon: Bell, title: "Communication", reasons: ["WhatsApp-first parent communication", "No app downloads for parents", "Near-100% message delivery rate", "Automated fee reminders", "Exam schedule notifications", "School announcements reach everyone", "Customizable message templates"] },
+  { icon: Bell, title: "Communication", reasons: ["WhatsApp-first parent communication", "No app downloads for parents", "Delivery status visibility", "Automated fee reminders", "Exam schedule notifications", "School announcement workflows", "Customizable message templates"] },
   { icon: BookOpen, title: "Exams & Academics", reasons: ["Exam scheduling and management", "Mark entry with validation", "Automatic grade calculation", "Report card generation", "Performance tracking over time", "Subject-wise analytics", "Previous year comparisons"] },
   { icon: BarChart3, title: "Data & Control", reasons: ["All student data in one place", "Historical records preserved", "Custom reports and exports", "Dashboard for quick insights", "Class-wise and section-wise views", "Trend analysis and patterns", "Compliance-ready record keeping"] },
   { icon: Building2, title: "Scalability", reasons: ["Start with attendance, add modules later", "No overwhelming feature overload", "Multi-school support for groups", "Grows with your school", "Upgrade plans without data loss", "Free setup and training", "Dedicated support team"] },
@@ -41,7 +41,7 @@ export default function WhyGuruCoolPage() {
             </Button>
             <Button asChild size="lg" variant="outline" className="gap-2">
               <Link to="/book-demo">
-                Book a Demo <ArrowRight className="w-4 h-4" />
+                Book a walkthrough <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
           </div>

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 interface SectionContainerProps {
   children: ReactNode;
   className?: string;
-  /** Use 'narrow' for content-focused sections (max-w-5xl), 'default' for standard (max-w-6xl), 'wide' for full content (max-w-7xl) */
+  /** Semantic canvases: reading, editorial, standard, and product-wide. */
   size?: "narrow" | "default" | "wide";
   /** Add background color class like 'bg-muted/30' */
   background?: string;
@@ -17,14 +17,14 @@ export function SectionContainer({
   background,
 }: SectionContainerProps) {
   const maxWidthClass = {
-    narrow: "max-w-5xl",
-    default: "max-w-6xl",
-    wide: "max-w-7xl",
+    narrow: "max-w-[780px]",
+    default: "max-w-[1240px]",
+    wide: "max-w-[1520px]",
   }[size];
 
   return (
-    <section className={cn(background)}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className={cn("section-container", background)} data-canvas-size={size}>
+      <div className="site-canvas">
         <div className={cn(maxWidthClass, "mx-auto", className)}>
           {children}
         </div>

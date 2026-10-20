@@ -28,10 +28,12 @@ export default function StagedDigitizationPost() {
           headline: "Starting Simple: The Staged Approach to School Digitization",
           description: "Most implementations fail when schools try to do everything at once. A staged rollout wins.",
           datePublished: "2025-01-05",
-          url: "https://gurucool.com/blog/staged-approach-school-digitization"
+    url: "https://edugurucool.in/blog/staged-approach-school-digitization"
         }}
       />
       <PageHeader
+        variant="warm"
+        eyebrow="Field note · Implementation"
         title="Starting Simple: The Staged Approach to School Digitization"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -158,7 +160,7 @@ export default function StagedDigitizationPost() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      <span className="text-body-sm text-muted-foreground">Instant WhatsApp alerts to parents</span>
+                      <span className="text-body-sm text-muted-foreground">WhatsApp alerts to parents</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
@@ -218,7 +220,7 @@ export default function StagedDigitizationPost() {
                   <p className="text-body-sm text-muted-foreground">Lesson: Train in focused batches. Master one module before adding another.</p>
                 </div>
                 <div className="p-4 border-l-4 border-destructive bg-destructive/5 rounded-r-lg">
-                  <h4 className="font-semibold text-foreground mb-1">Mistake 2: Expecting immediate perfection</h4>
+                  <h4 className="font-semibold text-foreground mb-1">Mistake 2: Expecting every workflow to work immediately</h4>
                   <p className="text-body-sm text-muted-foreground">Lesson: Allow 2–3 weeks for each new module to stabilize before evaluating success.</p>
                 </div>
                 <div className="p-4 border-l-4 border-destructive bg-destructive/5 rounded-r-lg">
@@ -259,7 +261,7 @@ export default function StagedDigitizationPost() {
                 </Button>
                 <Button asChild variant="outline" className="gap-2">
                   <Link to="/book-demo">
-                    Book a Demo <ArrowRight className="w-4 h-4" />
+                Book a walkthrough <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
               </div>

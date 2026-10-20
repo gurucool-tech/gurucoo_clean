@@ -1,120 +1,44 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { MessageCircle, ArrowRight, Building2, Quote } from "lucide-react";
-import { PageHeader } from "@/components/layout/PageHeader";
+import { Building2, CheckCircle, Network, Users } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { PageHeader } from "@/components/layout/PageHeader";
 
-const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20learn%20about%20your%20customers.";
-
-const testimonials = [
-  {
-    quote: "The WhatsApp attendance alerts have been a game changer. Parents actually receive and read the messages now.",
-    role: "School Administrator",
-    schoolType: "CBSE School, Maharashtra",
-  },
-  {
-    quote: "We started with just attendance and gradually added more modules. The staged approach really worked for us.",
-    role: "Principal",
-    schoolType: "State Board School, Karnataka",
-  },
-  {
-    quote: "Managing three campuses from one dashboard has simplified our operations significantly.",
-    role: "Trust Administrator",
-    schoolType: "School Group, Gujarat",
-  },
+const institutionTypes = [
+  { type: "Independent schools", detail: "Connect core daily workflows without replacing everything at once." },
+  { type: "Colleges", detail: "Coordinate academic structures, assessments, records, and reporting." },
+  { type: "Tuition and coaching", detail: "Track branches, batches, attendance, fees, and communication." },
+  { type: "Multi-campus groups", detail: "Create shared standards while preserving campus-level operations." },
 ];
 
-const schoolTypes = [
-  { type: "CBSE Schools", icon: Building2 },
-  { type: "State Board Schools", icon: Building2 },
-  { type: "ICSE Schools", icon: Building2 },
-  { type: "International Schools", icon: Building2 },
-  { type: "School Groups & Trusts", icon: Building2 },
-  { type: "Play Schools & Pre-Primary", icon: Building2 },
+const fitSignals = [
+  "Records are duplicated across separate tools",
+  "Leadership needs clearer operational visibility",
+  "Teams need role-based access and configurable workflows",
+  "The institution wants to begin with one layer and expand deliberately",
 ];
 
 export default function CustomersPage() {
   return (
-    <div className="flex-1 flex flex-col bg-background">
-      <SEO
-        title="Customers | Schools Using GuruCool"
-        description="Schools using GuruCool to improve attendance accuracy, parent communication, and administrative efficiency."
-        canonical="/customers"
-      />
-      <PageHeader
-        title="Our Customers"
-        subtitle="Schools across India trust GuruCool for their daily operations"
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "About", href: "/about" },
-          { label: "Customers" },
-        ]}
-      />
-
-      {/* School Types */}
-      <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-display-sm font-bold text-foreground mb-4">
-                Schools We Serve
-              </h2>
-              <p className="text-body-lg text-muted-foreground">
-                GuruCool works with schools of all types and sizes
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {schoolTypes.map((school) => (
-                <div key={school.type} className="bg-card rounded-xl border border-border/50 p-6 text-center hover:shadow-premium transition-shadow">
-                  <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mx-auto mb-4">
-                    <school.icon className="w-6 h-6 text-muted-foreground" />
-                  </div>
-                  <h3 className="text-heading-md font-bold text-foreground">{school.type}</h3>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 p-6 bg-muted/30 rounded-xl text-center">
-              <p className="text-body-md text-muted-foreground">
-                School logos and names available upon request. We respect our customers' privacy.
-              </p>
-            </div>
+    <div className="flex flex-1 flex-col bg-background">
+      <SEO title="Institution Fit | GuruCool" description="See which educational institutions GuruCool is designed to support." canonicalPath="/customers" />
+      <PageHeader variant="dark" eyebrow="Institution fit" title="Designed for institutions ready to connect their operations." description="GuruCool is a connected institutional operating system for teams moving beyond fragmented records and disconnected daily workflows." alignment="left" breadcrumbs={[{ label: "Home", href: "/" }, { label: "Institution fit" }]} />
+      <section className="section-padding relative overflow-hidden">
+        <div className="structural-grid-light absolute inset-0 opacity-60" />
+        <div className="site-canvas relative grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+          <div className="rounded-xl bg-[hsl(var(--gc-midnight))] p-7 text-white sm:p-9">
+            <Network className="h-8 w-8 text-[hsl(var(--gc-lime))]" />
+            <h2 className="mt-8 text-3xl font-bold tracking-[-0.035em]">A useful fit starts with operational reality.</h2>
+            <p className="mt-4 max-w-md leading-7 text-[hsl(var(--gc-ice))]">GuruCool is intended for institutions that need connected institutional records, clearer ownership, and a staged path to adoption.</p>
+            <div className="mt-8 border-l-2 border-[hsl(var(--gc-olive))] pl-4 text-sm text-white/70">Representative institution types, not customer claims.</div>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {institutionTypes.map((item, index) => <article key={item.type} className={`rounded-xl border p-6 ${index === 0 ? "border-primary/30 bg-[hsl(var(--gc-eggshell))] sm:col-span-2" : "border-[hsl(var(--gc-ice))] bg-white"}`}><div className="flex items-center gap-3"><Building2 className="h-5 w-5 text-primary" /><span className="ui-label">Institution context</span></div><h3 className="mt-5 text-xl font-bold text-foreground">{item.type}</h3><p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">{item.detail}</p></article>)}
           </div>
         </div>
       </section>
-
-      {/* Testimonials */}
-      <section className="section-padding bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-display-sm font-bold text-foreground mb-4">
-                What Schools Say
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-card rounded-xl border border-border/50 p-6">
-                  <Quote className="w-8 h-8 text-primary/30 mb-4" />
-                  <p className="text-body-md text-foreground mb-4 italic">
-                    "{testimonial.quote}"
-                  </p>
-                  <div>
-                    <p className="text-body-sm font-medium text-foreground">{testimonial.role}</p>
-                    <p className="text-caption text-muted-foreground">{testimonial.schoolType}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 text-center">
-              <p className="text-body-sm text-muted-foreground">
-                Names and specific details anonymized for privacy
-              </p>
-            </div>
-          </div>
+      <section className="section-padding bg-[hsl(var(--gc-cream)/0.5)]">
+        <div className="site-canvas grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+          <div><span className="section-label section-label-olive"><Users className="h-4 w-4" />Who it is for</span><h2 className="mt-5 text-4xl font-bold tracking-[-0.04em] text-foreground">Signals that the operating model fits.</h2></div>
+          <div className="grid gap-3 sm:grid-cols-2">{fitSignals.map((signal, index) => <div key={signal} className="flex items-start gap-3 rounded-lg border border-[hsl(var(--gc-olive)/0.2)] bg-white/75 p-4"><CheckCircle className={`mt-0.5 h-5 w-5 shrink-0 ${index === 1 ? "text-[hsl(var(--gc-amber))]" : "text-primary"}`} /><p className="text-sm font-semibold leading-6 text-[hsl(var(--gc-institutional))]">{signal}</p></div>)}</div>
         </div>
       </section>
     </div>

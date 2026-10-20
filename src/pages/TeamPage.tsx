@@ -26,6 +26,7 @@ export default function TeamPage() {
         canonical="/team"
       />
       <PageHeader
+        variant="editorial"
         title="Our Team"
         subtitle="A passionate team dedicated to improving school operations across India"
         breadcrumbs={[
@@ -36,13 +37,13 @@ export default function TeamPage() {
       />
 
       {/* Team */}
-      <section className="section-padding bg-background">
+      <section className="team-stage section-padding bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {team.map((member) => (
-                <div key={member.role} className="bg-card rounded-xl border border-border/50 p-6 hover:shadow-premium transition-shadow">
-                  <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="team-stage__grid">
+              {team.map((member, index) => (
+                <div key={member.role} className={`team-role ${index === 0 ? "team-role--lead" : ""}`}>
+                  <div className="team-role__icon">
                     <Users className="w-8 h-8 text-muted-foreground" />
                   </div>
                   <h3 className="text-heading-md font-bold text-foreground mb-2">{member.role}</h3>
@@ -51,7 +52,7 @@ export default function TeamPage() {
               ))}
             </div>
 
-            <div className="mt-12 p-8 bg-muted/30 rounded-xl text-center">
+            <div className="team-stage__note">
               <p className="text-body-md text-muted-foreground">
                 We're a small but focused team. Every member wears multiple hats and is committed to school success.
               </p>

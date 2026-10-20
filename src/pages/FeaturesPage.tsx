@@ -2,14 +2,14 @@ import { SEO } from "@/components/SEO";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { SectionContainer } from "@/components/layout/SectionContainer";
 import { Shield, BookOpen, MessageCircle, PenTool, CreditCard, BarChart } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };
@@ -23,25 +23,26 @@ export default function FeaturesPage() {
         canonicalPath="/features"
       />
       <div className="relative overflow-hidden bg-background">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
-        
         <PageHeader 
+          variant="product"
+          eyebrow="Workflow architecture"
           title="Features Organized by Workflow" 
           description="Our platform is built around the actual workflows of educational institutions, not disconnected toolkits."
+          alignment="left"
         />
       
       <SectionContainer>
-        <div className="max-w-6xl mx-auto py-12">
+        <div className="max-w-[1240px] mx-auto py-14">
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            className="grid gap-5 md:grid-cols-2 lg:grid-cols-6"
           >
             
             {/* Workflow 1 */}
-            <motion.div variants={fadeInUp} className="feature-card group">
+            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-4">
               <Shield className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">Attendance & Identity</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -53,7 +54,7 @@ export default function FeaturesPage() {
             </motion.div>
 
             {/* Workflow 2 */}
-            <motion.div variants={fadeInUp} className="feature-card group">
+            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-2">
               <BookOpen className="w-10 h-10 text-guru-sky mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-guru-sky transition-colors">Academic Operations</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -65,7 +66,7 @@ export default function FeaturesPage() {
             </motion.div>
 
             {/* Workflow 3 */}
-            <motion.div variants={fadeInUp} className="feature-card group">
+            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-3 bg-[hsl(var(--gc-ice)/0.32)]">
               <MessageCircle className="w-10 h-10 text-[#25D366] mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-[#25D366] transition-colors">Parent Communication</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -77,7 +78,7 @@ export default function FeaturesPage() {
             </motion.div>
 
             {/* Workflow 4 */}
-            <motion.div variants={fadeInUp} className="feature-card group">
+            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-3">
               <PenTool className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">Exams & Assessments</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -89,7 +90,7 @@ export default function FeaturesPage() {
             </motion.div>
 
             {/* Workflow 5 */}
-            <motion.div variants={fadeInUp} className="feature-card group">
+            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-2 bg-[hsl(var(--gc-cream)/0.55)]">
               <CreditCard className="w-10 h-10 text-foreground mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">Fees & Records</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -101,7 +102,7 @@ export default function FeaturesPage() {
             </motion.div>
 
             {/* Workflow 6 */}
-            <motion.div variants={fadeInUp} className="feature-card group">
+            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-4">
               <BarChart className="w-10 h-10 text-guru-sky mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-guru-sky transition-colors">Reporting & Visibility</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">

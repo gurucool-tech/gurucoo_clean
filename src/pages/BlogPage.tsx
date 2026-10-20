@@ -45,6 +45,7 @@ export default function BlogPage() {
         canonical="/blog"
       />
       <PageHeader
+        variant="editorial"
         title="Blog"
         subtitle="Insights on school management, education technology, and operational efficiency. No fluff, just practical knowledge."
         breadcrumbs={[
@@ -54,12 +55,12 @@ export default function BlogPage() {
       />
 
       {/* Blog Posts */}
-      <section className="py-12 sm:py-16">
+      <section className="journal-index py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-8">
-              {blogPosts.map((post) => (
-                <article key={post.id} className="bg-card rounded-xl border border-border/50 p-8 hover:shadow-premium transition-shadow">
+          <div className="max-w-6xl mx-auto">
+            <div className="journal-index__grid">
+              {blogPosts.map((post, index) => (
+                <article key={post.id} className={`journal-card ${index === 0 ? "journal-card--lead" : ""}`}>
                   <div className="flex flex-wrap items-center gap-4 mb-4">
                     <span className="pill pill-primary">{post.category}</span>
                     <div className="flex items-center gap-4 text-caption text-muted-foreground">
@@ -73,6 +74,11 @@ export default function BlogPage() {
                       </span>
                     </div>
                   </div>
+                  {index === 0 && (
+                    <div className="journal-card__signal" aria-label="Article themes">
+                      <span>Safety</span><span>Compliance</span><span>Parent trust</span>
+                    </div>
+                  )}
                   <h2 className="text-heading-xl font-bold text-foreground mb-3 hover:text-primary transition-colors">
                     <Link to={`/blog/${post.slug}`}>{post.title}</Link>
                   </h2>

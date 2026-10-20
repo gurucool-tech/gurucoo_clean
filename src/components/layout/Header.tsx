@@ -4,7 +4,7 @@ import { ChevronDown, Menu, X, MessageCircle, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-new-blue.png";
 
-const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20book%20a%20demo%20and%20understand%20plans%20for%20our%20school.";
+const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20book%20a%20walkthrough%20and%20understand%20plans%20for%20our%20institution.";
 
 interface NavItem {
   label: string;
@@ -45,7 +45,7 @@ const navigation: NavItem[] = [
       { label: "Our Story", href: "/about", description: "Why we exist" },
       { label: "Vision & Mission", href: "/vision-mission", description: "What drives us" },
       { label: "Leadership", href: "/team", description: "Meet our team" },
-      { label: "Customers", href: "/customers", description: "Institutions we serve" },
+      { label: "Institution fit", href: "/customers", description: "Who GuruCool is designed for" },
       { label: "Careers", href: "/careers", description: "Join us" },
       { label: "Contact", href: "/contact", description: "Get in touch" },
     ],
@@ -60,17 +60,17 @@ export function Header() {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 lg:top-4 lg:left-1/2 lg:-translate-x-1/2 lg:w-max lg:rounded-full bg-card/70 backdrop-blur-xl border-b lg:border-b-0 border-border/50 lg:border shadow-[var(--shadow-nav)] transition-all duration-300">
-      <div className="px-4 lg:px-6 w-full">
-        <div className="flex items-center justify-between h-[64px] lg:h-[72px] lg:gap-8">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-card/95 shadow-[var(--shadow-nav)] backdrop-blur-lg transition-[background-color,border-color,box-shadow] duration-200 xl:left-1/2 xl:right-auto xl:top-3 xl:w-[calc(100%-3rem)] xl:max-w-[1400px] xl:-translate-x-1/2 xl:rounded-xl xl:border">
+      <div className="w-full px-4 lg:px-6">
+        <div className="flex h-[64px] items-center justify-between xl:h-[72px] xl:gap-6">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group" title="GuruCool Home">
+          <Link to="/" className="flex items-center gap-2 group rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" title="GuruCool Home">
             <img 
               src={logo} 
-              alt="GuruCool - Smart School Management System" 
-              className="h-12 w-auto object-contain transition-transform group-hover:scale-105" 
+              alt="GuruCool" 
+              className="h-12 w-auto object-contain"
               loading="eager"
-              fetchpriority="high"
+              fetchPriority="high"
               width={180}
               height={48}
             />
@@ -78,7 +78,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-0.5">
             {navigation.map((item) => (
               <div
                 key={item.label}
@@ -90,21 +90,23 @@ export function Header() {
                   <Link
                     to={item.href}
                     title={`Go to ${item.label}`}
-                    className={`flex items-center gap-1 px-4 py-2 text-body-sm font-medium rounded-lg transition-colors ${
+                    className={`nav-link-desktop flex items-center gap-1 px-4 py-2 text-[15px] font-semibold tracking-[-0.01em] transition-colors ${
                       isActive(item.href)
-                        ? "text-primary bg-primary/5"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
+                    aria-current={isActive(item.href) ? "page" : undefined}
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <button
-                    className={`flex items-center gap-1 px-4 py-2 text-body-sm font-medium rounded-lg transition-colors ${
+                    className={`nav-link-desktop flex items-center gap-1 px-4 py-2 text-[15px] font-semibold tracking-[-0.01em] transition-colors ${
                       openDropdown === item.label
-                        ? "text-primary bg-primary/5"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
+                    aria-expanded={openDropdown === item.label}
                   >
                     {item.label}
                     <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`} />
@@ -114,11 +116,11 @@ export function Header() {
                 {/* Dropdown */}
                 {item.children && (
                   <div
-                    className={`absolute top-full left-0 pt-2 transition-all duration-200 ${
+                    className={`absolute top-full left-0 pt-2 transition-[opacity,transform] duration-200 ${
                       openDropdown === item.label ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
                     }`}
                   >
-                    <div className="bg-card rounded-xl shadow-premium-lg border border-border/50 py-2 min-w-[280px]">
+                    <div className="bg-card rounded-lg shadow-[var(--shadow-lg)] border border-border py-2 min-w-[280px]">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
@@ -141,14 +143,14 @@ export function Header() {
           </nav>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button asChild variant="outline" size="sm" className="gap-2 rounded-full border-border hover:bg-accent transition-all">
+          <div className="hidden xl:flex items-center gap-2">
+            <Button asChild variant="outline" size="sm" className="gap-2 rounded-lg border-primary/35 font-bold transition-[color,background-color,border-color,box-shadow,transform] hover:-translate-y-px hover:bg-accent">
               <Link to="/book-demo" title="Schedule a live platform walkthrough">
                 <Calendar className="w-4 h-4" />
-                Book a Demo
+                Book a walkthrough
               </Link>
             </Button>
-            <Button asChild size="sm" className="gap-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[var(--shadow-glow)] transition-all duration-300">
+            <Button asChild size="sm" className="gap-2 rounded-lg bg-primary font-bold text-primary-foreground transition-[color,background-color,border-color,box-shadow,transform] duration-200 hover:-translate-y-px hover:bg-[hsl(var(--gc-deep-navy))] hover:shadow-[var(--shadow-md)] active:translate-y-0">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" title="Chat with GuruCool on WhatsApp">
                 <MessageCircle className="w-4 h-4" />
                 Contact on WhatsApp
@@ -158,7 +160,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-foreground"
+            className="xl:hidden rounded-lg p-2 text-foreground transition-colors hover:bg-accent"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -168,7 +170,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileOpen && (
-          <div className="lg:hidden py-4 border-t border-border/50 animate-fade-in">
+          <div className="xl:hidden py-4 border-t border-border/50 animate-fade-in">
             <nav className="space-y-1">
               {navigation.map((item) => (
                 <div key={item.label}>
@@ -211,13 +213,13 @@ export function Header() {
 
             {/* Mobile CTA */}
             <div className="mt-4 pt-4 border-t border-border/50 space-y-3 px-4 pb-4">
-              <Button asChild variant="outline" className="w-full gap-2 rounded-full border-border">
+              <Button asChild variant="outline" className="w-full gap-2 rounded-lg border-primary/35">
                 <Link to="/book-demo" onClick={() => setMobileOpen(false)}>
                   <Calendar className="w-4 h-4" />
-                  Book a Demo
+                  Book a walkthrough
                 </Link>
               </Button>
-              <Button asChild className="w-full gap-2 rounded-full bg-primary text-primary-foreground">
+              <Button asChild className="w-full gap-2 rounded-lg bg-primary text-primary-foreground">
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4" />
                   Contact on WhatsApp
