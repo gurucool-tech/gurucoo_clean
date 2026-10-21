@@ -1,0 +1,32 @@
+# GuruCool
+
+> GuruCool is an AI startup building a connected institutional operating system, beginning with education.
+
+GuruCool connects institutional workflows across identity, attendance, academics, communication, assessments, fees, and reporting.
+
+## Product
+- [Product](https://edugurucool.in/product)
+- [Features](https://edugurucool.in/features)
+- [Pricing](https://edugurucool.in/plans)
+
+## Solutions
+- [Educational Institutions](https://edugurucool.in/solutions/educational-institutions)
+- [Schools](https://edugurucool.in/solutions/schools)
+- [Colleges](https://edugurucool.in/solutions/colleges)
+- [Tuition and Coaching](https://edugurucool.in/solutions/tuition-coaching)
+- [Multi-Campus Groups](https://edugurucool.in/solutions/multi-campus)
+
+## Company
+- [About](https://edugurucool.in/about)
+- [Vision and Mission](https://edugurucool.in/vision-mission)
+- [Team](https://edugurucool.in/team)
+- [Careers](https://edugurucool.in/careers)
+
+## Resources
+- [Blog](https://edugurucool.in/blog)
+- [Guides](https://edugurucool.in/guides)
+- [FAQ](https://edugurucool.in/faq)
+
+## Contact
+- [Book a walkthrough](https://edugurucool.in/book-demo)
+- [Contact](https://edugurucool.in/contact)

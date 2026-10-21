@@ -102,14 +102,14 @@ export function Header() {
               className="h-12 w-auto object-contain"
               loading="eager"
               fetchPriority="high"
-              width={180}
+              width={48}
               height={48}
             />
             <span className="text-xl font-bold text-foreground">GuruCool</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-0.5">
+          <nav className="hidden xl:flex items-center gap-0.5" aria-label="Primary navigation">
             {navigation.map((item) => (
               <div
                 key={item.label}
@@ -138,15 +138,19 @@ export function Header() {
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                     aria-expanded={openDropdown === item.label}
+                    aria-controls={`desktop-${item.label.toLowerCase()}-menu`}
+                    onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
+                    onFocus={() => setOpenDropdown(item.label)}
                   >
                     {item.label}
-                    <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`} />
+                    <ChevronDown aria-hidden="true" className={`w-4 h-4 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`} />
                   </button>
                 )}
 
                 {/* Dropdown */}
                 {item.children && (
                   <div
+                    id={`desktop-${item.label.toLowerCase()}-menu`}
                     className={`absolute top-full left-0 pt-2 transition-[opacity,transform] duration-200 ${
                       openDropdown === item.label ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
                     }`}
@@ -159,6 +163,7 @@ export function Header() {
                           title={child.description || child.label}
                           className="flex flex-col px-4 py-3 hover:bg-muted/50 transition-colors"
                           onClick={() => setOpenDropdown(null)}
+                          aria-current={isActive(child.href) ? "page" : undefined}
                         >
                           <span className="text-body-sm font-medium text-foreground">{child.label}</span>
                           {child.description && (
@@ -194,15 +199,17 @@ export function Header() {
             className="xl:hidden rounded-lg p-2 text-foreground transition-colors hover:bg-accent"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X aria-hidden="true" className="w-6 h-6" /> : <Menu aria-hidden="true" className="w-6 h-6" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {mobileOpen && (
-          <div className="xl:hidden py-4 border-t border-border/50 animate-fade-in">
-            <nav className="space-y-1">
+          <div id="mobile-navigation" className="xl:hidden py-4 border-t border-border/50 animate-fade-in">
+            <nav className="space-y-1" aria-label="Mobile navigation">
               {navigation.map((item) => (
                 <div key={item.label}>
                   {item.href ? (
@@ -210,6 +217,7 @@ export function Header() {
                       to={item.href}
                       className="block px-4 py-3 text-body-sm font-medium text-foreground hover:bg-muted/50 rounded-lg"
                       onClick={() => setMobileOpen(false)}
+                      aria-current={isActive(item.href) ? "page" : undefined}
                     >
                       {item.label}
                     </Link>
@@ -218,18 +226,21 @@ export function Header() {
                       <button
                         className="flex items-center justify-between w-full px-4 py-3 text-body-sm font-medium text-foreground hover:bg-muted/50 rounded-lg"
                         onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
+                        aria-expanded={openDropdown === item.label}
+                        aria-controls={`mobile-${item.label.toLowerCase()}-menu`}
                       >
                         {item.label}
-                        <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`} />
+                        <ChevronDown aria-hidden="true" className={`w-4 h-4 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`} />
                       </button>
                       {openDropdown === item.label && item.children && (
-                        <div className="ml-4 mt-1 space-y-1 animate-fade-in">
+                        <div id={`mobile-${item.label.toLowerCase()}-menu`} className="ml-4 mt-1 space-y-1 animate-fade-in">
                           {item.children.map((child) => (
                             <Link
                               key={child.href}
                               to={child.href}
                               className="block px-4 py-2 text-body-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg"
                               onClick={() => setMobileOpen(false)}
+                              aria-current={isActive(child.href) ? "page" : undefined}
                             >
                               {child.label}
                             </Link>

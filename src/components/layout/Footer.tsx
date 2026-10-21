@@ -42,7 +42,7 @@ export function Footer() {
         <div className="grid gap-10 border-b border-white/10 pb-10 lg:grid-cols-[1.25fr_2fr]">
           <div className="max-w-sm">
             <Link to="/" className="inline-flex items-center rounded-lg bg-white p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--gc-action))]" aria-label="GuruCool home">
-              <img src={logo} alt="GuruCool" className="h-8 w-auto" loading="lazy" width={120} height={32} />
+              <img src={logo} alt="GuruCool" className="h-8 w-auto" loading="lazy" decoding="async" width={32} height={32} />
             </Link>
             <p className="mt-5 text-lg font-semibold text-white">Everything connected. One institution.</p>
             <Link to="/book-demo" className="footer-action group mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-white hover:text-[hsl(var(--gc-action))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--gc-action))]">

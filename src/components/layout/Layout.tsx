@@ -12,8 +12,9 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Header />
-      <main className="flex-1 flex flex-col pt-[64px] xl:pt-[88px]">
+      <main id="main-content" className="flex-1 flex flex-col pt-[64px] xl:pt-[88px]">
         <SiteScrollReveal />
         {children}
       </main>

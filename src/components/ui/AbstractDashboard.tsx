@@ -430,9 +430,10 @@ export function AbstractDashboard({ mode = "school-overview" }: AbstractDashboar
                   src={logo} 
                   alt="GuruCool" 
                   className="h-7 w-auto object-contain" 
-                  width={105} 
+                  width={28} 
                   height={28} 
                   loading="lazy" 
+                  decoding="async"
                 />
                 <span className="font-bold text-foreground text-lg tracking-tight">GuruCool</span>
               </div>

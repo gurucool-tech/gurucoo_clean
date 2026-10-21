@@ -1,9 +1,5 @@
 import { lazy, Suspense } from "react";
 import { LazyMotion, domAnimation } from "framer-motion";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
@@ -38,14 +34,8 @@ const TermsPage = lazy(() => import("./pages/TermsPage"));
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const queryClient = new QueryClient();
-
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <HelmetProvider>
+  <HelmetProvider>
         <BrowserRouter>
           <ScrollToTop />
           <LazyMotion features={domAnimation}>
@@ -94,9 +84,7 @@ const App = () => (
             </Layout>
           </LazyMotion>
         </BrowserRouter>
-      </HelmetProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;

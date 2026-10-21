@@ -100,12 +100,14 @@ export function PageHeader({ title, subtitle, description, eyebrow, breadcrumbs,
         <div className={cn("inner-page-hero__copy", resolvedAlignment === "center" && "inner-page-hero__copy--center")}>
           {breadcrumbs && breadcrumbs.length > 0 && (
             <nav aria-label="Breadcrumb" className="inner-page-hero__breadcrumbs">
-              {breadcrumbs.map((crumb, index) => (
-                <span key={`${crumb.label}-${index}`}>
-                  {crumb.href ? <Link to={crumb.href}>{crumb.label}</Link> : <span aria-current="page">{crumb.label}</span>}
-                  {index < breadcrumbs.length - 1 && <span aria-hidden="true">/</span>}
-                </span>
-              ))}
+              <ol>
+                {breadcrumbs.map((crumb, index) => (
+                  <li key={`${crumb.label}-${index}`}>
+                    {crumb.href ? <Link to={crumb.href}>{crumb.label}</Link> : <span aria-current="page">{crumb.label}</span>}
+                    {index < breadcrumbs.length - 1 && <span aria-hidden="true">/</span>}
+                  </li>
+                ))}
+              </ol>
             </nav>
           )}
           {badge && <div className="inner-page-hero__badge">{badge}</div>}

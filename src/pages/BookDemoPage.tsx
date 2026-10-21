@@ -6,8 +6,24 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle2, MessageCircle } from "lucide-react";
+import type { FormEvent } from "react";
 
 const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20book%20a%20structural%20walkthrough.";
+
+function requestWalkthrough(event: FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+  const data = new FormData(event.currentTarget);
+  const message = [
+    "Hello Team GuruCool, I'd like to book a structural walkthrough.",
+    `Name: ${data.get("given-name")} ${data.get("family-name")}`,
+    `Institution: ${data.get("organization")}`,
+    `Email: ${data.get("email")}`,
+    `Phone: ${data.get("tel")}`,
+    `Operational challenge: ${data.get("message") || "Not provided"}`,
+  ].join("\n");
+
+  window.open(`https://wa.me/917058905200?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+}
 
 export default function BookDemoPage() {
   return (
@@ -67,36 +83,36 @@ export default function BookDemoPage() {
             {/* Right Column: Form */}
             <div className="bg-card border border-border p-8 shadow-sm">
               <h3 className="text-xl font-bold mb-6">Schedule your session</h3>
-              <form className="space-y-6">
+              <form className="space-y-6" aria-label="Request a GuruCool walkthrough" onSubmit={requestWalkthrough}>
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="Lokesh" className="bg-background" />
+                    <Input id="firstName" name="given-name" autoComplete="given-name" placeholder="Lokesh" className="bg-background" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Rahul" className="bg-background" />
+                    <Input id="lastName" name="family-name" autoComplete="family-name" placeholder="Rahul" className="bg-background" required />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="institutionName">Institution Name</Label>
-                  <Input id="institutionName" placeholder="Your School or College" className="bg-background" />
+                  <Input id="institutionName" name="organization" autoComplete="organization" placeholder="Your School or College" className="bg-background" required />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="email">Work Email</Label>
-                  <Input id="email" type="email" placeholder="rahul@institution.edu" className="bg-background" />
+                  <Input id="email" name="email" type="email" autoComplete="email" placeholder="rahul@institution.edu" className="bg-background" required />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="+91" className="bg-background" />
+                  <Input id="phone" name="tel" type="tel" autoComplete="tel" placeholder="+91" className="bg-background" required />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="message">What is your biggest operational challenge right now? (Optional)</Label>
-                  <Textarea id="message" rows={4} className="bg-background" placeholder="e.g. Fee collection tracking is completely manual..." />
+                  <Textarea id="message" name="message" rows={4} className="bg-background" placeholder="e.g. Fee collection tracking is completely manual..." />
                 </div>
 
                 <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 text-lg py-6">

@@ -44,7 +44,7 @@ Message: ${formData.notes || "None"}`;
     const whatsappUrl = `https://wa.me/917058905200?text=${encodedMessage}`;
 
     setSubmitted(true);
-    window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   const isValid = formData.name && formData.phone && formData.school && formData.city;
@@ -163,12 +163,14 @@ Message: ${formData.notes || "None"}`;
                     Fill out the form below and we'll reach out via WhatsApp
                   </p>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact GuruCool">
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="name">Name *</Label>
                         <Input
                           id="name"
+                          name="name"
+                          autoComplete="name"
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           placeholder="Your full name"
@@ -179,6 +181,9 @@ Message: ${formData.notes || "None"}`;
                         <Label htmlFor="phone">Phone / WhatsApp *</Label>
                         <Input
                           id="phone"
+                          name="tel"
+                          type="tel"
+                          autoComplete="tel"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="+91 XXXXX XXXXX"
@@ -192,6 +197,8 @@ Message: ${formData.notes || "None"}`;
                         <Label htmlFor="school">School Name *</Label>
                         <Input
                           id="school"
+                          name="organization"
+                          autoComplete="organization"
                           value={formData.school}
                           onChange={(e) => setFormData({ ...formData, school: e.target.value })}
                           placeholder="Your school's name"
@@ -202,6 +209,8 @@ Message: ${formData.notes || "None"}`;
                         <Label htmlFor="city">City *</Label>
                         <Input
                           id="city"
+                          name="address-level2"
+                          autoComplete="address-level2"
                           value={formData.city}
                           onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                           placeholder="City, State"
@@ -253,6 +262,7 @@ Message: ${formData.notes || "None"}`;
                       <Label htmlFor="notes">Message (optional)</Label>
                       <Textarea
                         id="notes"
+                        name="message"
                         value={formData.notes}
                         onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                         placeholder="Tell us more about what you're looking for..."
@@ -271,8 +281,8 @@ Message: ${formData.notes || "None"}`;
                     </Button>
 
                     {submitted && (
-                      <div className="flex items-center gap-2 text-guru-green text-body-sm">
-                        <CheckCircle2 className="w-5 h-5" />
+                      <div className="flex items-center gap-2 text-guru-green text-body-sm" role="status" aria-live="polite">
+                        <CheckCircle2 aria-hidden="true" className="w-5 h-5" />
                         Opening WhatsApp with your details...
                       </div>
                     )}

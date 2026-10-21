@@ -26,7 +26,6 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks: {
           'vendor-framer': ['framer-motion'],
-          'vendor-ui': ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-popover', '@radix-ui/react-tooltip'],
           'vendor-lucide': ['lucide-react'],
         }
       }
