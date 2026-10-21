@@ -56,8 +56,8 @@ export default function BlogPage() {
 
       {/* Blog Posts */}
       <section className="journal-index py-16 sm:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+        <div className="site-canvas">
+          <div className="max-w-6xl mr-auto">
             <div className="journal-index__grid">
               {blogPosts.map((post, index) => (
                 <article key={post.id} className={`journal-card ${index === 0 ? "journal-card--lead" : ""}`}>

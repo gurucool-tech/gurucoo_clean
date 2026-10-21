@@ -5,19 +5,10 @@ import {
   FileText, Fingerprint, Layers, MessageCircle, TrendingUp, Users,
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
-import { m, Variants } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
+import { getScrollRevealVariants, getStaggerRevealVariants } from "@/lib/scrollRevealMotion";
 
 const WHATSAPP_LINK = "https://wa.me/917058905200?text=Hello%20Team%20GuruCool%2C%20I%20would%20like%20to%20book%20a%20walkthrough%20and%20understand%20the%20platform.";
-
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
-};
-
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
 
 const rolloutSteps = [
   { title: "Foundation", detail: "Identity and attendance", state: "Ready" },
@@ -27,6 +18,10 @@ const rolloutSteps = [
 ];
 
 export default function HomePage() {
+  const reduceMotion = useReducedMotion();
+  const fadeInUp = getScrollRevealVariants(reduceMotion);
+  const staggerContainer = getStaggerRevealVariants(reduceMotion);
+
   return (
     <div className="flex flex-1 flex-col overflow-hidden bg-background">
       <SEO title="The Operating Layer for Modern Educational Institutions" description="Connected operations for attendance, academics, communication, exams, fees, and reporting." canonicalPath="/" />
@@ -35,14 +30,14 @@ export default function HomePage() {
       <section className="home-hero-composition relative overflow-hidden">
         <div className="container-wide relative z-10">
           <div className="hero-composition-grid grid items-center gap-12 min-[1120px]:grid-cols-[0.86fr_1.14fr] min-[1120px]:gap-14">
-            <m.div initial="hidden" animate="visible" variants={staggerContainer} className="hero-copy-column max-w-[590px]">
-              <m.h1 variants={fadeInUp} className="hero-title text-foreground">
+            <m.div className="hero-copy-column header-motion-copy max-w-[590px]">
+              <m.h1 className="hero-title text-foreground">
                 The operating layer for <span className="text-primary">modern institutions.</span>
               </m.h1>
-              <m.p variants={fadeInUp} className="mt-7 max-w-[590px] text-lg leading-8 text-muted-foreground sm:text-xl">
+              <m.p className="mt-7 max-w-[590px] text-lg leading-8 text-muted-foreground sm:text-xl">
                 Connect attendance, academics, communication, exams, fees, and reporting through one institutional operating layer.
               </m.p>
-              <m.div variants={fadeInUp} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <m.div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg" className="h-14 rounded-lg px-7 text-base">
                   <Link to="/book-demo"><Calendar className="h-5 w-5" />Book a walkthrough</Link>
                 </Button>
@@ -50,12 +45,12 @@ export default function HomePage() {
                   <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer"><MessageCircle className="h-5 w-5 text-[#138a43]" />Contact on WhatsApp</a>
                 </Button>
               </m.div>
-              <m.div variants={fadeInUp} className="hero-proof-line">
+              <m.div className="hero-proof-line">
                 <span className="font-bold text-foreground">One record</span><span aria-hidden="true">·</span><span>Shared across every workflow</span>
               </m.div>
             </m.div>
 
-            <m.div initial="hidden" animate="visible" variants={fadeInUp} className="hero-visual-column structural-grid-light grid-tracer-light relative">
+            <m.div className="hero-visual-column header-motion-visual structural-grid-light grid-tracer-light relative">
               <div className="hero-product-shell" data-ui="dashboard-preview">
                 <div className="hero-product-topbar">
                   <div><p className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/55">Institution overview</p><p className="mt-1 text-base font-semibold text-white">Monday operations</p></div>

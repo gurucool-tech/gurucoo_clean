@@ -53,7 +53,7 @@ export default function FAQPage() {
       />
       <PageHeader 
         variant="editorial"
-        title="Questions about Implementation" 
+        title="Implementation Questions" 
         description="Real answers about how GuruCool rolls out in your institution."
       />
       

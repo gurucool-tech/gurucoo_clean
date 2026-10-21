@@ -19,8 +19,8 @@ export default function PrivacyPage() {
       />
 
       <section className="py-16 sm:py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto prose prose-lg">
+        <div className="site-canvas">
+          <div className="max-w-3xl mr-auto prose prose-lg">
             <p className="text-muted-foreground mb-8">Last updated: 31st March 2025</p>
 
             <p className="mb-8">

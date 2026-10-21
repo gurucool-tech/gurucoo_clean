@@ -13,7 +13,7 @@ export default function SolutionsTuitionPage() {
       <PageHeader 
         variant="warm"
         eyebrow="Solutions: Coaching Centers"
-        title="Growth Infrastructure for Coaching Institutions" 
+        title="Growth Infrastructure for Coaching" 
         description="Keep parents in the loop, track attendance clearly, and coordinate fee collection across your branches."
         alignment="left"
       />

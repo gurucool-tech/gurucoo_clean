@@ -81,8 +81,8 @@ Email: ${formData.email}`;
 
       {/* Content */}
       <section className="py-12 sm:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
+        <div className="site-canvas">
+          <div className="max-w-5xl mr-auto">
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Guides List */}
               <div>

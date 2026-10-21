@@ -38,8 +38,8 @@ export default function TeamPage() {
 
       {/* Team */}
       <section className="team-stage section-padding bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+        <div className="site-canvas">
+          <div className="max-w-6xl mr-auto">
             <div className="team-stage__grid">
               {team.map((member, index) => (
                 <div key={member.role} className={`team-role ${index === 0 ? "team-role--lead" : ""}`}>

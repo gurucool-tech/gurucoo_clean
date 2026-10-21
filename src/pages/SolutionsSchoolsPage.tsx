@@ -13,7 +13,7 @@ export default function SolutionsSchoolsPage() {
       <PageHeader 
         variant="editorial"
         eyebrow="Solutions: Schools"
-        title="Connected Operations for Modern Schools" 
+        title="Connected Operations for Schools" 
         description="Move beyond fragmented school management apps. GuruCool provides a unified layer for K-12 operations."
       />
       <SolutionOperationsStage kind="school" eyebrow="School operations" title="Stop managing software. Start managing your school." description="Too much admin steals time from teaching. Records get scattered. Parent communication stays reactive. We fix that." points={["Connected daily attendance", "Clear parent communication", "School-wide operational visibility"]} />

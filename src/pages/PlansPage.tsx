@@ -4,22 +4,14 @@ import { SectionContainer } from "@/components/layout/SectionContainer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import { m, Variants } from "framer-motion";
-
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
-
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-};
+import { m, useReducedMotion } from "framer-motion";
+import { getScrollRevealVariants, getStaggerRevealVariants, scrollRevealViewport } from "@/lib/scrollRevealMotion";
 
 export default function PlansPage() {
+  const reduceMotion = useReducedMotion();
+  const fadeInUp = getScrollRevealVariants(reduceMotion);
+  const staggerContainer = getStaggerRevealVariants(reduceMotion);
+
   return (
     <div className="bg-background min-h-screen">
       <SEO 
@@ -42,7 +34,7 @@ export default function PlansPage() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={scrollRevealViewport}
             className="grid lg:grid-cols-3 gap-8 mb-24"
           >
             {/* Tier 1 */}
@@ -103,7 +95,7 @@ export default function PlansPage() {
           <m.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ ...scrollRevealViewport, margin: "-100px" }}
             variants={fadeInUp}
             className="mt-24"
           >

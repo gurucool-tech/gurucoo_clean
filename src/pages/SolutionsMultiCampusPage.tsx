@@ -13,7 +13,7 @@ export default function SolutionsMultiCampusPage() {
       <PageHeader 
         variant="product"
         eyebrow="Solutions: Multi-campus"
-        title="Centralized Command for Multi-Campus Groups" 
+        title="One View Across Every Campus" 
         description="Standardize your operations. Gain real-time visibility into every branch from one central headquarters dashboard."
       />
       <SolutionOperationsStage kind="network" reverse eyebrow="Group visibility" title="One system. Every branch." description="Don't let data silo by location. GuruCool's multi-campus architecture allows leadership to oversee attendance, fees, and academic performance across the entire network in real time." points={["Network-wide operating view", "Campus-level role-based access", "Comparable institutional records"]} />

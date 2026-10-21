@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X, MessageCircle, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -55,12 +55,43 @@ const navigation: NavItem[] = [
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const location = useLocation();
+
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const distance = currentScrollY - lastScrollY.current;
+
+      if (currentScrollY < 24 || mobileOpen) {
+        setHeaderVisible(true);
+      } else if (distance > 8) {
+        setHeaderVisible(false);
+        setOpenDropdown(null);
+      } else if (distance < -8) {
+        setHeaderVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    setHeaderVisible(true);
+    setMobileOpen(false);
+    setOpenDropdown(null);
+  }, [location.pathname]);
 
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-card/95 shadow-[var(--shadow-nav)] backdrop-blur-lg transition-[background-color,border-color,box-shadow] duration-200 xl:left-1/2 xl:right-auto xl:top-3 xl:w-[calc(100%-3rem)] xl:max-w-[1400px] xl:-translate-x-1/2 xl:rounded-xl xl:border">
+    <header className={`fixed left-0 right-0 top-0 z-50 border-b border-border bg-card/95 shadow-[var(--shadow-nav)] backdrop-blur-lg transition-[background-color,border-color,box-shadow,transform,opacity] duration-300 ease-out xl:left-1/2 xl:right-auto xl:top-3 xl:w-[calc(100%-3rem)] xl:max-w-[1400px] xl:rounded-xl xl:border ${headerVisible ? "translate-y-0 opacity-100 xl:-translate-x-1/2" : "-translate-y-[calc(100%+1rem)] opacity-0 xl:-translate-x-1/2"}`}>
       <div className="w-full px-4 lg:px-6">
         <div className="flex h-[64px] items-center justify-between xl:h-[72px] xl:gap-6">
           {/* Logo */}

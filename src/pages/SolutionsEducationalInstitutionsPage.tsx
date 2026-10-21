@@ -3,9 +3,14 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { AbstractDashboard } from "@/components/ui/AbstractDashboard";
 import { ArrowRight, School, GraduationCap, Users, Building2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { getScrollRevealVariants, getStaggerRevealVariants, scrollRevealViewport } from "@/lib/scrollRevealMotion";
 
 export default function SolutionsEducationalInstitutionsPage() {
+  const reduceMotion = useReducedMotion();
+  const reveal = getScrollRevealVariants(reduceMotion);
+  const stagger = getStaggerRevealVariants(reduceMotion);
+
   return (
     <div className="flex-1 flex flex-col bg-background">
       <SEO 
@@ -23,7 +28,7 @@ export default function SolutionsEducationalInstitutionsPage() {
       
       {/* Main Umbrella System Logic Section */}
       <section className="py-20 relative overflow-hidden bg-ice-panel border-y border-border/40">
-        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+        <div className="site-canvas max-w-6xl relative z-10">
           <div className="institution-principles__intro mb-14">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">Connecting Fragmented Operations</h2>
             <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
@@ -59,7 +64,7 @@ export default function SolutionsEducationalInstitutionsPage() {
 
       {/* Sub-types Support Strip */}
       <section className="institution-models py-20 sm:py-28">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="site-canvas">
           <div className="institution-models__intro">
             <span>One architecture, different operating realities</span>
             <h2>Engineered for your exact model.</h2>
@@ -68,7 +73,13 @@ export default function SolutionsEducationalInstitutionsPage() {
             </p>
           </div>
 
-          <div className="institution-models__grid">
+          <motion.div
+            className="institution-models__grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={scrollRevealViewport}
+            variants={stagger}
+          >
             {[
               {
                 title: "Schools",
@@ -95,11 +106,8 @@ export default function SolutionsEducationalInstitutionsPage() {
                 link: "/solutions/multi-campus"
               }
             ].map((sol, i) => (
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+              <motion.div
+                variants={reveal}
                 key={i}
               >
                 <Link to={sol.link} className={`institution-model institution-model--${i + 1} group`}>
@@ -117,7 +125,7 @@ export default function SolutionsEducationalInstitutionsPage() {
                 </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

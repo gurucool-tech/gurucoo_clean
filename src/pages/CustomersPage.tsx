@@ -20,7 +20,7 @@ export default function CustomersPage() {
   return (
     <div className="flex flex-1 flex-col bg-background">
       <SEO title="Institution Fit | GuruCool" description="See which educational institutions GuruCool is designed to support." canonicalPath="/customers" />
-      <PageHeader variant="dark" eyebrow="Institution fit" title="Designed for institutions ready to connect their operations." description="GuruCool is a connected institutional operating system for teams moving beyond fragmented records and disconnected daily workflows." alignment="left" breadcrumbs={[{ label: "Home", href: "/" }, { label: "Institution fit" }]} />
+      <PageHeader variant="dark" eyebrow="Institution fit" title="Built for Connected Institutions." description="For teams ready to replace fragmented records with coordinated daily operations." alignment="left" breadcrumbs={[{ label: "Home", href: "/" }, { label: "Institution fit" }]} />
       <section className="section-padding relative overflow-hidden">
         <div className="structural-grid-light absolute inset-0 opacity-60" />
         <div className="site-canvas relative grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">

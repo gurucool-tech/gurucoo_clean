@@ -26,7 +26,7 @@ export default function AttendanceAccuracyPost() {
       <PageHeader
         variant="editorial"
         eyebrow="Field note · Operations"
-        title="Why Attendance Accuracy Matters More Than You Think"
+        title="Why Attendance Accuracy Matters"
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Blog", href: "/blog" },
@@ -35,8 +35,8 @@ export default function AttendanceAccuracyPost() {
       />
 
       <article className="py-12 sm:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
+        <div className="site-canvas">
+          <div className="max-w-3xl mr-auto">
             {/* Meta */}
             <div className="flex flex-wrap items-center gap-4 mb-8 pb-8 border-b border-border/50">
               <span className="pill pill-primary">Operations</span>

@@ -34,7 +34,7 @@ export default function StagedDigitizationPost() {
       <PageHeader
         variant="warm"
         eyebrow="Field note · Implementation"
-        title="Starting Simple: The Staged Approach to School Digitization"
+        title="A Staged Path to School Digitization"
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Blog", href: "/blog" },
@@ -43,8 +43,8 @@ export default function StagedDigitizationPost() {
       />
 
       <article className="py-12 sm:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
+        <div className="site-canvas">
+          <div className="max-w-3xl mr-auto">
             {/* Meta */}
             <div className="flex flex-wrap items-center gap-4 mb-8 pb-8 border-b border-border/50">
               <span className="pill pill-primary">Implementation</span>
