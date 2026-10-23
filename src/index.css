@@ -1114,6 +1114,17 @@ article .prose,
   .hero-motif--system, .hero-motif--planes { min-height: 330px; }
 }
 
+@media (max-width: 900px) {
+  .inner-page-hero { height: auto; min-height: 0; overflow: visible; }
+  .inner-page-hero__canvas,
+  .inner-page-hero--product .inner-page-hero__canvas,
+  .inner-page-hero--editorial .inner-page-hero__canvas,
+  .inner-page-hero--dark .inner-page-hero__canvas,
+  .inner-page-hero--warm .inner-page-hero__canvas,
+  .inner-page-hero--conversion .inner-page-hero__canvas { grid-template-columns: 1fr; }
+  .hero-motif { width: min(100%, 520px); }
+}
+
 @media (max-width: 760px) {
   .inner-page-hero { height: auto; min-height: 0; padding-block: 4rem; overflow: visible; }
   .inner-page-hero__canvas,

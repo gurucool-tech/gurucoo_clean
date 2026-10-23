@@ -208,7 +208,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileOpen && (
-          <div id="mobile-navigation" className="xl:hidden py-4 border-t border-border/50 animate-fade-in">
+          <div id="mobile-navigation" className="max-h-[calc(100dvh-64px)] overflow-y-auto overscroll-contain border-t border-border/50 py-4 xl:hidden animate-fade-in">
             <nav className="space-y-1" aria-label="Mobile navigation">
               {navigation.map((item) => (
                 <div key={item.label}>
