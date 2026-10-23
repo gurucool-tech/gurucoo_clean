@@ -24,10 +24,13 @@ export function SEO({
   noIndex = false,
 }: SEOProps) {
   const siteUrl = "https://edugurucool.in";
-  const canonicalUrl = canonical || (canonicalPath ? `${siteUrl}${canonicalPath}` : siteUrl);
-  const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+  const rawCanonical = canonical || canonicalPath || "";
+  const canonicalUrl = rawCanonical
+    ? (rawCanonical.startsWith("http") ? rawCanonical : `${siteUrl}${rawCanonical.startsWith("/") ? "" : "/"}${rawCanonical}`)
+    : siteUrl;
+  const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image.startsWith('/') ? '' : '/'}${image}`;
   const fullTitle = title.includes("GuruCool") ? title : `${title} | GuruCool`;
-  const path = new URL(canonicalUrl).pathname;
+  const path = new URL(canonicalUrl, siteUrl).pathname;
 
   const organization = {
     "@context": "https://schema.org",
