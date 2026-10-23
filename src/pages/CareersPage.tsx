@@ -1,40 +1,45 @@
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Heart, Users, Zap, MapPin, CheckCircle2, ExternalLink, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Braces, Check, ExternalLink, Heart, PenTool, Sparkles, Users, Zap } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { SEO } from "@/components/SEO";
+import "./CareersPage.css";
 
 const APPLY_FORM_LINK = "https://forms.gle/XR7p3yEcvzdZzZms9";
-const WHATSAPP_LINK =
-  "https://wa.me/918692072767?text=Hello%20Team%20GuruCool%2C%20I%20am%20interested%20in%20career%20opportunities.";
 
 const openRoles = [
   {
-    title: "Sales Executive - Education",
-    type: "Commission-based",
-    location: "Remote / Pan-India",
-    description: "Build relationships with schools and demonstrate how GuruCool can solve their challenges.",
-    compensation: "5% regular commission (commission-based work)",
-    requirements: [
-      "Experience in B2B sales (education preferred)",
-      "Strong presentation and communication skills",
-      "Self-motivated and target-driven",
-      "Understanding of Indian school ecosystem",
-    ],
-    whatsappRole: "Sales Executive - Education (Commission-based, 5% regular commission)",
-  },
-  {
+    index: "01",
     title: "Full-Stack Developer Intern",
     type: "Internship",
     location: "Remote",
-    description: "Build and improve features that help schools run better. Work on frontend and backend with guidance.",
+    icon: Braces,
+    variant: "engineering",
+    description: "Work on real GuruCool product features while learning how frontend, backend, APIs, data, and workflows come together.",
     requirements: [
-      "Familiarity with React / TypeScript (or strong JS)",
-      "Basics of Node.js and databases",
-      "Willingness to learn and ship improvements",
-      "Can work independently with weekly check-ins",
+      "Familiarity with JavaScript, React, TypeScript, and Node.js",
+      "Basic understanding of APIs, databases, and web applications",
+      "Strong problem-solving and learning mindset",
+      "Willingness to explore unfamiliar technologies when needed",
+      "Ability to understand a problem before rushing to finish it",
     ],
-    whatsappRole: "Full-Stack Developer Intern",
+    supporting: "You do not need senior-level expertise. We care more about how quickly you learn, how you think, and how well you apply what you learn.",
+  },
+  {
+    index: "02",
+    title: "UI/UX Designer Intern",
+    type: "Internship",
+    location: "Remote",
+    icon: PenTool,
+    variant: "design",
+    description: "Design clear and thoughtful product experiences across GuruCool interfaces, workflows, dashboards, and user journeys.",
+    requirements: [
+      "Familiarity with Figma, Canva, Adobe Creative Cloud tools, or similar design software",
+      "Basic understanding of UI/UX principles",
+      "Good sense of typography, spacing, hierarchy, and composition",
+      "Ability to understand a workflow before designing it",
+      "Willingness to learn, take feedback, and iterate",
+    ],
+    supporting: "You are not expected to code. Your focus is understanding the problem and designing a clear experience. The development team will handle implementation.",
   },
 ];
 
@@ -62,7 +67,7 @@ export default function CareersPage() {
     <div className="flex-1 flex flex-col bg-background">
       <SEO
         title="Careers | Join GuruCool"
-        description="Work with GuruCool to improve Indian school operations. Open roles in education sales and full-stack development internship."
+        description="Learn and build with GuruCool through real product work. Explore open full-stack development and UI/UX design internships."
         canonical="/careers"
       />
       <PageHeader
@@ -95,52 +100,100 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Open Positions */}
-      <section className="section-padding bg-muted/30">
+      {/* Philosophy */}
+      <section className="careers-philosophy" aria-labelledby="careers-philosophy-title">
         <div className="site-canvas">
-          <div className="max-w-4xl mr-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-display-sm font-bold text-foreground mb-4">Open Positions</h2>
+          <div className="careers-philosophy__layout">
+            <div className="careers-philosophy__label">
+              <span aria-hidden="true">03</span>
+              <p>Our Philosophy</p>
             </div>
 
-            <div className="space-y-6">
-              {openRoles.map((role) => (
-                <div
-                  key={role.title}
-                  className="bg-card rounded-xl border border-border/50 p-8 hover:shadow-premium transition-shadow"
-                >
-                  <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <h3 className="text-heading-lg font-bold text-foreground">{role.title}</h3>
-                    <span className="pill pill-primary">{role.type}</span>
+            <div className="careers-philosophy__statement">
+              <Sparkles aria-hidden="true" />
+              <h2 id="careers-philosophy-title">Learn with us. Build with us.</h2>
+              <p className="careers-philosophy__lead">
+                We do not expect you to know everything before you join. Technology changes too quickly for that.
+              </p>
+              <div className="careers-philosophy__copy">
+                <p>
+                  What matters to us is how you think, how quickly you learn, and how well you apply what you learn. You may come across tools, systems, or problems you have never worked with before, and that is okay.
+                </p>
+                <p>
+                  We are building and evolving too. Learn through the work, understand the problem properly, ask the right questions, and grow with every project.
+                </p>
+              </div>
+            </div>
+
+            <aside className="careers-philosophy__principle" aria-label="Our learning principle">
+              <span>Knowledge gaps are okay.</span>
+              <strong>A poor learning mindset is not.</strong>
+              <ArrowUpRight aria-hidden="true" />
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* Open Positions */}
+      <section className="careers-positions" aria-labelledby="careers-positions-title">
+        <div className="site-canvas">
+          <div className="careers-positions__heading">
+            <div>
+              <span>Current opportunities</span>
+              <h2 id="careers-positions-title">Open Positions</h2>
+            </div>
+            <p>Two disciplines. One shared standard: understand the problem, then build with care.</p>
+          </div>
+
+          <div className="careers-positions__grid">
+            {openRoles.map((role) => (
+              <article key={role.title} className={`career-role career-role--${role.variant}`}>
+                <header className="career-role__header">
+                  <div className="career-role__index" aria-hidden="true">{role.index}</div>
+                  <div className="career-role__identity">
+                    <div className="career-role__icon"><role.icon aria-hidden="true" /></div>
+                    <div>
+                      <span>GuruCool internship</span>
+                      <h3>{role.title}</h3>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-body-sm text-muted-foreground mb-4">
-                    <MapPin className="w-4 h-4" />
-                    {role.location}
+                  <div className="career-role__tags" aria-label="Role details">
+                    <span>{role.type}</span>
+                    <span>{role.location}</span>
+                    <span className="career-role__open"><i aria-hidden="true" />Open</span>
                   </div>
-                  <p className="text-body-md text-muted-foreground mb-4">{role.description}</p>
-                  {role.compensation && (
-                    <p className="text-body-sm font-semibold text-primary mb-4">Compensation: {role.compensation}</p>
-                  )}
-                  <div className="mb-6">
-                    <h4 className="text-body-sm font-semibold text-foreground mb-2">Requirements:</h4>
-                    <ul className="space-y-2">
+                </header>
+
+                <div className="career-role__body">
+                  <div className="career-role__overview">
+                    <p>{role.description}</p>
+                    <div className="career-role__supporting">{role.supporting}</div>
+                  </div>
+
+                  <div className="career-role__requirements">
+                    <h4>What helps you succeed</h4>
+                    <ul>
                       {role.requirements.map((req) => (
-                        <li key={req} className="flex items-start gap-2 text-body-sm text-muted-foreground">
-                          <CheckCircle2 className="w-4 h-4 text-guru-green flex-shrink-0 mt-0.5" />
-                          {req}
+                        <li key={req}>
+                          <Check aria-hidden="true" />
+                          <span>{req}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <Button asChild className="gap-2">
+                </div>
+
+                <footer className="career-role__footer">
+                  <p>Ready to learn through real work?</p>
+                  <Button asChild className="career-role__apply">
                     <a href={APPLY_FORM_LINK} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4" />
                       Apply Now
+                      <ExternalLink aria-hidden="true" />
                     </a>
                   </Button>
-                </div>
-              ))}
-            </div>
+                </footer>
+              </article>
+            ))}
           </div>
         </div>
       </section>

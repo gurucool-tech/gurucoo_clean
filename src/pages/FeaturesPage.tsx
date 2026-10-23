@@ -2,7 +2,7 @@ import { SEO } from "@/components/SEO";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { SectionContainer } from "@/components/layout/SectionContainer";
 import { Shield, BookOpen, MessageCircle, PenTool, CreditCard, BarChart } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { getScrollRevealVariants, getStaggerRevealVariants, scrollRevealViewport } from "@/lib/scrollRevealMotion";
 
 export default function FeaturesPage() {
@@ -28,7 +28,7 @@ export default function FeaturesPage() {
       
       <SectionContainer>
         <div className="max-w-[1240px] mx-auto py-14">
-          <motion.div 
+          <m.div 
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -37,7 +37,7 @@ export default function FeaturesPage() {
           >
             
             {/* Workflow 1 */}
-            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-4">
+            <m.div variants={fadeInUp} className="feature-card group lg:col-span-4">
               <Shield className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">Attendance & Identity</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -46,10 +46,10 @@ export default function FeaturesPage() {
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Real-time absentee tracking</li>
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Staff proxy and leave management</li>
               </ul>
-            </motion.div>
+            </m.div>
 
             {/* Workflow 2 */}
-            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-2">
+            <m.div variants={fadeInUp} className="feature-card group lg:col-span-2">
               <BookOpen className="w-10 h-10 text-guru-sky mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-guru-sky transition-colors">Academic Operations</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -58,10 +58,10 @@ export default function FeaturesPage() {
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Syllabus tracking and completion</li>
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Homework and assignment distribution</li>
               </ul>
-            </motion.div>
+            </m.div>
 
             {/* Workflow 3 */}
-            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-3 bg-[hsl(var(--gc-ice)/0.32)]">
+            <m.div variants={fadeInUp} className="feature-card group lg:col-span-3 bg-[hsl(var(--gc-ice)/0.32)]">
               <MessageCircle className="w-10 h-10 text-[#25D366] mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-[#25D366] transition-colors">Parent Communication</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -70,10 +70,10 @@ export default function FeaturesPage() {
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#25D366]/50 mt-1.5 shrink-0" /> Event and holiday notifications</li>
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#25D366]/50 mt-1.5 shrink-0" /> No parent app installation required</li>
               </ul>
-            </motion.div>
+            </m.div>
 
             {/* Workflow 4 */}
-            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-3">
+            <m.div variants={fadeInUp} className="feature-card group lg:col-span-3">
               <PenTool className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">Exams & Assessments</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -82,10 +82,10 @@ export default function FeaturesPage() {
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Bulk marks entry interface</li>
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-1.5 shrink-0" /> Automated report card generation</li>
               </ul>
-            </motion.div>
+            </m.div>
 
             {/* Workflow 5 */}
-            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-2 bg-[hsl(var(--gc-cream)/0.55)]">
+            <m.div variants={fadeInUp} className="feature-card group lg:col-span-2 bg-[hsl(var(--gc-cream)/0.55)]">
               <CreditCard className="w-10 h-10 text-foreground mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">Fees & Records</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -94,10 +94,10 @@ export default function FeaturesPage() {
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-foreground/50 mt-1.5 shrink-0" /> Defaulter list tracking</li>
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-foreground/50 mt-1.5 shrink-0" /> Secure document portal (KYC)</li>
               </ul>
-            </motion.div>
+            </m.div>
 
             {/* Workflow 6 */}
-            <motion.div variants={fadeInUp} className="feature-card group lg:col-span-4">
+            <m.div variants={fadeInUp} className="feature-card group lg:col-span-4">
               <BarChart className="w-10 h-10 text-guru-sky mb-6 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-guru-sky transition-colors">Reporting & Visibility</h3>
               <ul className="space-y-3 text-muted-foreground text-sm">
@@ -106,9 +106,9 @@ export default function FeaturesPage() {
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Financial health summaries</li>
                 <li className="flex items-start gap-2"><div className="w-1.5 h-1.5 rounded-full bg-guru-sky/50 mt-1.5 shrink-0" /> Multi-campus consolidated views</li>
               </ul>
-            </motion.div>
+            </m.div>
 
-          </motion.div>
+          </m.div>
         </div>
       </SectionContainer>
       </div>

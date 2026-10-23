@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { AbstractDashboard } from "@/components/ui/AbstractDashboard";
 import { ArrowRight, School, GraduationCap, Users, Building2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { getScrollRevealVariants, getStaggerRevealVariants, scrollRevealViewport } from "@/lib/scrollRevealMotion";
 
 export default function SolutionsEducationalInstitutionsPage() {
@@ -73,7 +73,7 @@ export default function SolutionsEducationalInstitutionsPage() {
             </p>
           </div>
 
-          <motion.div
+          <m.div
             className="institution-models__grid"
             initial="hidden"
             whileInView="visible"
@@ -106,7 +106,7 @@ export default function SolutionsEducationalInstitutionsPage() {
                 link: "/solutions/multi-campus"
               }
             ].map((sol, i) => (
-              <motion.div
+              <m.div
                 variants={reveal}
                 key={i}
               >
@@ -123,9 +123,9 @@ export default function SolutionsEducationalInstitutionsPage() {
                     <p>{sol.desc}</p>
                     </div>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </div>
